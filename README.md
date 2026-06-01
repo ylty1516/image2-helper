@@ -252,6 +252,7 @@ reduce-ai-look-imagegen/
     inconsistency-cleanup-case.md
     inconsistency-cleanup-flow.png
   references/
+    INDEX.md
     fast-path.md
     routing-and-triggering.md
     intent-and-fuzzy-language.md
@@ -269,10 +270,35 @@ reduce-ai-look-imagegen/
     style-quality-rubric.md
 ```
 
+## 调用速度优化
+
+本项目现在采用“轻量路由器 + 按需 reference”的结构：
+
+```text
+用户请求 -> SKILL.md 轻量路由 -> 只加载一个最相关 reference -> 输出紧凑提示词/修图指令
+```
+
+这次精简后：
+
+```text
+SKILL.md: 约 21.7 KB -> 约 6.3 KB
+```
+
+减少的是默认调用时必须读的内容，不是删除能力。姿势修正、动漫手绘、去不合理元素、构图、保质提速、风格分类等能力仍然保留在 `references/` 里，只有需要时才加载。
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/lean-routing-case.md
+```
+
+![轻量路由示例](reduce-ai-look-imagegen/examples/lean-routing-map.png)
+
 ## 重要文件说明
 
 - `SKILL.md`：主 skill 文件，Codex 识别 skill 的入口
 - `00_NEXT_AI_READ_FIRST.md`：给下一位维护者或 AI 的快速说明
+- `INDEX.md`：reference 分区索引，方便 AI 快速跳转到最相关文件
 - `fast-path.md`：低 token 快速路径
 - `routing-and-triggering.md`：判断什么时候该用这个 skill
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言

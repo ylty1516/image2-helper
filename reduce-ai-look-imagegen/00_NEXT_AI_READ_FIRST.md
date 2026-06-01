@@ -37,16 +37,12 @@ It has grown into a visual style reasoning system. It can:
 Start here:
 
 1. `SKILL.md`
-2. `references/fast-path.md`
-3. `references/routing-and-triggering.md`
-4. `references/intent-and-fuzzy-language.md`
-5. `references/prompt-recipes.md`
-6. `references/style-taxonomy.md`
-7. `references/failure-feedback-fixes.md`
-8. `references/style-quality-rubric.md`
+2. `references/INDEX.md`
+3. the single focused reference selected by `SKILL.md`
 
 Then load specialized references only when needed:
 
+- `references/INDEX.md` for a quick map of the reference folder
 - `references/fast-path.md` for the cheapest route and compact prompts
 - `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
