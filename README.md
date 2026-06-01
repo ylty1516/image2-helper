@@ -1,62 +1,123 @@
 # image2-helper
 
-`image2-helper` is a Codex skill package for making AI image generation more intentional, less synthetic, and easier to route.
+一个可部署的 Codex 生图辅助 Skill 项目，用来降低 AI 生图的“AI 感”，并帮助 AI 更准确地理解用户真正想要的画风、格式和用途。
 
-It contains the deployable skill:
+本仓库包含可直接安装的 skill：
 
 ```text
 reduce-ai-look-imagegen/
 ```
 
-The skill is designed for prompts and image-editing workflows where a user says things like:
+它适合处理这类需求：
 
-- "lower the AI feel"
-- "make it less fake / oily / plastic"
-- "make this pose more natural"
-- "this looks too 3D"
-- "turn my vague taste words into a real image prompt"
-- "keep this as a four-panel comic, do not turn it into a poster"
+- “降低 AI 感”
+- “不要这么假 / 油 / 塑料 / 像 3D”
+- “动作、手、姿势不自然，帮我修”
+- “我说高级感、氛围感、故事感，你帮我转成真正可用的生图提示词”
+- “我要四格漫画，不要被生成成单张海报”
+- “帮我判断这张图为什么像 AI”
 
-For ordinary image generation, it intentionally routes away from itself and lets your normal image tool run first.
+如果用户只是普通地说“帮我生成一张图”，这个 skill 不会强行接管，而是建议先走普通生图工具。
 
-## What It Helps With
+## 它能解决什么
 
-| Problem | What the skill does |
+| 用户问题 | Skill 会做什么 |
 |---|---|
-| The image feels AI-generated | Converts vague quality words into concrete medium/process cues |
-| The user only says "premium" or "atmospheric" | Translates fuzzy taste words into color, light, texture, composition, and material choices |
-| The output format is important | Locks formats like four-panel comic, logo, icon, poster, game menu, character sheet, and packaging |
-| Hands or body poses look wrong | Adds pose/action reasoning: joint range, weight support, contact points, clothing/hair gravity |
-| Anime looks glossy or 3D | Rewrites toward hand-drawn cel/anime production language |
-| Styles are mixed together | Resolves conflicts such as watercolor + cyberpunk or pixel art + cinematic |
-| Token use is getting high | Uses a fast path and loads only one reference file when possible |
+| 图片太像 AI | 把空泛词改成具体的媒介、材质、光影、构图语言 |
+| 只说“高级感 / 氛围感 / 故事感” | 转换成颜色、光线、材质、空间、叙事线索 |
+| 输出格式很重要 | 锁定四格漫画、LOGO、图标、海报、游戏菜单、角色设定、包装等格式 |
+| 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
+| 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
+| 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
+| token 消耗太高 | 默认走 fast path，只加载最相关的一个参考文件 |
 
-## Install
+## 安装方法
 
-Copy the skill folder into your Codex skills directory:
+### 方法一：用 Git 安装
+
+打开 PowerShell，运行：
+
+```powershell
+git clone https://github.com/ylty1516/image2-helper.git
+Copy-Item -Recurse .\image2-helper\reduce-ai-look-imagegen "$env:USERPROFILE\.codex\skills\reduce-ai-look-imagegen"
+```
+
+然后重启 Codex，或者新开一个 Codex 对话线程。
+
+### 方法二：下载 ZIP 安装
+
+1. 打开仓库页面：<https://github.com/ylty1516/image2-helper>
+2. 点击绿色的 `Code` 按钮。
+3. 点击 `Download ZIP`。
+4. 解压下载好的压缩包。
+5. 找到里面的 `reduce-ai-look-imagegen` 文件夹。
+6. 把整个 `reduce-ai-look-imagegen` 文件夹复制到你的 Codex skills 目录。
+
+Windows 用户最终路径应该像这样：
+
+```text
+C:\Users\你的用户名\.codex\skills\reduce-ai-look-imagegen\SKILL.md
+```
+
+macOS / Linux 用户最终路径应该像这样：
+
+```text
+~/.codex/skills/reduce-ai-look-imagegen/SKILL.md
+```
+
+### Windows 一行安装命令
+
+如果你已经克隆或解压了本仓库，并且当前终端就在仓库根目录，运行：
 
 ```powershell
 Copy-Item -Recurse .\reduce-ai-look-imagegen "$env:USERPROFILE\.codex\skills\reduce-ai-look-imagegen"
 ```
 
-Then restart Codex or open a new thread so the skill can be discovered.
+### macOS / Linux 一行安装命令
 
-## Quick Use
+如果你已经克隆或解压了本仓库，并且当前终端就在仓库根目录，运行：
 
-Use the skill explicitly when you want anti-AI refinement:
-
-```text
-Use $reduce-ai-look-imagegen to rewrite this image prompt so it feels less AI-generated:
-an anime girl standing in a city, cinematic, high quality
+```bash
+mkdir -p ~/.codex/skills
+cp -R ./reduce-ai-look-imagegen ~/.codex/skills/reduce-ai-look-imagegen
 ```
 
-Example request:
+### 如何确认安装成功
+
+确认这个文件存在：
 
 ```text
-Use $reduce-ai-look-imagegen to keep this as a four-panel comic, but make it feel more atmospheric and less AI-generated.
+Windows:
+C:\Users\你的用户名\.codex\skills\reduce-ai-look-imagegen\SKILL.md
+
+macOS / Linux:
+~/.codex/skills/reduce-ai-look-imagegen/SKILL.md
 ```
 
-Example output direction:
+然后重启 Codex，或新开一个线程，输入：
+
+```text
+Use $reduce-ai-look-imagegen to rewrite this prompt so it feels less AI-generated: a glossy anime character poster, cinematic, high quality
+```
+
+如果 Codex 能识别 `$reduce-ai-look-imagegen`，说明安装成功。
+
+## 快速使用
+
+当你想降低 AI 感时，可以这样说：
+
+```text
+Use $reduce-ai-look-imagegen 帮我改写这个生图提示词，让它更少 AI 感：
+一个白发动漫少女站在城市街道上，cinematic，高质量
+```
+
+如果你要保持格式，比如四格漫画：
+
+```text
+Use $reduce-ai-look-imagegen 保持“四格漫画”的格式，但让画面更有氛围感，不要变成单张海报。
+```
+
+它会优先锁定格式：
 
 ```text
 Create a four-panel comic page with four clearly separated panels in reading order.
@@ -66,52 +127,62 @@ Style: clean manga linework, controlled screentone, simple atmospheric backgroun
 Avoid: single-poster composition, fake dialogue text, changing character design, glossy AI gradients.
 ```
 
-## Trigger Routing
+## 触发逻辑
 
-The skill has two channels:
+这个 skill 有两条通道。
 
-### 1. Anti-AI / Refinement
+### 1. 降 AI 化 / 优化通道
 
-Use `reduce-ai-look-imagegen` when the user asks for:
+当用户明确说这些内容时，使用 `reduce-ai-look-imagegen`：
 
-- lower AI feel
-- more natural / realistic / hand-drawn
-- pose, hand, or anatomy correction
-- prompt diagnosis
-- style correction
-- fuzzy taste-word translation
-- before/after scoring
+- 降低 AI 感
+- 去 AI 味
+- 更自然
+- 更像手绘
+- 更像真实拍摄
+- 修手 / 修动作 / 修姿势 / 修人体
+- 太油
+- 太假
+- 太塑料
+- 像 3D
+- 不高级
+- 风格不对
+- 帮我优化提示词
+- 帮我诊断这张图
 
-### 2. Ordinary Image Generation
+### 2. 普通生图通道
 
-If the user only says:
+如果用户只是说：
 
 ```text
-Generate an image of ...
-Draw a poster of ...
-Make a wallpaper ...
+帮我生成一张图
+画一个头像
+做一张壁纸
+生成一张海报
 ```
 
-then use your normal image generation skill/tool first. This skill should not be forced into every image request.
+那就先走普通生图工具。这个 skill 不应该强行接管每一次生图请求。
 
-## Low-Token Design
+## 低 token 设计
 
-This project includes a fast path:
+项目里有一个快速路径文件：
 
 ```text
 reduce-ai-look-imagegen/references/fast-path.md
 ```
 
-The skill is written to:
+它会让 AI：
 
-- route ordinary image generation away from extra prompt analysis
-- load `fast-path.md` for simple anti-AI prompt rewrites
-- load only one specialized reference file when possible
-- keep normal image prompts under about 120 words
-- use no more than 3 anti-AI constraints by default
-- avoid long diagnostics before generation
+- 普通生图不走本 skill
+- 简单降 AI 化只读 `fast-path.md`
+- 单一问题只读一个相关 reference
+- 普通生图提示词尽量控制在 120 词以内
+- 默认只写 3 条以内的反 AI 约束
+- 不在生成前输出长篇分析
 
-## File Map
+这样可以减少 image2 / 生图模型的上下文消耗，也能减少思考时间。
+
+## 文件结构
 
 ```text
 reduce-ai-look-imagegen/
@@ -134,19 +205,21 @@ reduce-ai-look-imagegen/
     style-quality-rubric.md
 ```
 
-## Key References
+## 重要文件说明
 
-- `fast-path.md` - cheapest route for common requests
-- `routing-and-triggering.md` - when to use this skill versus ordinary imagegen
-- `intent-and-fuzzy-language.md` - maps vague user words into real visual instructions
-- `failure-feedback-fixes.md` - turns feedback like "too oily" or "bad hands" into prompt patches
-- `anime-handdrawn-look.md` - hand-drawn anime, cel color, genga/layout, painted background language
-- `style-blending-rules.md` - prevents style soup
-- `style-quality-rubric.md` - scores whether AI feel was actually reduced
+- `SKILL.md`：主 skill 文件，Codex 识别 skill 的入口
+- `00_NEXT_AI_READ_FIRST.md`：给下一位维护者或 AI 的快速说明
+- `fast-path.md`：低 token 快速路径
+- `routing-and-triggering.md`：判断什么时候该用这个 skill
+- `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
+- `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
+- `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
+- `style-blending-rules.md`：处理混合画风，避免风格冲突
+- `style-quality-rubric.md`：判断是否真的降低了 AI 感
 
-## Validate
+## 校验 Skill
 
-If you have Codex's skill creator validation script:
+如果你本地有 Codex 的 skill creator 校验脚本，可以运行：
 
 ```powershell
 $env:PYTHONUTF8 = '1'
@@ -156,47 +229,47 @@ $env:PYTHONPATH = $target
 py "$env:USERPROFILE\.codex\skills\.system\skill-creator\scripts\quick_validate.py" ".\reduce-ai-look-imagegen"
 ```
 
-Expected:
+期望输出：
 
 ```text
 Skill is valid!
 ```
 
-## Example: Fuzzy Word Translation
+## 示例：模糊词转换
 
-User says:
+用户说：
 
 ```text
-Make it more premium and less AI.
+让它更高级一点，少一点 AI 感。
 ```
 
-The skill translates this into:
+Skill 会转换成类似：
 
 ```text
 Use precise negative space, restrained palette, credible material texture, quiet lighting, fewer objects, controlled reflections, no fake luxury logo, no glossy AI finish.
 ```
 
-User says:
+用户说：
 
 ```text
-Make it feel like a four-panel comic, but more cinematic.
+我要四格漫画风格，但更有电影感。
 ```
 
-The skill keeps the hard format:
+Skill 会保留格式：
 
 ```text
 Four clearly separated panels remain mandatory. Cinematic mood may affect lighting, framing, and value structure inside the panels, but the result must not become a single splash illustration.
 ```
 
-## Maintainer Notes
+## 维护说明
 
-Read this first when continuing the project:
+如果你要继续扩展这个项目，先读：
 
 ```text
 reduce-ai-look-imagegen/00_NEXT_AI_READ_FIRST.md
 ```
 
-The project is intentionally reference-heavy but runtime-light: large style libraries are loaded only when needed.
+这个项目是“参考资料多，但运行时尽量少加载”的设计。不要默认把所有 reference 都塞给模型；应该按任务只读最相关的一份。
 
 ## License
 
