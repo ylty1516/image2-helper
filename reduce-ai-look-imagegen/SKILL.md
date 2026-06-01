@@ -1,6 +1,6 @@
 ---
 name: reduce-ai-look-imagegen
-description: Improve existing or planned AI image generation/editing prompts specifically to reduce synthetic AI feel, generic polish, anatomical implausibility, wrong action logic, style mismatch, or vague taste-word confusion. Use when the user explicitly asks for lower AI feel, de-AI, remove AI look, less synthetic, more natural, more hand-drawn, more realistic, pose/hand/body correction, prompt refinement, image diagnosis, before/after scoring, fuzzy taste-word translation, or says the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, or style-wrong. Do not use as the primary route for ordinary image generation requests where the user only asks to create/generate/draw an image without an anti-AI, quality-fix, realism, pose-correction, or style-translation goal; in that case route to the available image generation skill/tool first.
+description: Improve image generation/editing prompts to reduce synthetic AI feel, generic polish, anatomy/action errors, visual inconsistency, unwanted extra objects, style mismatch, or vague taste-word confusion. Use when the user asks for lower AI feel, de-AI, remove AI look, more natural/hand-drawn/realistic, pose/hand/body correction, inconsistency cleanup, remove unreasonable extras, fix prompt-image mismatch, fix behavior/expression/viewpoint/environment mismatch, prompt refinement, image diagnosis, before/after scoring, or fuzzy taste-word translation; also when the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, inconsistent, has extra props, or style-wrong. For ordinary image generation without anti-AI/refinement/pose/inconsistency/style-translation needs, route to imagegen instead.
 ---
 
 # Reduce AI Look Imagegen
@@ -11,7 +11,7 @@ Default to the fastest sufficient path. Do not load the large reference files un
 
 This skill has two trigger channels:
 
-1. **Explicit anti-AI/refinement channel**: Use this skill when the user asks to reduce AI feel, fix implausible anatomy/action, translate vague taste words, improve a prompt, diagnose a generated image, or make a result less glossy/generic/fake.
+1. **Explicit anti-AI/refinement channel**: Use this skill when the user asks to reduce AI feel, fix implausible anatomy/action, remove unreasonable extras, fix prompt-image mismatch, translate vague taste words, improve a prompt, diagnose a generated image, or make a result less glossy/generic/fake.
 2. **Ordinary image generation channel**: If the user simply asks to generate an image and does not mention anti-AI, realism repair, pose/action correction, style diagnosis, or prompt refinement, call the available image-generation skill/tool instead, such as `plus-imagegen`, `gpt-image`, or the host-native image tool. Do not force this skill into ordinary generation unless its routing help is needed.
 
 Use the host-native image generation or image editing tool when available. Do not call `gpt-image`, `OPENAI_API_KEY`, `OPENAI_BASE_URL`, or third-party image APIs unless the user explicitly asks for an API or CLI workflow.
@@ -30,6 +30,8 @@ This skill is for Codex/ChatGPT Plus-style hosted image generation and editing. 
    - over-smooth skin, plastic texture, waxy faces
    - symmetrical lighting, perfect surfaces, generic beauty retouching
    - impossible hands, vague object relationships, floating props
+   - extra objects that violate the requested concept, such as unwanted weapons, props, logos, pets, wings, halos, or background items
+   - behavior/expression mismatch, viewpoint/environment mismatch, or role/costume mismatch
    - anatomically implausible poses, broken joint angles, unclear weight balance
    - overloaded style words, cinematic cliches, shallow depth-of-field everywhere
    - sterile backgrounds, fake film grain, too-clean product renders
@@ -41,6 +43,7 @@ This skill is for Codex/ChatGPT Plus-style hosted image generation and editing. 
    - tactile materials, wear, dust, compression, or handling marks when appropriate
    - plausible body pose, object contact, scale, and gravity
    - corrected action logic: joint range, load-bearing limb, gaze direction, grip, and contact points
+   - consistency cleanup: remove extras, align expression with action, align viewpoint with environment, preserve only user-requested props
    - hand-drawn production cues when the target is anime or illustration
    - specific but restrained color, lens, layout, and post-processing choices
 6. Write a compact final prompt using the pattern below.
@@ -62,10 +65,30 @@ Score these axes from 1-10, where 10 means more AI-looking:
 - generic glossy finish
 - impossible anatomy or object contact
 - unreasonable pose, joint, balance, or action logic
+- extra/unrequested objects or role-breaking props
+- behavior/expression/viewpoint/environment mismatch
 - sterile background and missing texture
 - overprocessed color or fake HDR
 
 For existing images, first try a native image-editing pass with strict preservation constraints. If the runtime cannot pass the source image into the native editor, make a low-intrusion local proof only: highlight rolloff, slight grain, restrained color correction, edge softness, and contact-shadow emphasis. Mark that result as a post-processing validation, not a full image-editing success.
+
+## Inconsistency Cleanup
+
+Use this module when a first generated image contains something that contradicts the user's request or visual logic.
+
+Check these five consistency layers:
+
+- **Concept lock**: Does every visible prop, costume element, creature, weapon, symbol, and background object belong to the requested concept?
+- **Role lock**: Does the character still read as the requested role/skin, such as maid, wizard, student, knight, idol, mascot, product model, or UI asset?
+- **Behavior-expression match**: Does the face/emotion match the action and scene? A battle pose should not have a blank selfie smile unless intended; a calm healer should not look aggressive by accident.
+- **Viewpoint-environment match**: Do camera angle, horizon, floor plane, lighting direction, reflections, and background scale agree?
+- **Prop necessity**: Keep required objects, remove unrequested objects, and downgrade optional objects into background only when they support the story.
+
+For edit prompts, add:
+
+```text
+Inconsistency cleanup: compare the image against the original prompt and remove or correct anything that violates the requested concept. Keep only props, costume details, environment elements, and expressions that support the stated role and action. Remove unrequested extra objects such as weapons, staffs, logos, wings, halos, pets, duplicate accessories, or random background items unless explicitly requested. Align expression with behavior, gaze with action, camera viewpoint with environment, and lighting/reflections with the scene.
+```
 
 ## Pose And Action Reasoning
 
@@ -161,6 +184,8 @@ For illustrations, reduce AI feel through coherent art direction rather than fak
 
 Read `references/fast-path.md` first for most anti-AI prompt rewrites. If it is enough, do not load other references.
 
+Read `references/inconsistency-cleanup.md` when the image or prompt contains extra unwanted objects, role/costume mismatches, behavior/expression mismatch, viewpoint/environment mismatch, or prompt-image contradictions.
+
 Read `references/routing-and-triggering.md` when deciding whether this skill should run at all, especially when the user merely asks for image generation without mentioning anti-AI refinement.
 
 Read `references/prompt-recipes.md` when the user asks for a reusable workflow, prompt archive, before/after prompt variants, pose/action correction, or a difficult realism pass involving people, products, interiors, food, typography, anime, manga, cel-style illustration, or painted backgrounds.
@@ -194,6 +219,7 @@ Pick the first matching reference and stop unless the task remains ambiguous:
 | ordinary image generation only | no reference; route to imagegen |
 | lower AI feel, simple rewrite | `fast-path.md` |
 | should this skill run? | `routing-and-triggering.md` |
+| extra objects or prompt-image inconsistency | `inconsistency-cleanup.md` |
 | vague user wording or format lock | `intent-and-fuzzy-language.md` |
 | existing image or prompt critique | `failure-feedback-fixes.md` |
 | anime/cel/genga/background | `anime-handdrawn-look.md` |

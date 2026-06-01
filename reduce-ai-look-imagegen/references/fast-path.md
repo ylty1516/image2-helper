@@ -9,6 +9,7 @@ Ordinary generation only -> use imagegen skill/tool, stop.
 Explicit lower-AI/refinement request -> use this fast path.
 Existing image critique/edit -> identify 1-3 visible failures, then write edit prompt.
 Ambiguous format word -> preserve format first, then style.
+Extra/unwanted object or prompt-image mismatch -> use inconsistency cleanup.
 ```
 
 ## Minimal Intent Parse
@@ -82,6 +83,12 @@ specific story moment, environmental clues, character gaze/gesture with intent, 
 natural joint range, clear weight support, grounded hand/foot contact, clothing and hair following gravity
 ```
 
+去不合理元素:
+
+```text
+Compare against the original prompt, remove unrequested extra props, preserve required identity/outfit/layout, align expression with action, align viewpoint with environment, and do not add replacement clutter.
+```
+
 四格漫画:
 
 ```text
@@ -103,6 +110,9 @@ If user says:
 - too busy -> one focal point, simplify secondary areas
 - bad hands -> natural finger grouping, thumb placement, wrist angle, object contact
 - pose weird -> body line, support point, joint range, gravity
+- extra prop -> remove unrequested object, preserve required props only
+- expression mismatch -> align face/gaze with action and mood
+- viewpoint mismatch -> unify camera height, floor plane, horizon, light direction
 - text bad -> no invented text; blank safe area
 
 ## Stop Conditions

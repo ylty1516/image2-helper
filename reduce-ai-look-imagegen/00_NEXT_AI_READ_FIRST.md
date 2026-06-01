@@ -21,6 +21,7 @@ It has grown into a visual style reasoning system. It can:
 
 - diagnose why an image feels AI-generated
 - rewrite prompts with stronger medium/process language
+- remove unreasonable extra objects and fix prompt-image inconsistency
 - correct implausible poses and action logic
 - reduce glossy/3D/anime-plastic finish
 - classify many visual styles
@@ -45,6 +46,7 @@ Start here:
 Then load specialized references only when needed:
 
 - `references/fast-path.md` for the cheapest route and compact prompts
+- `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
 - `references/intent-and-fuzzy-language.md` for user purpose parsing, fuzzy taste words, and hard format locks

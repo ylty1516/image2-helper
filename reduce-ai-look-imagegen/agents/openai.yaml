@@ -1,6 +1,6 @@
 interface:
   display_name: "Reduce AI Look Imagegen"
-  short_description: "Reduce AI feel in image prompts."
-  default_prompt: "Use $reduce-ai-look-imagegen to diagnose or rewrite this image prompt so it feels less AI-generated."
+  short_description: "Fix AI image feel and inconsistencies."
+  default_prompt: "Use $reduce-ai-look-imagegen to diagnose or rewrite this image prompt so it feels less AI-generated and more internally consistent."
 policy:
   allow_implicit_invocation: true

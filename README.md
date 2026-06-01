@@ -27,6 +27,8 @@ reduce-ai-look-imagegen/
 | 只说“高级感 / 氛围感 / 故事感” | 转换成颜色、光线、材质、空间、叙事线索 |
 | 输出格式很重要 | 锁定四格漫画、LOGO、图标、海报、游戏菜单、角色设定、包装等格式 |
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
+| 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
+| 表情、行为、视角、环境不匹配 | 对齐表情和动作、视线和目标、镜头和环境透视 |
 | 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
 | 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
 | token 消耗太高 | 默认走 fast path，只加载最相关的一个参考文件 |
@@ -237,6 +239,7 @@ reduce-ai-look-imagegen/
 - `routing-and-triggering.md`：判断什么时候该用这个 skill
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
+- `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
 - `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
 - `style-blending-rules.md`：处理混合画风，避免风格冲突
 - `style-quality-rubric.md`：判断是否真的降低了 AI 感
@@ -284,6 +287,28 @@ Skill 会保留格式：
 ```text
 Four clearly separated panels remain mandatory. Cinematic mood may affect lighting, framing, and value structure inside the panels, but the result must not become a single splash illustration.
 ```
+
+## 示例：去除不合理元素
+
+用户说：
+
+```text
+我要生成一个蓝发魔法师的女仆皮肤，但第一版图里多了一根巨大法杖，看起来像战斗法师，不像女仆皮肤。
+```
+
+Skill 会输出类似：
+
+```text
+Preserve the blue-haired character identity, chibi desktop-pet proportions, maid outfit, and gentle fantasy color palette. Remove the large magic staff, combat spell effects, floating crystals, and weapon-like props. Keep only subtle wizard motifs such as a small star hairpin or tiny rune trim. Change the hands into a relaxed maid idle pose and align the expression with a gentle helpful maid mood.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/inconsistency-cleanup-case.md
+```
+
+![去除不合理元素示例](reduce-ai-look-imagegen/examples/inconsistency-cleanup-flow.png)
 
 ## 维护说明
 
