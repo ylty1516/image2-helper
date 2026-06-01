@@ -1,0 +1,487 @@
+# Failure Feedback Fixes
+
+Use this when the user reacts to a generated image. Translate their everyday wording into concrete prompt changes.
+
+## Feedback Translation Table
+
+### "Too AI"
+
+Likely causes:
+
+- generic style stack
+- glossy surfaces
+- perfect symmetry
+- no production constraints
+- implausible anatomy or contact
+
+Fix:
+
+```text
+Replace generic quality words with medium-specific process cues. Add real tool/camera/print/paint constraints, grounded contact shadows, imperfect material evidence, and style-specific avoid terms.
+```
+
+Prompt patch:
+
+```text
+Make the result feel like a real [medium/process] artifact: [specific texture], [specific light/value model], [specific production limits]. Avoid generic AI gloss, over-symmetry, meaningless micro-detail, and impossible contact points.
+```
+
+### "Too glossy / oily"
+
+Likely causes:
+
+- 3D material language leaking into non-3D styles
+- overdone highlights
+- airbrushed gradients
+
+Fix:
+
+```text
+Use matte finish, flat color fields, rougher material, or print/paint texture. Limit highlights to simple shaped accents.
+```
+
+Prompt patch:
+
+```text
+Use a matte surface finish with restrained highlight shapes; reduce specular shine and airbrushed gradients; keep shadows controlled by [cel/paint/print/photo] logic.
+```
+
+### "Too plastic"
+
+Likely causes:
+
+- skin smoothing
+- no pores/fabric/material grain
+- uniform reflections
+
+Fix:
+
+```text
+Add natural surface variation, material thickness, fabric tension, skin or object texture, and uneven light response.
+```
+
+Prompt patch:
+
+```text
+Add believable surface variation: natural skin or material texture, fabric tension, tiny scuffs or handling marks where appropriate, and non-uniform light response.
+```
+
+### "Too fake"
+
+Likely causes:
+
+- impossible lighting
+- object scale mismatch
+- unnatural pose
+- background and subject do not share a world
+
+Fix:
+
+```text
+Anchor the image with scale cues, shared light direction, contact shadows, and a clear physical scene.
+```
+
+Prompt patch:
+
+```text
+Unify the scene with one motivated light source, clear floor/wall/object contact, believable scale references, and background details that share the same perspective and material logic.
+```
+
+### "Too busy / cluttered"
+
+Likely causes:
+
+- detail everywhere
+- no focal hierarchy
+- too many props/effects
+
+Fix:
+
+```text
+Choose one focal point, simplify secondary areas, and reserve negative space.
+```
+
+Prompt patch:
+
+```text
+Detail density: rich detail only at the focal point; simplify secondary surfaces; remove decorative props that do not support the story; preserve clean negative space.
+```
+
+### "Too empty / boring"
+
+Likely causes:
+
+- no story moment
+- no texture or secondary shapes
+- flat pose
+
+Fix:
+
+```text
+Add one narrative cue, one foreground/background layer, and medium-specific surface detail.
+```
+
+Prompt patch:
+
+```text
+Add a clear story cue, layered foreground/midground/background shapes, and tactile medium-specific details while keeping the main silhouette readable.
+```
+
+### "Not premium"
+
+Likely causes:
+
+- too many effects
+- cheap gold/gloss shortcuts
+- poor spacing
+- fake text/logo
+
+Fix:
+
+```text
+Use restraint, precise spacing, material credibility, fewer objects, and no fake branding.
+```
+
+Prompt patch:
+
+```text
+Make it premium through restraint: precise spacing, quiet palette, credible material texture, controlled reflections, few objects, no fake brand marks or invented small text.
+```
+
+### "Too childish"
+
+Likely causes:
+
+- overly rounded shapes
+- candy palette
+- exaggerated facial proportions
+- random cute decorations
+
+Fix:
+
+```text
+Reduce decorative cuteness, mature the palette, simplify expression, and improve material/design restraint.
+```
+
+Prompt patch:
+
+```text
+Mature the design with a restrained palette, cleaner silhouette, fewer cute decorations, subtler expression, and more credible material detail.
+```
+
+### "Not cute enough"
+
+Likely causes:
+
+- expression too neutral
+- shape language too sharp
+- colors too cold
+- detail too realistic
+
+Fix:
+
+```text
+Round the silhouette, simplify features, warm the palette, strengthen expression.
+```
+
+Prompt patch:
+
+```text
+Increase cuteness through rounded shape language, readable expression, warm soft palette, simplified facial detail, and a small clear gesture.
+```
+
+### "Looks like 3D"
+
+Likely causes:
+
+- smooth gradients
+- specular hair/skin
+- depth-of-field and rim light
+- overly volumetric shading
+
+Fix:
+
+```text
+Use flat color, linework, print texture, or paint surface depending on target style.
+```
+
+Prompt patch:
+
+```text
+Remove 3D render cues: no glossy specular hair, no volumetric rim light, no photoreal depth-of-field. Use [flat cel color / brush texture / print separations / vector shapes] instead.
+```
+
+### "Not hand-drawn enough"
+
+Likely causes:
+
+- perfect edges
+- digital gradients
+- no paper/line/paint evidence
+
+Fix:
+
+```text
+Add line weight, imperfect edge behavior, paper/paint/ink evidence, and human simplification.
+```
+
+Prompt patch:
+
+```text
+Make the image feel hand-drawn through controlled line weight, visible paper or paint behavior, simplified human-made shapes, slight edge irregularity, and no smooth AI gradients.
+```
+
+### "Bad hands"
+
+Likely causes:
+
+- no grip/contact logic
+- hidden anatomy
+- ambiguous finger count
+
+Fix:
+
+```text
+Specify hand pose, contact, finger grouping, and object pressure.
+```
+
+Prompt patch:
+
+```text
+Hands: natural finger grouping, visible thumb placement, believable wrist angle, clear contact with [object/surface], no extra fingers, no melted knuckles.
+```
+
+### "Pose is weird"
+
+Likely causes:
+
+- broken joint range
+- unclear weight support
+- no action intent
+
+Fix:
+
+```text
+Define support points, body line, and action direction.
+```
+
+Prompt patch:
+
+```text
+Pose: physically possible body line, natural joint range, clear weight supported by [foot/seat/hand], grounded contact points, clothing and hair following gravity.
+```
+
+### "Face feels generic"
+
+Likely causes:
+
+- default beauty face
+- no asymmetry or identity markers
+- over-smoothed features
+
+Fix:
+
+```text
+Add specific face structure, expression, age/character cues, and reduce beauty retouch.
+```
+
+Prompt patch:
+
+```text
+Face: specific facial structure, subtle asymmetry, natural expression, age-appropriate features, no generic beauty smoothing or over-enlarged glossy eyes.
+```
+
+### "Same-face anime"
+
+Likely causes:
+
+- generic anime prompt
+- no facial design rules
+- overemphasis on eyes/hair
+
+Fix:
+
+```text
+Define silhouette, face shape, eye spacing, brows, nose/mouth simplification, expression, and hairstyle mass.
+```
+
+Prompt patch:
+
+```text
+Character design: distinctive face silhouette, specific eye spacing and brow shape, simple but individual nose/mouth design, hairstyle as readable masses rather than many strands.
+```
+
+### "Text is bad"
+
+Likely causes:
+
+- model invented text
+- too much small typography
+- no safe area
+
+Fix:
+
+```text
+Remove text from generation or use exact text only. Leave blank safe areas.
+```
+
+Prompt patch:
+
+```text
+Text: no invented text or logos; leave a clean blank title-safe area for typography to be added later.
+```
+
+### "Cheap stock image"
+
+Likely causes:
+
+- generic pose
+- generic lighting
+- fake smiles
+- empty concept
+
+Fix:
+
+```text
+Add lived-in specifics, real gesture, imperfect framing, and actual context.
+```
+
+Prompt patch:
+
+```text
+Avoid stock-photo staging: use a specific lived-in setting, natural gesture, imperfect framing, credible wardrobe/object details, and a real story moment.
+```
+
+### "Too fantasy generic"
+
+Likely causes:
+
+- random armor/runes/glow
+- no culture/material logic
+- no practical design
+
+Fix:
+
+```text
+Define material culture, function, wear, and limited magic effect.
+```
+
+Prompt patch:
+
+```text
+Fantasy design: functional materials, visible wear, culturally consistent ornament, limited magic effects with a clear source, no random glowing symbols.
+```
+
+### "Too cold"
+
+Likely causes:
+
+- blue-gray palette
+- sterile lighting
+- no human texture
+
+Fix:
+
+```text
+Add warm practical light, tactile material, and small human details.
+```
+
+Prompt patch:
+
+```text
+Warm the scene with practical light, tactile surfaces, subtle color temperature contrast, and small lived-in details without turning everything orange.
+```
+
+### "Too warm / yellow"
+
+Likely causes:
+
+- blanket warm color grade
+- no neutral anchors
+
+Fix:
+
+```text
+Add neutral whites/grays, cooler shadows, and restrained warmth.
+```
+
+Prompt patch:
+
+```text
+Use restrained warmth with neutral anchors, cooler shadow notes, and natural skin/material color; avoid blanket yellow-orange grading.
+```
+
+### "Too dark"
+
+Likely causes:
+
+- low-key without value hierarchy
+- black crush
+
+Fix:
+
+```text
+Add selective highlights, readable silhouette, and midtone separation.
+```
+
+Prompt patch:
+
+```text
+Keep the mood dark but readable: separate silhouette from background, preserve midtone detail, add selective motivated highlights, avoid black mush.
+```
+
+### "Too clean"
+
+Likely causes:
+
+- no wear
+- perfect surfaces
+- sterile background
+
+Fix:
+
+```text
+Add use evidence and controlled imperfection.
+```
+
+Prompt patch:
+
+```text
+Add controlled real-world imperfection: slight wear, dust, fabric wrinkles, fingerprints or scuffs where appropriate, and uneven object placement.
+```
+
+### "Too dirty"
+
+Likely causes:
+
+- grunge everywhere
+- no material hierarchy
+
+Fix:
+
+```text
+Keep patina local and meaningful.
+```
+
+Prompt patch:
+
+```text
+Use selective patina only where contact or age would create it; keep focal surfaces readable and avoid random grunge overlays.
+```
+
+## Revision Flow
+
+1. Quote or paraphrase the user's critique.
+2. Translate it into 1-3 likely causes.
+3. Apply only the relevant prompt patch.
+4. Keep successful parts unchanged.
+5. If two critiques conflict, prioritize the newest or ask for a tradeoff.
+
+## Compact Response Pattern
+
+```text
+Diagnosis: [plain-language cause].
+Keep: [what worked].
+Change: [specific visual mechanics].
+Next prompt patch: [copy-ready patch].
+```
