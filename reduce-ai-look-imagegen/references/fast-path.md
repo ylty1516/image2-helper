@@ -83,6 +83,12 @@ specific story moment, environmental clues, character gaze/gesture with intent, 
 natural joint range, clear weight support, grounded hand/foot contact, clothing and hair following gravity
 ```
 
+构图更好:
+
+```text
+Choose one focal anchor, one composition architecture, one viewer path, and one safe area. Concentrate detail at the focal point, simplify secondary areas, and make the crop match the output format.
+```
+
 去不合理元素:
 
 ```text
@@ -110,6 +116,7 @@ If user says:
 - too busy -> one focal point, simplify secondary areas
 - bad hands -> natural finger grouping, thumb placement, wrist angle, object contact
 - pose weird -> body line, support point, joint range, gravity
+- bad composition -> focal anchor, viewer path, output-safe crop, controlled negative space
 - extra prop -> remove unrequested object, preserve required props only
 - expression mismatch -> align face/gaze with action and mood
 - viewpoint mismatch -> unify camera height, floor plane, horizon, light direction

@@ -25,6 +25,7 @@ It has grown into a visual style reasoning system. It can:
 - correct implausible poses and action logic
 - reduce glossy/3D/anime-plastic finish
 - classify many visual styles
+- improve mainstream style selection through composition-first framing
 - choose styles based on use case
 - resolve conflicting mixed-style prompts
 - score before/after results
@@ -53,6 +54,7 @@ Then load specialized references only when needed:
 - `references/style-expansion-pack.md` for niche historical/design/craft/technical styles
 - `references/style-blending-rules.md` for hybrid prompts and style conflicts
 - `references/style-selection-and-use-cases.md` for choosing styles from output goals
+- `references/mainstream-style-composition.md` for composition, framing, mainstream style completion, and output-specific safe areas
 - `references/style-prompt-cookbook.md` for ready-to-use prompt skeletons
 
 ## Important Design Principles

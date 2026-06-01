@@ -1,6 +1,6 @@
 ---
 name: reduce-ai-look-imagegen
-description: Improve image generation/editing prompts to reduce synthetic AI feel, generic polish, anatomy/action errors, visual inconsistency, unwanted extra objects, style mismatch, or vague taste-word confusion. Use when the user asks for lower AI feel, de-AI, remove AI look, more natural/hand-drawn/realistic, pose/hand/body correction, inconsistency cleanup, remove unreasonable extras, fix prompt-image mismatch, fix behavior/expression/viewpoint/environment mismatch, prompt refinement, image diagnosis, before/after scoring, or fuzzy taste-word translation; also when the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, inconsistent, has extra props, or style-wrong. For ordinary image generation without anti-AI/refinement/pose/inconsistency/style-translation needs, route to imagegen instead.
+description: Improve image generation/editing prompts to reduce synthetic AI feel, generic polish, anatomy/action errors, visual inconsistency, unwanted extra objects, weak composition, style mismatch, or vague taste-word confusion. Use when the user asks for lower AI feel, de-AI, remove AI look, more natural/hand-drawn/realistic, better composition/framing, pose/hand/body correction, inconsistency cleanup, remove unreasonable extras, fix prompt-image mismatch, fix behavior/expression/viewpoint/environment mismatch, prompt refinement, image diagnosis, before/after scoring, or fuzzy taste-word translation; also when the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, inconsistent, has extra props, badly composed, or style-wrong. For ordinary image generation without anti-AI/refinement/composition/pose/inconsistency/style-translation needs, route to imagegen instead.
 ---
 
 # Reduce AI Look Imagegen
@@ -33,6 +33,7 @@ This skill is for Codex/ChatGPT Plus-style hosted image generation and editing. 
    - extra objects that violate the requested concept, such as unwanted weapons, props, logos, pets, wings, halos, or background items
    - behavior/expression mismatch, viewpoint/environment mismatch, or role/costume mismatch
    - anatomically implausible poses, broken joint angles, unclear weight balance
+   - weak composition, no focal hierarchy, random crop, or wrong safe area for the output format
    - overloaded style words, cinematic cliches, shallow depth-of-field everywhere
    - sterile backgrounds, fake film grain, too-clean product renders
    - unreadable text, hallucinated logos, mismatched typography
@@ -44,6 +45,7 @@ This skill is for Codex/ChatGPT Plus-style hosted image generation and editing. 
    - plausible body pose, object contact, scale, and gravity
    - corrected action logic: joint range, load-bearing limb, gaze direction, grip, and contact points
    - consistency cleanup: remove extras, align expression with action, align viewpoint with environment, preserve only user-requested props
+   - composition planning: focal anchor, viewer path, depth layers, crop safety, and output-specific safe areas
    - hand-drawn production cues when the target is anime or illustration
    - specific but restrained color, lens, layout, and post-processing choices
 6. Write a compact final prompt using the pattern below.
@@ -67,6 +69,7 @@ Score these axes from 1-10, where 10 means more AI-looking:
 - unreasonable pose, joint, balance, or action logic
 - extra/unrequested objects or role-breaking props
 - behavior/expression/viewpoint/environment mismatch
+- weak composition, wrong crop, unclear focal anchor, or missing safe area
 - sterile background and missing texture
 - overprocessed color or fake HDR
 
@@ -200,6 +203,8 @@ Read `references/style-blending-rules.md` when a prompt mixes multiple styles, w
 
 Read `references/style-selection-and-use-cases.md` when the user has not chosen a style, describes taste with vague words like premium/cute/realistic/cinematic/clean, or needs style guidance for a specific output such as avatar, wallpaper, poster, product image, sticker, game asset, character sheet, thumbnail, album cover, or social ad.
 
+Read `references/mainstream-style-composition.md` when the user asks for better composition, framing, layout, cover/poster/wallpaper/game UI composition, mainstream style completion, or a professional-looking result where style choice and composition must be decided together.
+
 Read `references/style-quality-rubric.md` when validating whether a prompt or generated image actually reduced AI feel, comparing before/after results, scoring style consistency, or deciding which failure modes to fix in the next iteration.
 
 Read `references/style-prompt-cookbook.md` when the user wants ready-to-use prompt skeletons, fast variants, or examples for a chosen visual style family.
@@ -223,6 +228,7 @@ Pick the first matching reference and stop unless the task remains ambiguous:
 | vague user wording or format lock | `intent-and-fuzzy-language.md` |
 | existing image or prompt critique | `failure-feedback-fixes.md` |
 | anime/cel/genga/background | `anime-handdrawn-look.md` |
+| composition, framing, mainstream style completion | `mainstream-style-composition.md` |
 | mixed/conflicting styles | `style-blending-rules.md` |
 | choose style by use case | `style-selection-and-use-cases.md` |
 | broad style classification | `style-taxonomy.md` |

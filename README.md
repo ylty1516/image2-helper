@@ -29,6 +29,7 @@ reduce-ai-look-imagegen/
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
 | 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
 | 表情、行为、视角、环境不匹配 | 对齐表情和动作、视线和目标、镜头和环境透视 |
+| 构图弱、画面散、不像专业图 | 先确定画幅、焦点、视觉路径、留白、安全区和前中后景 |
 | 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
 | 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
 | token 消耗太高 | 默认走 fast path，只加载最相关的一个参考文件 |
@@ -216,11 +217,18 @@ reduce-ai-look-imagegen/
   00_NEXT_AI_READ_FIRST.md
   agents/
     openai.yaml
+  examples/
+    composition-style-case.md
+    composition-style-map.png
+    inconsistency-cleanup-case.md
+    inconsistency-cleanup-flow.png
   references/
     fast-path.md
     routing-and-triggering.md
     intent-and-fuzzy-language.md
     failure-feedback-fixes.md
+    inconsistency-cleanup.md
+    mainstream-style-composition.md
     prompt-recipes.md
     anime-handdrawn-look.md
     style-taxonomy.md
@@ -240,6 +248,7 @@ reduce-ai-look-imagegen/
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
+- `mainstream-style-composition.md`：补全主流风格和构图决策，处理海报、壁纸、游戏 UI、封面、头像、产品图等画面结构
 - `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
 - `style-blending-rules.md`：处理混合画风，避免风格冲突
 - `style-quality-rubric.md`：判断是否真的降低了 AI 感
@@ -309,6 +318,38 @@ reduce-ai-look-imagegen/examples/inconsistency-cleanup-case.md
 ```
 
 ![去除不合理元素示例](reduce-ai-look-imagegen/examples/inconsistency-cleanup-flow.png)
+
+## 示例：补全主流风格和构图
+
+用户说：
+
+```text
+这张游戏开始页想更有故事感，但按钮还要清楚。
+```
+
+Skill 会先锁定用途和构图，而不是只堆“电影感、高质量”：
+
+```text
+Composition: game main menu layout, character and world clue on the left third, readable button-safe negative space on the right, layered sky/city/foreground object depth, title/logo-safe top-left area, calm value grouping behind UI.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/composition-style-case.md
+```
+
+![构图模块示例](reduce-ai-look-imagegen/examples/composition-style-map.png)
+
+这次更新的自测对比：
+
+```text
+弱提示词：Make it cinematic, beautiful, high quality.
+问题：只会增加光效和雾，不能保证按钮可读，也不能保证画面有主次。
+
+新模块输出：先锁定 game main menu、left-third story cue、right-side button-safe negative space、layered foreground/midground/background，再补 visual-novel key art 和 anime painted background。
+结果：故事感来自画面结构和世界线索，不是靠随机特效堆出来。
+```
 
 ## 维护说明
 
