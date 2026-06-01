@@ -33,6 +33,30 @@ reduce-ai-look-imagegen/
 
 ## 安装方法
 
+### 最简单：复制这段提示词给 Codex
+
+把下面这段直接复制到 Codex 里，让 Codex 自动帮你安装：
+
+```text
+请帮我安装这个 Codex skill：https://github.com/ylty1516/image2-helper
+
+要求：
+1. 克隆或下载这个仓库。
+2. 把仓库里的 reduce-ai-look-imagegen 文件夹复制到我的 Codex skills 目录：
+   - Windows: C:\Users\我的用户名\.codex\skills\reduce-ai-look-imagegen
+   - macOS/Linux: ~/.codex/skills/reduce-ai-look-imagegen
+3. 确认最终存在 SKILL.md：
+   reduce-ai-look-imagegen/SKILL.md
+4. 安装完成后告诉我是否成功。
+5. 不要修改 skill 内容。
+```
+
+短版：
+
+```text
+请从 https://github.com/ylty1516/image2-helper 安装 Codex skill。把 reduce-ai-look-imagegen 文件夹复制到我的 ~/.codex/skills/ 目录下，确保最终路径是 ~/.codex/skills/reduce-ai-look-imagegen/SKILL.md。安装后告诉我结果。
+```
+
 ### 方法一：用 Git 安装
 
 打开 PowerShell，运行：
