@@ -32,7 +32,7 @@ reduce-ai-look-imagegen/
 | 构图弱、画面散、不像专业图 | 先确定画幅、焦点、视觉路径、留白、安全区和前中后景 |
 | 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
 | 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
-| token 消耗太高 | 默认走 fast path，只加载最相关的一个参考文件 |
+| token 消耗太高 / 想让 AI 思考更快 | 保质提速：删掉废话和重复标签，保留决定画面质量的关键约束 |
 
 ## 安装方法
 
@@ -190,24 +190,53 @@ Avoid: single-poster composition, fake dialogue text, changing character design,
 
 那就先走普通生图工具。这个 skill 不应该强行接管每一次生图请求。
 
-## 低 token 设计
+## 保质提速设计
 
-项目里有一个快速路径文件：
+项目里的低 token 目标不是“少写到变差”，而是在质量不变甚至更好的情况下减少无效上下文和无效思考。
+
+核心原则：
+
+```text
+减少 token 浪费，不减少视觉决策。
+```
+
+也就是说，skill 会删除：
+
+- 空泛质量词，比如 `masterpiece`、`high quality`、`beautiful`
+- 重复风格标签
+- 生成前长篇解释
+- 和当前任务无关的负面提示词长列表
+- 不必要的 reference 全量加载
+
+但会保留：
+
+- 输出格式和画幅
+- 主体身份和必要道具
+- 一个基础媒介/画风
+- 构图或安全区
+- 光线/色彩逻辑
+- 动作、接触、材质或透视逻辑
+- 2-3 条最关键的失败规避项
+
+相关文件：
 
 ```text
 reduce-ai-look-imagegen/references/fast-path.md
+reduce-ai-look-imagegen/references/quality-preserving-speed.md
 ```
 
 它会让 AI：
 
 - 普通生图不走本 skill
 - 简单降 AI 化只读 `fast-path.md`
+- 提速/降 token 需求读取 `quality-preserving-speed.md`
 - 单一问题只读一个相关 reference
-- 普通生图提示词尽量控制在 120 词以内
-- 默认只写 3 条以内的反 AI 约束
+- 普通生图提示词在质量底线不丢失时尽量控制在 120 词以内
+- 默认只写 2-3 条真正相关的反 AI 约束
 - 不在生成前输出长篇分析
+- 复杂任务自动升级，不为了短而牺牲质量
 
-这样可以减少 image2 / 生图模型的上下文消耗，也能减少思考时间。
+这样可以减少 image2 / 生图模型的上下文消耗和思考时间，同时避免产出“短但没用”的垃圾提示词。
 
 ## 文件结构
 
@@ -228,6 +257,7 @@ reduce-ai-look-imagegen/
     intent-and-fuzzy-language.md
     failure-feedback-fixes.md
     inconsistency-cleanup.md
+    quality-preserving-speed.md
     mainstream-style-composition.md
     prompt-recipes.md
     anime-handdrawn-look.md
@@ -248,6 +278,7 @@ reduce-ai-look-imagegen/
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
+- `quality-preserving-speed.md`：在质量不变或更好的前提下降低 token 和思考时间
 - `mainstream-style-composition.md`：补全主流风格和构图决策，处理海报、壁纸、游戏 UI、封面、头像、产品图等画面结构
 - `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
 - `style-blending-rules.md`：处理混合画风，避免风格冲突
@@ -350,6 +381,34 @@ reduce-ai-look-imagegen/examples/composition-style-case.md
 新模块输出：先锁定 game main menu、left-third story cue、right-side button-safe negative space、layered foreground/midground/background，再补 visual-novel key art 和 anime painted background。
 结果：故事感来自画面结构和世界线索，不是靠随机特效堆出来。
 ```
+
+## 示例：保质提速
+
+用户说：
+
+```text
+我想减少 token 和 AI 思考时间，但质量不能下降，最好更稳定。
+```
+
+错误理解是只把提示词砍短：
+
+```text
+anime girl, beautiful, cinematic, high quality, less AI
+```
+
+Skill 现在会保留质量底线：
+
+```text
+Create a hand-drawn anime still, 16:9. Subject: white-haired girl waiting at a rainy tram stop, hands visible on umbrella handle. Style: clean animation contour, flat cel colors, painted background. Composition: character on left third, tram lights leading into depth. Light: cool rain with one warm practical lamp. Avoid glossy 3D hair, airbrushed skin, random rim lights.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/quality-speed-case.md
+```
+
+![保质提速示例](reduce-ai-look-imagegen/examples/quality-speed-map.png)
 
 ## 维护说明
 

@@ -1,13 +1,13 @@
 ---
 name: reduce-ai-look-imagegen
-description: Improve image generation/editing prompts to reduce synthetic AI feel, generic polish, anatomy/action errors, visual inconsistency, unwanted extra objects, weak composition, style mismatch, or vague taste-word confusion. Use when the user asks for lower AI feel, de-AI, remove AI look, more natural/hand-drawn/realistic, better composition/framing, pose/hand/body correction, inconsistency cleanup, remove unreasonable extras, fix prompt-image mismatch, fix behavior/expression/viewpoint/environment mismatch, prompt refinement, image diagnosis, before/after scoring, or fuzzy taste-word translation; also when the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, inconsistent, has extra props, badly composed, or style-wrong. For ordinary image generation without anti-AI/refinement/composition/pose/inconsistency/style-translation needs, route to imagegen instead.
+description: Improve image generation/editing prompts to reduce synthetic AI feel, generic polish, anatomy/action errors, visual inconsistency, unwanted extra objects, weak composition, style mismatch, token waste, or vague taste-word confusion. Use when the user asks for lower AI feel, de-AI, remove AI look, more natural/hand-drawn/realistic, better composition/framing, faster image prompting, lower token use without quality loss, pose/hand/body correction, inconsistency cleanup, remove unreasonable extras, fix prompt-image mismatch, fix behavior/expression/viewpoint/environment mismatch, prompt refinement, image diagnosis, before/after scoring, or fuzzy taste-word translation; also when the result is too AI, oily, fake, plastic, 3D-looking, generic, not premium, inconsistent, has extra props, badly composed, or style-wrong. For ordinary image generation without anti-AI/refinement/composition/pose/inconsistency/style-translation needs, route to imagegen instead.
 ---
 
 # Reduce AI Look Imagegen
 
 ## Core Rule
 
-Default to the fastest sufficient path. Do not load the large reference files unless the request truly needs them. For most tasks, use `references/fast-path.md` and produce one compact image prompt.
+Default to the fastest sufficient path that preserves quality. Do not load large reference files unless the request truly needs them. For most tasks, use `references/fast-path.md` and produce one compact image prompt that still preserves format, subject, style medium, composition, light/value logic, and the top failure guards.
 
 This skill has two trigger channels:
 
@@ -22,9 +22,9 @@ This skill is for Codex/ChatGPT Plus-style hosted image generation and editing. 
 
 1. Route the request with the two trigger channels above.
 2. If this skill is needed, choose a processing budget:
-   - **Fast path**: ordinary anti-AI prompt rewrite, one style, no complex diagnosis. Use `references/fast-path.md` only.
-   - **Focused path**: one clear problem such as pose, anime gloss, fuzzy wording, or style mixing. Load only the single most relevant reference.
-   - **Deep path**: complex before/after analysis, reusable profile, broad style taxonomy work, or repeated failed generations. Load multiple references only when necessary.
+   - **Fast path**: ordinary anti-AI prompt rewrite, one style, no complex diagnosis. Use `references/fast-path.md` only, but keep the quality floor.
+   - **Focused path**: one clear problem such as pose, anime gloss, fuzzy wording, weak composition, extra objects, or style mixing. Load only the single most relevant reference.
+   - **Deep path**: complex before/after analysis, reusable profile, broad style taxonomy work, or repeated failed generations. Load multiple references only when necessary. Do not force a tiny prompt if quality would drop.
 3. Classify the request as new image generation, image editing, style variation, realism pass, or prompt rewrite.
 4. Identify the likely AI-feel risks before writing the final prompt:
    - over-smooth skin, plastic texture, waxy faces
@@ -187,6 +187,8 @@ For illustrations, reduce AI feel through coherent art direction rather than fak
 
 Read `references/fast-path.md` first for most anti-AI prompt rewrites. If it is enough, do not load other references.
 
+Read `references/quality-preserving-speed.md` when the user asks to lower token use, speed up image prompting/thinking, reduce image2 thinking time, or make the workflow more efficient without reducing output quality.
+
 Read `references/inconsistency-cleanup.md` when the image or prompt contains extra unwanted objects, role/costume mismatches, behavior/expression mismatch, viewpoint/environment mismatch, or prompt-image contradictions.
 
 Read `references/routing-and-triggering.md` when deciding whether this skill should run at all, especially when the user merely asks for image generation without mentioning anti-AI refinement.
@@ -223,6 +225,7 @@ Pick the first matching reference and stop unless the task remains ambiguous:
 |---|---|
 | ordinary image generation only | no reference; route to imagegen |
 | lower AI feel, simple rewrite | `fast-path.md` |
+| faster thinking or lower token use without quality loss | `quality-preserving-speed.md` |
 | should this skill run? | `routing-and-triggering.md` |
 | extra objects or prompt-image inconsistency | `inconsistency-cleanup.md` |
 | vague user wording or format lock | `intent-and-fuzzy-language.md` |
@@ -239,13 +242,14 @@ Pick the first matching reference and stop unless the task remains ambiguous:
 
 ## Token Budget Rules
 
-- Prefer one final prompt under 120 words for normal image generation.
+- Prefer one final prompt under 120 words for normal image generation only when the quality floor is preserved.
 - Use at most 3 anti-AI constraints unless the user asks for detailed prompt engineering.
 - Load one reference file at a time; never load the full style library by default.
 - Do not print long diagnostics before calling image generation.
 - If the user asks for ordinary generation, route to imagegen and skip this skill.
 - If the user asks for vague improvement, parse intent first, then load only the relevant focused reference.
 - Put long reusable notes in `F:\Codex_Save_Library\06_Prompt_Archive`, not in the chat response.
+- Never save tokens by removing hard format, subject identity, required style/medium, composition/safe area, physical logic, or the top task-specific failure guards.
 
 ## Output Style
 

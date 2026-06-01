@@ -2,6 +2,8 @@
 
 Use this for most requests that need lower AI feel but do not need deep style research.
 
+Fast path means quality-preserving speed, not low-effort output. Keep the few constraints that strongly shape the image; remove only low-value explanation, duplicate labels, and generic quality tags.
+
 ## 10-Second Route
 
 ```text
@@ -27,7 +29,7 @@ preserve: "<what must not change>"
 
 ## Compact Prompt Skeleton
 
-Keep this under 120 words unless the user asks for detail:
+Keep this under 120 words unless the quality floor requires more:
 
 ```text
 Create/Edit a [format], [aspect ratio].
@@ -37,6 +39,14 @@ Scene: [specific setting or use case].
 Light/color: [one motivated light or value model].
 Physical logic: [pose/contact/material/scale constraint].
 Avoid: [top 3 style-specific AI failure modes].
+```
+
+## Quality Floor
+
+Never compress away:
+
+```text
+hard format, subject identity, one base medium/style, one composition or crop/safe-area plan, one light/value plan, one physical/action/material logic constraint, and the top 2-3 failure guards.
 ```
 
 ## Common Fast Translations
@@ -132,3 +142,5 @@ Do not load deeper references when:
 - the next step is simply to call imagegen
 
 Load a deeper reference only when the fast path cannot decide the style, format, or failure mode.
+
+If compression would remove a hard constraint or make the prompt ambiguous, use a focused reference instead of forcing a shorter prompt.

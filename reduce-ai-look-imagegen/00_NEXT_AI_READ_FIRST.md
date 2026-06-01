@@ -30,6 +30,7 @@ It has grown into a visual style reasoning system. It can:
 - resolve conflicting mixed-style prompts
 - score before/after results
 - translate user feedback into prompt patches
+- reduce token use and thinking time through quality-preserving speed, not low-quality shortening
 
 ## Read Order
 
@@ -47,6 +48,7 @@ Start here:
 Then load specialized references only when needed:
 
 - `references/fast-path.md` for the cheapest route and compact prompts
+- `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
