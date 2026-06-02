@@ -47,7 +47,7 @@ Then load specialized references only when needed:
 - `references/fast-path.md` for the cheapest route and compact prompts
 - `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
-- `references/background-integrity.md` for rich, realistic background/non-focus quality, secondary figures, props, architecture, and scene logic
+- `references/background-integrity.md` for rich, realistic background/non-focus quality, secondary figures, props, architecture, scene logic, and realistic street-photo background audits
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
 - `references/intent-and-fuzzy-language.md` for user purpose parsing, fuzzy taste words, and hard format locks

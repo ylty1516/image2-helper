@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Realistic Street Background Audit</title>
+  <desc id="desc">A visual checklist for realistic street portrait backgrounds: pedestrians, storefronts, bicycles, vehicles, trees, pavement perspective, and occlusion.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f5f1e8; }
+      .ink { fill: #172026; }
+      .muted { fill: #4a5963; }
+      .panel { fill: #ffffff; stroke: #1f2933; stroke-width: 2; }
+      .street { fill: #c8ced0; }
+      .sidewalk { fill: #d9d6cf; }
+      .shop { fill: #e8d3af; stroke: #26323a; stroke-width: 2; }
+      .window { fill: #1d5266; opacity: .88; }
+      .tree { fill: #41524a; }
+      .leaf { fill: #5f8a63; opacity: .85; }
+      .warn { fill: #d86050; }
+      .ok { fill: #2f9e75; }
+      .line { fill: none; stroke: #26323a; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .thin { fill: none; stroke: #596774; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+      .dash { fill: none; stroke: #d86050; stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 7 6; }
+      .title { font: 700 36px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #4b5560; letter-spacing: 0; }
+      .h2 { font: 700 22px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .body { font: 400 15px Arial, sans-serif; fill: #34404a; letter-spacing: 0; }
+      .small { font: 400 13px Arial, sans-serif; fill: #34404a; letter-spacing: 0; }
+      .label { font: 700 13px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .tag { font: 700 12px Arial, sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .prompt { fill: #172026; }
+      .promptText { font: 400 14px Consolas, 'Courier New', monospace; fill: #eef6f8; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="48" y="58">Realistic Street Background Audit</text>
+  <text class="subtitle" x="48" y="88">A close portrait can lead the frame, but the street behind it still needs full realism support.</text>
+
+  <rect class="panel" x="48" y="120" width="780" height="455" rx="8"/>
+  <text class="h2" x="76" y="156">Street Portrait Zones</text>
+  <text class="body" x="76" y="182">Check each background zone instead of accepting a generic blur.</text>
+
+  <polygon class="street" points="90,530 650,530 520,250 260,250"/>
+  <polygon class="sidewalk" points="220,530 650,530 520,250 360,250"/>
+  <line class="thin" x1="330" y1="530" x2="430" y2="250"/>
+  <line class="thin" x1="455" y1="530" x2="475" y2="250"/>
+  <line class="thin" x1="220" y1="530" x2="360" y2="250"/>
+  <line class="thin" x1="650" y1="530" x2="520" y2="250"/>
+
+  <rect class="shop" x="545" y="190" width="240" height="340" rx="3"/>
+  <polygon fill="#bd8d5c" stroke="#26323a" stroke-width="2" points="530,190 790,190 760,230 550,230"/>
+  <rect class="window" x="575" y="245" width="80" height="160" rx="4"/>
+  <rect class="window" x="674" y="245" width="86" height="160" rx="4"/>
+  <rect fill="#8a6b4e" stroke="#26323a" stroke-width="2" x="580" y="430" width="110" height="34" rx="3"/>
+  <line class="line" x1="596" y1="464" x2="592" y2="505"/>
+  <line class="line" x1="672" y1="464" x2="684" y2="505"/>
+  <line class="line" x1="712" y1="430" x2="750" y2="472"/>
+  <line class="line" x1="744" y1="430" x2="712" y2="472"/>
+
+  <rect class="tree" x="126" y="155" width="28" height="375" rx="12"/>
+  <circle class="leaf" cx="138" cy="170" r="56"/>
+  <circle class="leaf" cx="190" cy="210" r="42"/>
+  <circle class="leaf" cx="110" cy="238" r="48"/>
+  <rect fill="#e5e6e3" stroke="#26323a" stroke-width="2" x="70" y="300" width="112" height="70" rx="6"/>
+  <line class="thin" x1="88" y1="330" x2="166" y2="330"/>
+  <line class="thin" x1="94" y1="350" x2="142" y2="350"/>
+
+  <g>
+    <circle class="line" cx="172" cy="472" r="34"/>
+    <circle class="line" cx="282" cy="472" r="34"/>
+    <line class="line" x1="172" y1="472" x2="220" y2="410"/>
+    <line class="line" x1="220" y1="410" x2="282" y2="472"/>
+    <line class="line" x1="172" y1="472" x2="250" y2="472"/>
+    <line class="line" x1="220" y1="410" x2="250" y2="472"/>
+    <line class="line" x1="220" y1="410" x2="238" y2="392"/>
+  </g>
+
+  <g>
+    <circle class="ink" cx="442" cy="300" r="12"/>
+    <line class="line" x1="442" y1="313" x2="442" y2="370"/>
+    <line class="line" x1="442" y1="330" x2="418" y2="348"/>
+    <line class="line" x1="442" y1="330" x2="468" y2="350"/>
+    <line class="line" x1="442" y1="370" x2="420" y2="410"/>
+    <line class="line" x1="442" y1="370" x2="464" y2="410"/>
+  </g>
+  <g opacity=".72">
+    <circle class="ink" cx="505" cy="280" r="9"/>
+    <line class="line" x1="505" y1="291" x2="505" y2="332"/>
+    <line class="line" x1="505" y1="332" x2="488" y2="360"/>
+    <line class="line" x1="505" y1="332" x2="522" y2="358"/>
+  </g>
+
+  <ellipse fill="#d9b5a4" cx="330" cy="380" rx="80" ry="92"/>
+  <path class="ink" d="M280 366 C270 292, 350 246, 410 310 C434 342, 414 426, 350 446 C300 456, 283 415, 280 366Z" opacity=".18"/>
+  <path class="line" d="M315 465 C320 420, 370 420, 382 465 L394 530 L300 530 Z"/>
+  <line class="line" x1="348" y1="525" x2="348" y2="560"/>
+
+  <rect class="ok" x="76" y="210" width="170" height="28" rx="14"/>
+  <text class="tag" x="91" y="229">vehicles and bikes</text>
+  <path class="thin" d="M190 238 C208 286, 214 360, 220 410"/>
+
+  <rect class="ok" x="420" y="206" width="172" height="28" rx="14"/>
+  <text class="tag" x="436" y="225">distant walkers</text>
+  <path class="thin" d="M506 234 C504 250, 502 264, 505 280"/>
+
+  <rect class="ok" x="610" y="150" width="150" height="28" rx="14"/>
+  <text class="tag" x="625" y="169">storefront logic</text>
+  <path class="thin" d="M684 178 C676 210, 655 238, 630 245"/>
+
+  <rect class="ok" x="530" y="510" width="156" height="28" rx="14"/>
+  <text class="tag" x="546" y="529">cafe furniture</text>
+  <path class="thin" d="M608 510 C608 486, 620 466, 635 448"/>
+
+  <rect class="ok" x="236" y="545" width="168" height="28" rx="14"/>
+  <text class="tag" x="251" y="564">one floor plane</text>
+  <path class="thin" d="M320 545 C360 500, 402 370, 430 250"/>
+
+  <rect class="ok" x="80" y="140" width="154" height="28" rx="14"/>
+  <text class="tag" x="95" y="159">grounded foliage</text>
+  <path class="thin" d="M157 168 C148 225, 142 320, 140 420"/>
+
+  <rect class="panel" x="866" y="120" width="365" height="455" rx="8"/>
+  <text class="h2" x="895" y="156">Common AI Breaks</text>
+  <text class="body" x="895" y="182">These failures make an otherwise strong portrait feel fake.</text>
+
+  <circle class="warn" cx="910" cy="230" r="7"/>
+  <text class="label" x="930" y="235">Walkers lose limb count or grounded feet</text>
+  <circle class="warn" cx="910" cy="285" r="7"/>
+  <text class="label" x="930" y="290">Cafe tables/chairs fuse into wooden blocks</text>
+  <circle class="warn" cx="910" cy="340" r="7"/>
+  <text class="label" x="930" y="345">Bikes and vans become impossible fragments</text>
+  <circle class="warn" cx="910" cy="395" r="7"/>
+  <text class="label" x="930" y="400">Pavement seams ignore one perspective system</text>
+  <circle class="warn" cx="910" cy="450" r="7"/>
+  <text class="label" x="930" y="455">Bright far background becomes blank filler</text>
+  <circle class="warn" cx="910" cy="505" r="7"/>
+  <text class="label" x="930" y="510">Hidden background lines pass through subject</text>
+
+  <rect class="prompt" x="48" y="620" width="1183" height="96" rx="8"/>
+  <text class="promptText" x="72" y="654">Street-background audit: keep depth-of-field softness optical only; visible pedestrians, storefronts, cafe furniture,</text>
+  <text class="promptText" x="72" y="680">bicycles, vehicles, trees, pavement seams, reflections, and far architecture still need plausible construction, scale,</text>
+  <text class="promptText" x="72" y="706">ground contact, one perspective system, and no fake signage, fused props, malformed walkers, or impossible occlusion.</text>
+</svg>

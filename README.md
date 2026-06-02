@@ -253,6 +253,8 @@ reduce-ai-look-imagegen/
     composition-style-map.png
     background-integrity-case.md
     background-integrity-map.svg
+    street-photo-background-audit-case.md
+    street-photo-background-audit.svg
     inconsistency-cleanup-case.md
     inconsistency-cleanup-flow.png
   references/
@@ -403,6 +405,24 @@ reduce-ai-look-imagegen/examples/background-integrity-case.md
 ```
 
 ![背景完整性示例](reduce-ai-look-imagegen/examples/background-integrity-map.svg)
+
+## 示例：真实街拍背景审查
+
+用户给了一张街拍人像参考图，希望研究背景里哪些地方最容易暴露 AI 感。
+
+Skill 会把它总结成街拍背景分区审查，而不是只检查人物脸：
+
+```text
+Realistic street-background audit: give the sidewalk, pedestrians, storefronts, cafe furniture, bicycles, vehicles, trees, pavement seams, reflections, and far architecture the same realism check as the main subject. Keep depth-of-field softness optical only: all visible background objects still have plausible construction, grounded contact, coherent scale, one perspective system, ordinary lived-in detail, and no melted bikes, fused cafe furniture, malformed walkers, fake signage, or impossible occlusion through the subject.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/street-photo-background-audit-case.md
+```
+
+![真实街拍背景审查示例](reduce-ai-look-imagegen/examples/street-photo-background-audit.svg)
 
 ## 示例：补全主流风格和构图
 

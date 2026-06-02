@@ -107,6 +107,30 @@ Prompt cue:
 Background richness: maintain believable, context-rich background detail with real object functions, lived-in material texture, plausible secondary figures, and coherent environmental storytelling; depth or softness comes from optics/style, not neglected construction.
 ```
 
+## Photo Reference: Realistic Street Background Audit
+
+Use this when a user provides or requests a realistic street portrait, travel photo, lifestyle photo, city sidewalk scene, cafe street scene, or "real snapshot" look.
+
+The reference street portrait pattern is useful because the main person is close and readable, while the background still contains many reality checks: pedestrians, bicycles, vehicles, trees, storefronts, cafe furniture, pavement, reflections, highlight wash, and edge occlusion.
+
+### What The Background Must Preserve
+
+- **Depth stack**: foreground bicycle/tree/vehicle, midground pedestrians/storefront, and far architecture each stay physically plausible. Depth of field may soften them, but it must not remove structure.
+- **Pedestrian anatomy**: distant walkers can be less detailed, but they still need one head, one torso, natural limb count, grounded feet, believable stride, and scene-appropriate gaze/action.
+- **Street object mechanics**: bicycles, cars, vans, railings, chairs, stools, doors, windows, and signs must keep real object construction even when cropped or partially hidden.
+- **Sidewalk perspective**: curb lines, pavement seams, shopfront edges, tree rows, and walking lane direction should agree with one horizon/floor plane.
+- **Cafe/storefront logic**: awnings, pillars, window frames, warm interior lights, reflections, tables, chairs, and planters should remain separate usable objects, not melted decorative blocks.
+- **Foliage and tree anchors**: leaves may be soft, but trunks, shrubs, and branches need grounded roots, layered depth, and no fusion with bicycles, people, or building edges.
+- **Exposure realism**: bright far buildings or sky may wash out, but not erase all architectural mass, window rhythm, or street continuity.
+- **Occlusion discipline**: cropped objects and areas hidden by the subject must continue logically behind the subject; avoid impossible lines, limbs, wheels, or furniture passing through the foreground person.
+- **Ordinary lived-in clutter**: keep believable everyday street detail without inventing fantasy props, fake text, random luxury signs, or overdesigned background decoration.
+
+### Street Photo Prompt Cue
+
+```text
+Realistic street-background audit: give the sidewalk, pedestrians, storefronts, cafe furniture, bicycles, vehicles, trees, pavement seams, reflections, and far architecture the same realism check as the main subject. Keep depth-of-field softness optical only: all visible background objects still have plausible construction, grounded contact, coherent scale, one perspective system, ordinary lived-in detail, and no melted bikes, fused cafe furniture, malformed walkers, fake signage, or impossible occlusion through the subject.
+```
+
 ## Common AI Failures
 
 | Failure | Fix |
@@ -117,6 +141,11 @@ Background richness: maintain believable, context-rich background detail with re
 | background text becomes fake symbols | use blank sign shapes or exact provided text; do not invent pseudo-writing |
 | distant hands/faces are mutated | keep full head/limb structure and natural pose even when facial detail is low |
 | decorative detail covers errors | clarify object relationships and enrich with plausible material detail |
+| realistic street background turns into generic blur | audit by zones: sidewalk, pedestrians, storefront, vehicles, bicycles, foliage, pavement, and far architecture |
+| cafe chairs/tables/railings fuse into wooden blocks | keep each furniture piece as a separate usable object with legs, contact, scale, and material |
+| cropped bicycles or vehicles become impossible fragments | preserve mechanical continuity for wheels, handlebars, frames, doors, windows, and visible contact points |
+| bright far background becomes blank white filler | allow exposure wash only while retaining plausible building mass, window rhythm, and street continuity |
+| subject occlusion hides background errors | ensure lines, limbs, wheels, furniture, and curb seams continue logically behind the foreground subject |
 
 ## Prompt Blocks
 
