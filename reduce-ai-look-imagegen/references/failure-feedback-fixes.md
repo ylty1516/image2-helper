@@ -26,6 +26,51 @@ Prompt patch:
 Make the result feel like a real [medium/process] artifact: [specific texture], [specific light/value model], [specific production limits]. Avoid generic AI gloss, over-symmetry, meaningless micro-detail, and impossible contact points.
 ```
 
+### "Pretty but still AI" / "Cyber anime AI look"
+
+Likely causes:
+
+- neon blue-purple palette applied everywhere
+- equal sparkle/detail density across the whole image
+- decorative floating UI, fake code, crystals, petals, or light trails without purpose
+- glossy character, effects, and background all sharing one plastic finish
+- generic polished anime face with weak expression or identity
+
+Fix:
+
+```text
+Reduce effects and restore human illustration decisions: one focal hierarchy, fewer motivated glow sources, readable line/shadow shapes, designed hair masses, functional props, neutral color anchors, and no fake text.
+```
+
+Prompt patch:
+
+```text
+Keep the appealing anime polish, but remove the AI-template cyber decoration. Use one clear focal point, selective detail only near the face/hands/main prop, 2-3 motivated glow accents, neutral dark and skin-color anchors, readable cel shadow shapes, and designed hair masses. Remove random floating code, fake UI panels, crystals, petals, constellations, meaningless micro-detail, and uniform blue-purple gloss across skin, hair, clothes, and background.
+```
+
+### "Anime wallpaper look" / "Sky looks too AI"
+
+Likely causes:
+
+- spectacular sky, rainbow, sunset, stars, snow, birds, and reflections stacked together
+- over-detailed cloud highlights with no quiet broad shapes
+- wet ground, rooftops, roads, and platforms reflecting like perfect mirrors
+- familiar anime scenery props used as a checklist: seaside station, torii gate, umbrella, bicycle, rooftop rail, sunflowers, lanterns
+- generic wistful character pose inserted into a beautiful background
+- fake station text, unreadable signs, or invented location labels
+
+Fix:
+
+```text
+Turn the scene from an anime wallpaper template into an observed place: one weather event, one story beat, selective sky detail, imperfect local reflections, functional architecture/props, grounded character contact, and no fake text.
+```
+
+Prompt patch:
+
+```text
+Reduce the anime-wallpaper feel. Use one specific place and one weather/light event instead of stacking sunset, rainbow, stars, snow, birds, and mirror reflections. Paint the sky with broad cloud masses, selective edge light, and quiet negative areas. Make reflections local and broken by puddle edges, tile seams, surface roughness, grime, and wet/dry patches. Give station/shrine/rooftop props functional construction and ordinary wear; leave signs blank unless exact text is provided. Make the character belong to the scene with grounded feet, specific posture, wind/rain response, and a clear story beat. Avoid over-detailed clouds everywhere, blanket orange-pink or blue-violet grading, generic wistful poses, and iconic scenery props used only as decoration.
+```
+
 ### "Too glossy / oily"
 
 Likely causes:

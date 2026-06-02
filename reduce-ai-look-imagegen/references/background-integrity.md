@@ -131,6 +131,27 @@ The reference street portrait pattern is useful because the main person is close
 Realistic street-background audit: give the sidewalk, pedestrians, storefronts, cafe furniture, bicycles, vehicles, trees, pavement seams, reflections, and far architecture the same realism check as the main subject. Keep depth-of-field softness optical only: all visible background objects still have plausible construction, grounded contact, coherent scale, one perspective system, ordinary lived-in detail, and no melted bikes, fused cafe furniture, malformed walkers, fake signage, or impossible occlusion through the subject.
 ```
 
+## Anime Scenic Background Audit
+
+Use this when an anime-style landscape, rooftop, shrine, station, countryside, seaside, sunset, rainy pavement, snow scene, rainbow, or dramatic cloud image feels beautiful but too AI-made.
+
+Check:
+
+- sky contains one believable weather/light event, not stacked spectacle
+- cloud shapes have broad masses, scale, and selective edge light instead of noisy highlights everywhere
+- reflections are physically local: puddles, wet tile, water, glass, and metal reflect differently
+- wet ground has seams, grime, roughness, dry patches, and interrupted highlights
+- stations, shrines, railings, roofs, signs, benches, bicycles, lanterns, umbrellas, and plants keep functional construction
+- location text is accurate when provided, otherwise absent, blank, or abstracted into non-readable blocks
+- characters are grounded in the place through foot contact, weight, wind/rain/snow response, and a specific story beat
+- foreground/midground/background detail density follows the composition instead of making every layer equally dramatic
+
+Prompt cue:
+
+```text
+Anime scenic-background audit: build the scene as an observed place, not an anime wallpaper checklist. Use one coherent weather/light event; broad hand-painted cloud masses with selective edge light; imperfect local reflections broken by puddle edges, tile seams, surface roughness, grime, and wet/dry patches; functional station/shrine/rooftop/countryside objects with believable construction and ordinary wear; grounded character contact and scene-specific gesture. No fake signs, no mirror gloss everywhere, no over-detailed clouds across the whole sky, no stacked sunset/rainbow/stars/snow/birds spectacle, and no iconic scenery props used only as decoration.
+```
+
 ## Common AI Failures
 
 | Failure | Fix |

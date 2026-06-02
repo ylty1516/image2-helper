@@ -55,10 +55,11 @@ Never save tokens by deleting hard format, subject identity, required style/medi
 ## Fast Workflow
 
 1. Classify the request: generation, edit, prompt rewrite, image diagnosis, style selection, consistency cleanup, composition pass, or speed/token pass.
-2. Pick the route from the matrix below.
-3. Load only the selected reference. If still ambiguous, load one additional focused reference.
-4. Produce the shortest output that preserves the quality floor.
-5. When generating or editing images, save outputs under the configured `F:\Codex_Save_Library` folders.
+2. If the user provides a generation phrase with anti-AI trigger words or fuzzy taste words, load `references/auto-anti-ai-expansion.md` and silently enrich the prompt before generation.
+3. Pick the route from the matrix below.
+4. Load only the selected reference. If still ambiguous, load one additional focused reference.
+5. Produce the shortest output that preserves the quality floor.
+6. When generating or editing images, save outputs under the configured `F:\Codex_Save_Library` folders.
 
 ## Reference Matrix
 
@@ -67,6 +68,8 @@ Pick the first matching row unless the task clearly has two separate risks:
 | Task signal | Load |
 |---|---|
 | ordinary image generation only | no reference; route to imagegen |
+| generation phrase contains anti-AI trigger words or fuzzy taste words | `references/auto-anti-ai-expansion.md` |
+| quick trigger/search words for current anti-AI categories | `references/INDEX.md` |
 | lower AI feel, simple rewrite | `references/fast-path.md` |
 | lower token use / faster thinking without quality loss | `references/quality-preserving-speed.md` |
 | should this skill run? | `references/routing-and-triggering.md` |

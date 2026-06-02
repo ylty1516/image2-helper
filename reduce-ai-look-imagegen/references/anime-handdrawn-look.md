@@ -18,6 +18,65 @@ Do not ask for "more anime quality." Ask for a believable animation production a
 - painterly mush where animation needs clear silhouettes
 - hands, feet, and props that do not read as animation key poses
 
+### Over-Decorated Neon / Cyber Anime Tells
+
+Use this diagnosis when an anime image looks impressive but still feels AI-made, especially with blue-purple cyberpunk, crystals, floating UI, code, butterflies, galaxies, or transparent effects.
+
+Likely causes:
+
+- every area has the same high-detail sparkle, so there is no human-made focal hierarchy
+- blue/purple/cyan glow covers skin, hair, clothes, background, and props with one uniform finish
+- random floating code, fake UI panels, constellations, shards, petals, or crystals decorate the image without story function
+- unreadable pseudo-text and pseudo-code are used as texture instead of designed graphic elements
+- hair, costume straps, jewelry, glass, and light trails contain too many tiny strands and ornaments
+- faces become generic polished anime beauty: smooth skin, huge glossy eyes, weak expression specificity
+- character layer, effects layer, and background layer share the same luminous plastic rendering
+
+Human-artist comparison:
+
+- detail is selective; the focal face, hands, or prop gets the most design attention while secondary areas simplify
+- effects have a source, direction, opacity, and rhythm instead of being evenly sprinkled
+- linework and shadow shapes stay readable under the lighting
+- props, UI, symbols, and costume pieces have a clear function or are removed
+- color temperature has anchors: neutral darks, local skin color, material color, and only a few deliberate glow accents
+- imperfections come from process: visible brush/line decisions, slight asymmetry, texture, and purposeful omissions
+
+Prompt patch:
+
+```text
+Reduce the over-decorated AI cyber-anime finish. Keep one clear focal hierarchy: face and hands first, main silhouette second, background third. Limit glow to 2-3 motivated sources with visible direction and falloff; remove decorative floating code, random crystals, petals, constellations, and UI panels that do not serve the scene. Use readable hand-drawn anime linework, flatter cel color, selective hard-edged shadow shapes, neutral dark anchors, and a few restrained cyan/violet accents. Keep hair as designed masses with selected strands, not hundreds of glowing threads. No fake text, no meaningless micro-detail, no uniform blue-purple gloss across every material.
+```
+
+### Spectacular Sky / Scenic Anime Poster Tells
+
+Use this diagnosis when an anime landscape looks like a beautiful sunset, rooftop, seaside station, bus stop, shrine, rainbow, snow, or cloud poster but still feels AI-made.
+
+Likely causes:
+
+- the sky carries maximum drama: giant cumulonimbus, glowing sunset, rainbow, stars, snow, birds, or wet reflections all competing at once
+- cloud edges have uniform glittery highlight detail instead of believable weather structure and broad hand-painted masses
+- every surface is treated like a mirror: platforms, rooftops, stones, roads, and puddles reflect the sky with the same glossy coating
+- iconic anime scenery props feel like a checklist: seaside station, torii gate, lantern, umbrella, bicycle, sunflowers, rooftop rail, distant city, dramatic sky
+- characters are generic wistful silhouettes placed inside a background rather than people with scene-specific weight, gesture, and purpose
+- signage and location text are half-legible pseudo-Japanese or pseudo-station graphics
+- color grading uses blanket orange-pink sunset or blue-violet twilight across all materials, leaving no local color or neutral anchors
+- foreground, midground, and sky are all over-rendered, so the picture reads as an algorithmic "anime wallpaper" instead of an observed scene
+
+Human-artist comparison:
+
+- sky drama is designed around one weather moment; quiet areas and broad cloud masses are allowed to stay simple
+- reflections are selective, broken by tile seams, puddle edges, wet/dry patches, grime, and surface roughness
+- a location has ordinary specificity: usable station hardware, believable railings, accurate roof supports, real plant growth, functional signs
+- characters have weight and intent: feet contact the ground, clothes react to wind/rain, gaze and posture imply a concrete beat
+- composition sacrifices some prettiness for story, readability, and believable place memory
+- text is either accurately designed, intentionally blank, or simplified as non-readable graphic blocks
+
+Prompt patch:
+
+```text
+Reduce the anime-wallpaper sky template. Keep one observed place and one weather/light event, not a checklist of dramatic scenery. Build the sky from broad hand-painted cloud masses with selective edge light, believable cloud scale, and quieter negative areas. Make reflections local and imperfect: puddles, tile seams, wet/dry patches, surface roughness, and broken highlights instead of mirror gloss everywhere. Give the foreground objects functional construction and ordinary wear; remove fake station text or leave signage blank. Make the character belong to the scene through grounded feet, specific posture, wind/rain response, and a clear story beat. Preserve local colors and neutral anchors; avoid blanket orange-pink sunset, blue-violet twilight, over-detailed clouds everywhere, generic wistful poses, and iconic anime scenery props used only as decoration.
+```
+
 ## Hand-Drawn Production Axes
 
 ### Layout / Genga
