@@ -21,14 +21,18 @@ Background and secondary details receive equal quality support: real-world struc
 Check:
 
 - horizon and floor plane agree
+- camera height stays consistent across the whole scene
+- visible vanishing points or stylized projection follow one system
 - architecture follows one perspective system
 - doors, windows, stairs, tables, streets, shelves, and vehicles keep believable scale
+- foreground, midground, and background scale changes match depth
+- occlusion order is clear: objects continue logically behind nearer objects
 - background objects do not melt into each other
 
 Prompt cue:
 
 ```text
-Background integrity: architecture, floor plane, furniture, vehicles, signs, and environmental objects are constructed with the same realism standard as the focal subject, with believable perspective, scale, material detail, and no warped or melted forms.
+Background integrity: architecture, floor/ground plane, furniture, vehicles, signs, and environmental objects are constructed with the same realism standard as the focal subject, with one camera height, coherent horizon/vanishing system, believable scale, contact, occlusion, material detail, and no warped or melted forms.
 ```
 
 ### 2. Secondary Figures
@@ -179,6 +183,9 @@ Epic fantasy landscape audit: make the panorama a believable world, not a specta
 |---|---|
 | main character looks good, background people have broken limbs | give every visible person a full anatomy/gesture plausibility check |
 | street/room perspective bends behind the subject | choose one horizon and one floor plane |
+| doors, windows, railings, stairs, tiles, roads, or shelves use different vanishing points | lock one camera height, horizon line, and vanishing system before adding detail |
+| figures or props float above the floor | define the ground plane, contact shadows, feet/wheels/legs contact, and overlap order |
+| foreground and background scale feels random | add scale anchors such as doors, people, vehicles, trees, furniture, railings, or architectural modules |
 | props melt into decorative clutter | preserve recognizable object silhouettes and material logic |
 | background text becomes fake symbols | use blank sign shapes or exact provided text; do not invent pseudo-writing |
 | distant hands/faces are mutated | keep full head/limb structure and natural pose even when facial detail is low |
@@ -194,7 +201,7 @@ Epic fantasy landscape audit: make the panorama a believable world, not a specta
 ### Compact Block
 
 ```text
-Background integrity: the focal subject and background receive the same quality standard. Secondary figures, props, architecture, floor plane, light direction, material texture, and contact shadows remain richly plausible with no warped objects, malformed people, fake text, or impossible actions.
+Background integrity: the focal subject and background receive the same quality standard. Secondary figures, props, architecture, floor plane, horizon/vanishing system, scale anchors, light direction, material texture, occlusion, and contact shadows remain richly plausible with no warped objects, malformed people, fake text, or impossible actions.
 ```
 
 ### Edit Prompt Block

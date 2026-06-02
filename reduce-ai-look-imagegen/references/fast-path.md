@@ -26,6 +26,7 @@ format: "<hard format>"
 subject: "<subject>"
 style: "<one base medium>"
 mood: "<one modifier>"
+perspective: "<camera height + horizon/ground plane when visible>"
 fix: "<top anti-AI problem>"
 preserve: "<what must not change>"
 ```
@@ -40,6 +41,7 @@ Subject: [subject + action].
 Style: [one medium/process with 2-3 concrete cues].
 Scene: [specific setting or use case].
 Light/color: [one motivated light or value model].
+Perspective: [one camera height, horizon/vanishing system, ground/floor/contact/scale/occlusion logic when visible].
 Physical logic: [pose/contact/material/scale constraint].
 Scene integrity: [visible background and secondary details receive equal quality scrutiny when relevant].
 Avoid: [top 3 style-specific AI failure modes].
@@ -50,7 +52,7 @@ Avoid: [top 3 style-specific AI failure modes].
 Never compress away:
 
 ```text
-hard format, subject identity, one base medium/style, one composition or crop/safe-area plan, one light/value plan, one physical/action/material logic constraint, background/non-focus quality when visible, and the top 2-3 failure guards.
+hard format, subject identity, one base medium/style, one composition or crop/safe-area plan, one light/value plan, one perspective geometry constraint for visible spaces, one physical/action/material logic constraint, background/non-focus quality when visible, and the top 2-3 failure guards.
 ```
 
 ## Common Fast Translations

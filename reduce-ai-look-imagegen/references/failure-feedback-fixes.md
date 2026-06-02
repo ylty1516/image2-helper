@@ -154,6 +154,28 @@ Prompt patch:
 Unify the scene with one motivated light source, clear floor/wall/object contact, believable scale references, and background details that share the same perspective and material logic.
 ```
 
+### "Perspective is wrong" / "Space feels warped"
+
+Likely causes:
+
+- multiple horizon lines or vanishing systems
+- floor, road, water, tabletop, or wall planes tilting in conflicting directions
+- objects and figures do not share scale anchors
+- feet, wheels, furniture legs, props, or buildings float without contact shadows
+- unclear overlap order creates impossible intersections
+
+Fix:
+
+```text
+Lock one camera height, horizon line, perspective system, ground/floor plane, scale anchors, contact shadows, occlusion order, foreshortening, and depth falloff before adding detail.
+```
+
+Prompt patch:
+
+```text
+Perspective repair: use one camera height, one horizon line, and one coherent perspective system. Align floor/ground/water/table planes, roads, rails, stairs, furniture, buildings, props, and figure feet to that system. Preserve scale anchors, contact shadows, overlap order, believable foreshortening, and atmospheric depth. Avoid mixed vanishing points, floating feet/props, warped stairs/railings, impossible intersections, and far objects rendered with foreground detail.
+```
+
 ### "Too busy / cluttered"
 
 Likely causes:

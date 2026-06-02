@@ -1,6 +1,6 @@
 ---
 name: reduce-ai-look-imagegen
-description: Improve image generation/editing prompts to reduce AI look, generic polish, anatomy/action errors, malformed background/non-focus details, visual inconsistency, unwanted objects, weak composition, style mismatch, token waste, or vague taste words. Use for de-AI, natural/hand-drawn/realistic fixes, better composition/framing, faster prompting without quality loss, pose/hand/body repair, background integrity, prompt-image mismatch, behavior/expression/viewpoint/environment fixes, diagnosis, scoring, or fuzzy taste translation. For ordinary image generation without refinement, composition, pose, background, inconsistency, or style needs, route to imagegen instead.
+description: Improve image generation/editing prompts to reduce AI look, generic polish, anatomy/action errors, malformed background/non-focus details, visual inconsistency, unwanted objects, weak composition, perspective/scale/ground-plane errors, style mismatch, token waste, or vague taste words. Use for de-AI, natural/hand-drawn/realistic fixes, better composition/framing, perspective repair, faster prompting without quality loss, pose/hand/body repair, background integrity, prompt-image mismatch, behavior/expression/viewpoint/environment fixes, diagnosis, scoring, or fuzzy taste translation. For ordinary image generation without refinement, composition, pose, background, inconsistency, or style needs, route to imagegen instead.
 ---
 
 # Reduce AI Look Imagegen
@@ -24,6 +24,7 @@ Use this skill for:
 - lower-AI / less fake / less glossy / less plastic / less 3D results
 - prompt rewrite, image diagnosis, before/after scoring, or style correction
 - pose, hand, action, anatomy, object contact, or perspective repair
+- horizon, vanishing point, floor/ground plane, scale, occlusion, or spatial geometry repair
 - anime battle/action clarity, weapon clash, spell combat, martial arts, or monster-fight anti-AI repair
 - extra/unwanted props, prompt-image mismatch, expression/action mismatch, viewpoint/environment mismatch
 - malformed background objects, secondary figures, crowds, architecture, props, or non-focus details
@@ -45,12 +46,13 @@ subject: "identity, action, role, required props"
 style: "one base medium/style with concrete production cues"
 composition: "focal anchor, crop, viewer path, or safe area when relevant"
 light_color: "one motivated light/value/color model"
+perspective_geometry: "one camera height, horizon line, perspective system, ground/floor plane, scale anchors, contact/occlusion logic when visible"
 physical_logic: "pose/contact/material/perspective constraint"
 scene_integrity: "background receives the same quality scrutiny as the focal subject; secondary figures, props, architecture, and non-focus actions remain rich and plausible"
 guards: "top 2-3 task-specific failure modes"
 ```
 
-Never save tokens by deleting hard format, subject identity, required style/medium, composition/safe area, physical logic, background/non-focus quality, or the most likely failure guards.
+Never save tokens by deleting hard format, subject identity, required style/medium, composition/safe area, perspective geometry for visible spaces, physical logic, background/non-focus quality, or the most likely failure guards.
 
 ## Fast Workflow
 
@@ -75,6 +77,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | should this skill run? | `references/routing-and-triggering.md` |
 | fuzzy wording or hard format lock | `references/intent-and-fuzzy-language.md` |
 | deep fuzzy taste-word translation or personal preference wording | `references/fuzzy-word-precision-library.md` |
+| perspective, horizon, vanishing points, floor/ground plane, scale, occlusion, spatial geometry | `references/perspective-geometry.md` |
 | malformed background, secondary figures, props, architecture, non-focus detail | `references/background-integrity.md` |
 | extra objects, role drift, prompt-image mismatch | `references/inconsistency-cleanup.md` |
 | existing image critique or plain-language failure feedback | `references/failure-feedback-fixes.md` |
@@ -100,6 +103,7 @@ Subject: [identity + action + required props].
 Style: [one base medium/process] with [2-3 concrete cues].
 Composition: [focal anchor + crop/viewer path/safe area].
 Light/color: [one motivated light or value model].
+Perspective: [one camera height + horizon/vanishing system + ground/floor/contact/scale/occlusion logic when visible].
 Logic: [pose/contact/material/perspective constraint].
 Scene integrity: [background/non-focus details receive equal quality scrutiny when visible].
 Avoid: [top 2-3 task-specific failures].

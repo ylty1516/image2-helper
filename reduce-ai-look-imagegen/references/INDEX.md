@@ -18,6 +18,7 @@ Use this section as a fast search map. If the user's wording or inspected image 
 | Category | Trigger/search words | Load |
 |---|---|---|
 | General AI feel | AI味, ai味, 太AI, 一眼AI, fake, generic, template, default beauty, plastic, glossy, oily, 3D感, 赛博糖水 | `failure-feedback-fixes.md` |
+| Perspective/spatial geometry | 透视, 透视错误, 空间歪, 地平线, 消失点, 地面漂浮, 比例不对, 尺度混乱, horizon, vanishing point, perspective, ground plane, floor plane, floating feet, scale mismatch, occlusion | `perspective-geometry.md` |
 | Hand-drawn anime repair | 手绘感, 真人画师, 动画感, cel, genga, douga, linework, cel shadow, flat color, hand-painted, not hand-drawn enough | `anime-handdrawn-look.md` |
 | Cyber/neon anime template | 赛博, 霓虹, 蓝紫, cyber anime, neon, floating UI, fake code, crystal, shards, butterflies, constellation, micro-detail, glow everywhere | `anime-handdrawn-look.md` then `failure-feedback-fixes.md` |
 | Anime wallpaper sky/scenery | 动漫壁纸感, 天空太AI, 新海模板, 风景壁纸, 夕阳, 彩虹, 雪景, 屋顶, 海边车站, 神社, torii, rooftop, station, spectacular sky, mirror reflections | `anime-handdrawn-look.md` then `background-integrity.md` |
@@ -42,7 +43,19 @@ Use language:
 Replace generic polish with a real medium/process artifact: controlled line weight, visible paper/paint/scan texture, flat local color or material-specific roughness, restrained highlight shapes, and grounded contact shadows.
 ```
 
-### 2. Over-Decorated Cyber Anime
+### 2. Perspective / Spatial Geometry
+
+Problem:
+
+- AI often invents different horizons, vanishing points, ground planes, object scales, and occlusion orders inside one image
+
+Use language:
+
+```text
+Lock one camera height, one horizon line, and one coherent perspective system. Align floor/ground/water/table planes, architecture, props, figures, contact shadows, scale anchors, overlap order, foreshortening, and depth falloff.
+```
+
+### 3. Over-Decorated Cyber Anime
 
 Problem:
 
@@ -54,7 +67,7 @@ Use language:
 Keep one focal hierarchy and limit glow to 2-3 motivated sources. Remove decorative floating UI, fake code, random crystals, petals, constellations, and meaningless micro-detail. Use readable anime linework, designed hair masses, neutral dark anchors, and selective cyan/violet accents.
 ```
 
-### 3. Anime Wallpaper Sky / Scenic Poster
+### 4. Anime Wallpaper Sky / Scenic Poster
 
 Problem:
 
@@ -66,7 +79,7 @@ Use language:
 Use one observed place and one weather/light event. Paint broad hand-made cloud masses with selective edge light and quiet negative areas. Make reflections local and broken by puddle edges, tile seams, grime, roughness, and wet/dry patches. Keep props functional, signs blank or accurate, and characters grounded in a specific story beat.
 ```
 
-### 4. Background And Prop Integrity
+### 5. Background And Prop Integrity
 
 Problem:
 
@@ -78,7 +91,7 @@ Use language:
 Give every visible background object a real function, scale, construction, material, contact point, and perspective logic. Simplify distant details with paint, not with melted forms or fake text.
 ```
 
-### 5. Epic Fantasy World Logic
+### 6. Epic Fantasy World Logic
 
 Problem:
 
@@ -90,7 +103,7 @@ Use language:
 Use one worldbuilding hook and one terrain/light logic. Give architecture entrances, paths, supports, defenses, scale references, material wear, and cultural consistency. Make water, lava, ice, cliffs, and floating land obey a clear internal rule. Use atmospheric perspective and avoid equal detail density across the entire panorama.
 ```
 
-### 6. Detail Density / Composition Discipline
+### 7. Detail Density / Composition Discipline
 
 Problem:
 
@@ -102,7 +115,7 @@ Use language:
 Reserve high detail for the focal face/hands/main prop; simplify secondary surfaces; preserve quiet areas and readable silhouettes; remove decorative effects that do not support the story.
 ```
 
-### 7. Character-Scene Integration
+### 8. Character-Scene Integration
 
 Problem:
 

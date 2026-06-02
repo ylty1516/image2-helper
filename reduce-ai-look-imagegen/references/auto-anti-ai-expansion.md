@@ -40,10 +40,25 @@ Fuzzy taste triggers:
 1. Preserve the user's format, subject, required style, and required props.
 2. Add no more than two anti-AI category patches unless the user requests deep refinement.
 3. Repair no more than two fuzzy words by converting them into concrete light/color, composition, material/process, and subject-behavior cues.
-4. Prefer positive construction cues before negative avoid cues.
-5. Use avoids only for the top likely failures.
-6. Do not add unrelated props, story symbols, text, logos, or named artist/studio copying.
-7. If text/signage is not exact and necessary, make it blank, abstract, or non-readable by design.
+4. Add the global perspective layer whenever the image has visible space, objects, architecture, landscape, products, people in a scene, or props on a surface.
+5. Prefer positive construction cues before negative avoid cues.
+6. Use avoids only for the top likely failures.
+7. Do not add unrelated props, story symbols, text, logos, or named artist/studio copying.
+8. If text/signage is not exact and necessary, make it blank, abstract, or non-readable by design.
+
+## Global Perspective Layer
+
+Use this compact layer for every generated image with visible space:
+
+```text
+Perspective geometry: one camera height, one horizon line, one coherent perspective system, aligned ground/floor/water/table planes, believable scale anchors, contact shadows, overlap order, foreshortening, and depth falloff.
+```
+
+If the prompt is already long, use the shorter form:
+
+```text
+Perspective lock: one camera height, coherent horizon/vanishing system, grounded contact, believable scale and occlusion.
+```
 
 ## Background Support Layer
 
