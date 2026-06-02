@@ -23,6 +23,7 @@ It has grown into a visual style reasoning system. It can:
 - rewrite prompts with stronger medium/process language
 - remove unreasonable extra objects and fix prompt-image inconsistency
 - correct implausible poses and action logic
+- reduce AI flavor in anime battle illustrations by checking action skeleton, force vector, contact point, and effect discipline
 - enforce background and non-focus quality with the same scrutiny as the focal subject
 - reduce glossy/3D/anime-plastic finish
 - classify many visual styles
@@ -50,6 +51,7 @@ Then load specialized references only when needed:
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
 - `references/background-integrity.md` for rich, realistic background/non-focus quality, secondary figures, props, architecture, scene logic, and realistic street-photo background audits
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
+- `references/combat-action-anime.md` for anime battle, weapon clash, magic combat, martial arts, monster fight, and flashy-but-unclear action repair
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
 - `references/intent-and-fuzzy-language.md` for user purpose parsing, fuzzy taste words, and hard format locks
 - `references/fuzzy-word-precision-library.md` for deeper vague taste-word mapping, stacked fuzzy words, and user-specific preference wording

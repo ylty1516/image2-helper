@@ -18,6 +18,7 @@ Use this file only when you need a quick map of the reference folder.
 | Extra props, prompt-image mismatch, expression/action or viewpoint/environment mismatch | `inconsistency-cleanup.md` |
 | User says too AI, too glossy, bad hands, fake, busy, not premium | `failure-feedback-fixes.md` |
 | Pose/action correction, realism pass, reusable recipes | `prompt-recipes.md` |
+| Anime battle, weapon clash, magic combat, martial arts, monster fight | `combat-action-anime.md` |
 
 ## Style And Intent Modules
 
@@ -41,6 +42,7 @@ Load one file first. Add a second file only when the task has a separate risk.
 Examples:
 
 - "less AI anime, too glossy" -> `fast-path.md` + `anime-handdrawn-look.md`
+- "anime battle looks flashy but action is unclear" -> `combat-action-anime.md`
 - "maid skin has an unwanted staff" -> `inconsistency-cleanup.md`
 - "main character is good but the background people/props/buildings look fake" -> `background-integrity.md`
 - "faster image2 with same quality" -> `quality-preserving-speed.md`

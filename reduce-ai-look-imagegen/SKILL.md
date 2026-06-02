@@ -24,6 +24,7 @@ Use this skill for:
 - lower-AI / less fake / less glossy / less plastic / less 3D results
 - prompt rewrite, image diagnosis, before/after scoring, or style correction
 - pose, hand, action, anatomy, object contact, or perspective repair
+- anime battle/action clarity, weapon clash, spell combat, martial arts, or monster-fight anti-AI repair
 - extra/unwanted props, prompt-image mismatch, expression/action mismatch, viewpoint/environment mismatch
 - malformed background objects, secondary figures, crowds, architecture, props, or non-focus details
 - fuzzy taste words such as premium, atmospheric, story-rich, cinematic, cute, clean, realistic, hand-drawn
@@ -75,6 +76,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | extra objects, role drift, prompt-image mismatch | `references/inconsistency-cleanup.md` |
 | existing image critique or plain-language failure feedback | `references/failure-feedback-fixes.md` |
 | pose, hand, action, realism pass, reusable prompt recipe | `references/prompt-recipes.md` |
+| anime battle, weapon clash, magic combat, martial arts, monster fight | `references/combat-action-anime.md` |
 | anime/cel/genga/hand-painted background | `references/anime-handdrawn-look.md` |
 | composition, framing, layout, mainstream style completion | `references/mainstream-style-composition.md` |
 | choose style by use case | `references/style-selection-and-use-cases.md` |

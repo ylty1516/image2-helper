@@ -28,6 +28,7 @@ reduce-ai-look-imagegen/
 | 模糊词堆叠导致 AI 乱猜 | 用模糊词准确化库把词拆成视觉功能、光色、构图、材质、行为和避错项 |
 | 输出格式很重要 | 锁定四格漫画、LOGO、图标、海报、游戏菜单、角色设定、包装等格式 |
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
+| 打斗图华丽但像 AI | 先锁定攻击/防守关系、接触点、力的方向、身体支撑和动作可读性，再加特效 |
 | 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
 | 表情、行为、视角、环境不匹配 | 对齐表情和动作、视线和目标、镜头和环境透视 |
 | 主角好看但背景糊弄、扭曲或假 | 背景与主角享有同等质量标准，检查次要人物、物品、建筑、透视、光影和动作逻辑 |
@@ -256,6 +257,8 @@ reduce-ai-look-imagegen/
     background-integrity-map.svg
     fuzzy-word-precision-case.md
     fuzzy-word-precision-map.svg
+    combat-action-ai-flavor-case.md
+    combat-action-ai-flavor-map.svg
     street-photo-background-audit-case.md
     street-photo-background-audit.svg
     inconsistency-cleanup-case.md
@@ -271,6 +274,7 @@ reduce-ai-look-imagegen/
     inconsistency-cleanup.md
     quality-preserving-speed.md
     mainstream-style-composition.md
+    combat-action-anime.md
     prompt-recipes.md
     anime-handdrawn-look.md
     style-taxonomy.md
@@ -319,6 +323,7 @@ reduce-ai-look-imagegen/examples/lean-routing-case.md
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
 - `quality-preserving-speed.md`：在质量不变或更好的前提下降低 token 和思考时间
 - `mainstream-style-composition.md`：补全主流风格和构图决策，处理海报、壁纸、游戏 UI、封面、头像、产品图等画面结构
+- `combat-action-anime.md`：打斗动漫插画反 AI 模块，检查攻击/防守关系、接触点、力向量、身体支撑、特效遮挡和动作可读性
 - `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
 - `style-blending-rules.md`：处理混合画风，避免风格冲突
 - `style-quality-rubric.md`：判断是否真的降低了 AI 感
@@ -410,6 +415,24 @@ reduce-ai-look-imagegen/examples/inconsistency-cleanup-case.md
 ```
 
 ![去除不合理元素示例](reduce-ai-look-imagegen/examples/inconsistency-cleanup-flow.png)
+
+## 示例：打斗动漫插画去 AI 味
+
+用户给了几张华丽打斗图，希望总结为什么像 AI，并转成可复用话术。
+
+Skill 会先检查动作骨架，而不是继续堆特效：
+
+```text
+Combat action clarity: one readable attack/defense beat, exact contact or near-contact point, clear force vector, physically possible stance/jump/grip, visible joints and silhouettes, hair/cloth/debris following the same impact direction, effects kept behind or around the anatomy, and one quiet zone for readability.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/combat-action-ai-flavor-case.md
+```
+
+![打斗图去 AI 味示例](reduce-ai-look-imagegen/examples/combat-action-ai-flavor-map.svg)
 
 ## 示例：背景与非焦点细节同等质量
 

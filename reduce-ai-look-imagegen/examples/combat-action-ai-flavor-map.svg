@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Combat Action Anime Anti-AI Map</title>
+  <desc id="desc">A visual map showing why flashy anime battle images feel AI-generated and how to convert them into readable human-directed action.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f3ed; }
+      .panel { fill: #ffffff; stroke: #1f2933; stroke-width: 2; }
+      .soft { fill: #eef4f6; stroke: #1f2933; stroke-width: 2; }
+      .dark { fill: #172026; }
+      .ink { fill: #172026; }
+      .muted { fill: #51616d; }
+      .warn { fill: #d86050; }
+      .ok { fill: #2f9e75; }
+      .blue { fill: #4d89d8; }
+      .violet { fill: #7f4cc9; }
+      .gold { fill: #f0b84f; }
+      .title { font: 700 36px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #4b5560; letter-spacing: 0; }
+      .h2 { font: 700 22px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .body { font: 400 15px Arial, sans-serif; fill: #34404a; letter-spacing: 0; }
+      .small { font: 400 13px Arial, sans-serif; fill: #46535f; letter-spacing: 0; }
+      .label { font: 700 13px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .tag { font: 700 12px Arial, sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .promptText { font: 400 14px Consolas, 'Courier New', monospace; fill: #eef6f8; letter-spacing: 0; }
+      .line { stroke: #26323a; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .thin { stroke: #596774; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .dash { stroke: #d86050; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-dasharray: 7 6; }
+      .glow { stroke: #6aa8ff; stroke-width: 9; fill: none; stroke-linecap: round; opacity: .8; }
+      .spark { stroke: #f0b84f; stroke-width: 3; fill: none; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="48" y="58">Combat Action Anime Anti-AI Map</text>
+  <text class="subtitle" x="48" y="88">Spectacle feels hand-directed only after the action skeleton is readable.</text>
+
+  <rect class="panel" x="48" y="120" width="350" height="425" rx="8"/>
+  <text class="h2" x="74" y="158">Common AI Flavor</text>
+  <text class="body" x="74" y="184">Glow, debris, and detail replace action design.</text>
+  <path class="glow" d="M98 430 C160 300, 255 300, 340 210"/>
+  <path class="glow" d="M92 220 C160 330, 245 370, 354 472"/>
+  <path class="dash" d="M130 455 L340 190"/>
+  <path class="dash" d="M120 210 L350 460"/>
+  <circle class="warn" cx="225" cy="336" r="54" opacity=".25"/>
+  <g>
+    <circle class="ink" cx="130" cy="275" r="18"/>
+    <line class="dash" x1="130" y1="294" x2="115" y2="380"/>
+    <line class="dash" x1="130" y1="315" x2="88" y2="338"/>
+    <line class="dash" x1="130" y1="315" x2="178" y2="336"/>
+    <line class="dash" x1="115" y1="380" x2="90" y2="448"/>
+    <line class="dash" x1="115" y1="380" x2="152" y2="445"/>
+  </g>
+  <g>
+    <circle class="ink" cx="312" cy="274" r="18"/>
+    <line class="dash" x1="312" y1="294" x2="330" y2="382"/>
+    <line class="dash" x1="312" y1="315" x2="270" y2="340"/>
+    <line class="dash" x1="312" y1="315" x2="358" y2="336"/>
+    <line class="dash" x1="330" y1="382" x2="303" y2="448"/>
+    <line class="dash" x1="330" y1="382" x2="363" y2="445"/>
+  </g>
+  <text class="label warn" x="78" y="506">effects hide joints, grips, and force</text>
+
+  <rect class="soft" x="440" y="120" width="400" height="425" rx="8"/>
+  <text class="h2" x="466" y="158">Action Skeleton First</text>
+  <text class="body" x="466" y="184">Lock the fight beat before adding spectacle.</text>
+  <circle class="ok" cx="486" cy="230" r="7"/>
+  <text class="label" x="506" y="235">Attacker and defender</text>
+  <circle class="ok" cx="486" cy="278" r="7"/>
+  <text class="label" x="506" y="283">Action verb: slash, block, parry, cast</text>
+  <circle class="ok" cx="486" cy="326" r="7"/>
+  <text class="label" x="506" y="331">Exact contact or near-contact point</text>
+  <circle class="ok" cx="486" cy="374" r="7"/>
+  <text class="label" x="506" y="379">Force vector through bodies and scene</text>
+  <circle class="ok" cx="486" cy="422" r="7"/>
+  <text class="label" x="506" y="427">Body support: stance, jump arc, grip</text>
+  <circle class="ok" cx="486" cy="470" r="7"/>
+  <text class="label" x="506" y="475">Reaction: recoil, cloth, debris, damage</text>
+  <path class="thin" d="M735 240 L782 240 L782 488 L735 488"/>
+  <text class="small" x="642" y="520">Effects support this skeleton, not replace it.</text>
+
+  <rect class="panel" x="882" y="120" width="350" height="425" rx="8"/>
+  <text class="h2" x="908" y="158">Human-Directed Read</text>
+  <text class="body" x="908" y="184">One impact beat, clear force, controlled noise.</text>
+  <g>
+    <circle class="ink" cx="982" cy="275" r="17"/>
+    <line class="line" x1="982" y1="294" x2="1010" y2="365"/>
+    <line class="line" x1="995" y1="326" x2="1080" y2="346"/>
+    <line class="line" x1="1010" y1="365" x2="968" y2="438"/>
+    <line class="line" x1="1010" y1="365" x2="1046" y2="440"/>
+  </g>
+  <g>
+    <circle class="ink" cx="1130" cy="282" r="17"/>
+    <line class="line" x1="1130" y1="301" x2="1108" y2="368"/>
+    <line class="line" x1="1118" y1="330" x2="1080" y2="346"/>
+    <line class="line" x1="1108" y1="368" x2="1068" y2="434"/>
+    <line class="line" x1="1108" y1="368" x2="1142" y2="438"/>
+  </g>
+  <circle class="gold" cx="1080" cy="346" r="19"/>
+  <path class="spark" d="M1080 346 L1040 326 M1080 346 L1124 318 M1080 346 L1052 386 M1080 346 L1138 382"/>
+  <path class="thin" d="M942 450 C1000 420, 1102 420, 1180 455"/>
+  <rect class="ok" x="924" y="475" width="156" height="28" rx="14"/>
+  <text class="tag" x="939" y="494">readable bodies</text>
+  <rect class="ok" x="1056" y="220" width="160" height="28" rx="14"/>
+  <text class="tag" x="1072" y="239">one impact point</text>
+  <rect class="ok" x="1018" y="508" width="176" height="28" rx="14"/>
+  <text class="tag" x="1034" y="527">quiet zones remain</text>
+
+  <path class="line" d="M400 334 L432 334"/>
+  <path class="line" d="M432 334 L423 325 M432 334 L423 343"/>
+  <path class="line" d="M842 334 L874 334"/>
+  <path class="line" d="M874 334 L865 325 M874 334 L865 343"/>
+
+  <rect class="dark" x="48" y="600" width="1184" height="96" rx="8"/>
+  <text class="promptText" x="72" y="634">Combat action clarity: one readable attack/defense beat, exact contact point, clear force vector, physically possible stance/jump/grip,</text>
+  <text class="promptText" x="72" y="660">visible joints and silhouettes, hair/cloth/debris following the same impact direction, effects kept behind anatomy,</text>
+  <text class="promptText" x="72" y="686">and one quiet zone for readability.</text>
+</svg>

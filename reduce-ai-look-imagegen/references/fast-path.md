@@ -12,6 +12,7 @@ Explicit lower-AI/refinement request -> use this fast path.
 Existing image critique/edit -> identify 1-3 visible failures, then write edit prompt.
 Ambiguous format word -> preserve format first, then style.
 Stacked fuzzy taste words -> use intent parse, then fuzzy precision library if one compact row is not enough.
+Anime battle/action unclear -> use combat action anime.
 Extra/unwanted object or prompt-image mismatch -> use inconsistency cleanup.
 Malformed background/non-focus detail -> use background integrity.
 ```
@@ -120,6 +121,12 @@ Compare against the original prompt, remove unrequested extra props, preserve re
 Treat the background with the same quality standard as the focal subject: rich, realistic, structurally plausible objects, secondary figures, props, architecture, perspective, light direction, material texture, and contact shadows, with no warped forms, malformed people, fake text, or bizarre actions.
 ```
 
+打斗图去AI味:
+
+```text
+Combat action clarity: one readable attack/defense beat, exact contact or near-contact point, clear force vector, physically possible stance/jump/grip, visible joints and silhouettes, hair/cloth/debris following the same impact direction, effects kept behind or around anatomy, and one quiet zone for readability.
+```
+
 四格漫画:
 
 ```text
@@ -142,6 +149,7 @@ If user says:
 - bad hands -> natural finger grouping, thumb placement, wrist angle, object contact
 - pose weird -> body line, support point, joint range, gravity
 - bad composition -> focal anchor, viewer path, output-safe crop, controlled negative space
+- flashy battle but unclear action -> define attacker/defender/action verb/contact point/force vector, then move effects behind anatomy
 - malformed background -> give background the same quality scrutiny as the focal subject: real props, architecture, secondary figures, light, contact, material, and action logic
 - extra prop -> remove unrequested object, preserve required props only
 - expression mismatch -> align face/gaze with action and mood
