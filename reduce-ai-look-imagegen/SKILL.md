@@ -70,6 +70,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | lower token use / faster thinking without quality loss | `references/quality-preserving-speed.md` |
 | should this skill run? | `references/routing-and-triggering.md` |
 | fuzzy wording or hard format lock | `references/intent-and-fuzzy-language.md` |
+| deep fuzzy taste-word translation or personal preference wording | `references/fuzzy-word-precision-library.md` |
 | malformed background, secondary figures, props, architecture, non-focus detail | `references/background-integrity.md` |
 | extra objects, role drift, prompt-image mismatch | `references/inconsistency-cleanup.md` |
 | existing image critique or plain-language failure feedback | `references/failure-feedback-fixes.md` |

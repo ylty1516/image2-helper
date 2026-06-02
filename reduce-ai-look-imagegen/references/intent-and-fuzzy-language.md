@@ -2,6 +2,8 @@
 
 Use this before choosing style details when the user request is incomplete, vague, or mixes format, mood, style, and quality words.
 
+For deeper taste-word mapping, stacked fuzzy words, or user-specific wording, load `fuzzy-word-precision-library.md` after this file. Keep this file as the intent and format lock layer.
+
 ## Core Rule
 
 First identify what the user is really specifying:
@@ -213,6 +215,8 @@ Create a four-panel comic page. Each panel uses luminous post-rain light, reflec
 ## Fuzzy Taste Word Translator
 
 Translate fuzzy words into visual decisions. Use only the relevant rows.
+
+If the user's vague term is not listed here, or if several fuzzy words need to be merged into one stable direction, use `fuzzy-word-precision-library.md`.
 
 ### 高级感 / Premium / Sophisticated
 

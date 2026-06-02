@@ -24,6 +24,7 @@ Use this file only when you need a quick map of the reference folder.
 | Need | File |
 |---|---|
 | Fuzzy words, hard format lock, user purpose parsing | `intent-and-fuzzy-language.md` |
+| Deep fuzzy taste-word translation and personal preference wording | `fuzzy-word-precision-library.md` |
 | Anime, cel, genga/layout, hand-painted backgrounds | `anime-handdrawn-look.md` |
 | Better composition, framing, mainstream style defaults | `mainstream-style-composition.md` |
 | Choose style by output use case | `style-selection-and-use-cases.md` |
@@ -44,3 +45,4 @@ Examples:
 - "main character is good but the background people/props/buildings look fake" -> `background-integrity.md`
 - "faster image2 with same quality" -> `quality-preserving-speed.md`
 - "game menu more story-rich but buttons clear" -> `mainstream-style-composition.md`
+- "make it more premium, relaxed, story-rich, lived-in, or transparent" -> `intent-and-fuzzy-language.md` then `fuzzy-word-precision-library.md` if needed

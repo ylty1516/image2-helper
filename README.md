@@ -25,6 +25,7 @@ reduce-ai-look-imagegen/
 |---|---|
 | 图片太像 AI | 把空泛词改成具体的媒介、材质、光影、构图语言 |
 | 只说“高级感 / 氛围感 / 故事感” | 转换成颜色、光线、材质、空间、叙事线索 |
+| 模糊词堆叠导致 AI 乱猜 | 用模糊词准确化库把词拆成视觉功能、光色、构图、材质、行为和避错项 |
 | 输出格式很重要 | 锁定四格漫画、LOGO、图标、海报、游戏菜单、角色设定、包装等格式 |
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
 | 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
@@ -253,6 +254,8 @@ reduce-ai-look-imagegen/
     composition-style-map.png
     background-integrity-case.md
     background-integrity-map.svg
+    fuzzy-word-precision-case.md
+    fuzzy-word-precision-map.svg
     street-photo-background-audit-case.md
     street-photo-background-audit.svg
     inconsistency-cleanup-case.md
@@ -262,6 +265,7 @@ reduce-ai-look-imagegen/
     fast-path.md
     routing-and-triggering.md
     intent-and-fuzzy-language.md
+    fuzzy-word-precision-library.md
     failure-feedback-fixes.md
     background-integrity.md
     inconsistency-cleanup.md
@@ -309,6 +313,7 @@ reduce-ai-look-imagegen/examples/lean-routing-case.md
 - `fast-path.md`：低 token 快速路径
 - `routing-and-triggering.md`：判断什么时候该用这个 skill
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
+- `fuzzy-word-precision-library.md`：模糊词准确化库，把主观词拆成视觉功能、光色、构图、材质、行为和避错项
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
 - `background-integrity.md`：让背景、次要人物、物品、建筑和非焦点细节按主角同等质量标准处理
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
@@ -361,6 +366,28 @@ Skill 会保留格式：
 ```text
 Four clearly separated panels remain mandatory. Cinematic mood may affect lighting, framing, and value structure inside the panels, but the result must not become a single splash illustration.
 ```
+
+## 示例：模糊词准确化库
+
+用户说：
+
+```text
+让这张图更高级，更有氛围感和故事感，但不要变得很假。
+```
+
+Skill 不会只堆 `masterpiece, high quality, cinematic`，而是拆成可执行的视觉决策：
+
+```text
+Interpret "premium + atmospheric + story-rich" as restrained everyday narrative mood: precise negative space, motivated dusk light, layered air depth, real material texture, one object implying what just happened, and no gold overload, random fog, fake flare, or symbolic prop pile.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/fuzzy-word-precision-case.md
+```
+
+![模糊词准确化示例](reduce-ai-look-imagegen/examples/fuzzy-word-precision-map.svg)
 
 ## 示例：去除不合理元素
 

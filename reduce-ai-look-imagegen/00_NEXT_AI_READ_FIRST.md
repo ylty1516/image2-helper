@@ -31,6 +31,7 @@ It has grown into a visual style reasoning system. It can:
 - resolve conflicting mixed-style prompts
 - score before/after results
 - translate user feedback into prompt patches
+- turn vague taste words into precise visual decisions and compact preference rules
 - reduce token use and thinking time through quality-preserving speed, not low-quality shortening
 
 ## Read Order
@@ -51,6 +52,7 @@ Then load specialized references only when needed:
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
 - `references/intent-and-fuzzy-language.md` for user purpose parsing, fuzzy taste words, and hard format locks
+- `references/fuzzy-word-precision-library.md` for deeper vague taste-word mapping, stacked fuzzy words, and user-specific preference wording
 - `references/style-expansion-pack.md` for niche historical/design/craft/technical styles
 - `references/style-blending-rules.md` for hybrid prompts and style conflicts
 - `references/style-selection-and-use-cases.md` for choosing styles from output goals

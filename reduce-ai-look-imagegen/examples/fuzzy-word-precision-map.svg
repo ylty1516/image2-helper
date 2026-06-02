@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Fuzzy Word Precision Library</title>
+  <desc id="desc">A map showing how vague taste words are converted into concrete visual decisions for image generation.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f3ed; }
+      .panel { fill: #ffffff; stroke: #1f2933; stroke-width: 2; }
+      .dark { fill: #172026; }
+      .soft { fill: #edf4f2; stroke: #1f2933; stroke-width: 2; }
+      .accent { fill: #2f9e75; }
+      .warn { fill: #d86050; }
+      .gold { fill: #d3a84f; }
+      .blue { fill: #4d89a5; }
+      .ink { fill: #172026; }
+      .title { font: 700 36px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #4b5560; letter-spacing: 0; }
+      .h2 { font: 700 22px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .body { font: 400 15px Arial, sans-serif; fill: #34404a; letter-spacing: 0; }
+      .small { font: 400 13px Arial, sans-serif; fill: #46535f; letter-spacing: 0; }
+      .tag { font: 700 13px Arial, sans-serif; fill: #ffffff; letter-spacing: 0; }
+      .label { font: 700 13px Arial, sans-serif; fill: #172026; letter-spacing: 0; }
+      .promptText { font: 400 14px Consolas, 'Courier New', monospace; fill: #eef6f8; letter-spacing: 0; }
+      .line { stroke: #26323a; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .thin { stroke: #596774; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="48" y="58">Fuzzy Word Precision Library</text>
+  <text class="subtitle" x="48" y="88">Vague taste words become concrete visual decisions, not generic quality tags.</text>
+
+  <rect class="panel" x="48" y="120" width="342" height="430" rx="8"/>
+  <text class="h2" x="76" y="158">User Says</text>
+  <text class="body" x="76" y="184">"Make it more premium, atmospheric, and story-rich."</text>
+  <rect class="warn" x="76" y="230" width="140" height="32" rx="16"/>
+  <text class="tag" x="94" y="251">premium</text>
+  <rect class="warn" x="76" y="284" width="160" height="32" rx="16"/>
+  <text class="tag" x="94" y="305">atmospheric</text>
+  <rect class="warn" x="76" y="338" width="150" height="32" rx="16"/>
+  <text class="tag" x="94" y="359">story-rich</text>
+  <text class="label" x="76" y="420">Bad shortcut</text>
+  <text class="small" x="76" y="446">beautiful, masterpiece, cinematic,</text>
+  <text class="small" x="76" y="468">high quality, lots of glow</text>
+  <text class="small" x="76" y="502">This adds polish, not accuracy.</text>
+
+  <rect class="soft" x="438" y="120" width="410" height="430" rx="8"/>
+  <text class="h2" x="466" y="158">Precision Expansion</text>
+  <text class="body" x="466" y="184">Each fuzzy word gets a role in the image.</text>
+
+  <rect class="gold" x="466" y="224" width="310" height="70" rx="8"/>
+  <text class="tag" x="486" y="249">premium</text>
+  <text class="small" x="486" y="273">restraint, negative space, real material</text>
+
+  <rect class="blue" x="466" y="314" width="310" height="70" rx="8"/>
+  <text class="tag" x="486" y="339">atmospheric</text>
+  <text class="small" x="486" y="363">motivated light, air depth, weather cue</text>
+
+  <rect class="accent" x="466" y="404" width="310" height="70" rx="8"/>
+  <text class="tag" x="486" y="429">story-rich</text>
+  <text class="small" x="486" y="453">before/after clue, gaze, meaningful prop</text>
+
+  <path class="line" d="M392 335 L430 335"/>
+  <path class="line" d="M430 335 L421 326 M430 335 L421 344"/>
+
+  <rect class="panel" x="896" y="120" width="336" height="430" rx="8"/>
+  <text class="h2" x="924" y="158">Concrete Prompt</text>
+  <text class="body" x="924" y="184">Shorter, but much more controllable.</text>
+
+  <circle class="accent" cx="940" cy="235" r="7"/>
+  <text class="label" x="960" y="240">Format stays locked</text>
+  <circle class="accent" cx="940" cy="286" r="7"/>
+  <text class="label" x="960" y="291">2 highest-impact words expanded</text>
+  <circle class="accent" cx="940" cy="337" r="7"/>
+  <text class="label" x="960" y="342">Light, composition, material, behavior</text>
+  <circle class="accent" cx="940" cy="388" r="7"/>
+  <text class="label" x="960" y="393">Wrong interpretations blocked</text>
+  <circle class="accent" cx="940" cy="439" r="7"/>
+  <text class="label" x="960" y="444">No generic "high quality" soup</text>
+
+  <path class="line" d="M850 335 L887 335"/>
+  <path class="line" d="M887 335 L878 326 M887 335 L878 344"/>
+
+  <rect class="dark" x="48" y="600" width="1184" height="96" rx="8"/>
+  <text class="promptText" x="72" y="634">Interpret "premium + atmospheric + story-rich" as restrained everyday narrative mood:</text>
+  <text class="promptText" x="72" y="660">precise negative space, motivated dusk light, layered air depth, real material texture, one object implying what just happened,</text>
+  <text class="promptText" x="72" y="686">and no gold overload, random fog, fake flare, or symbolic prop pile.</text>
+</svg>

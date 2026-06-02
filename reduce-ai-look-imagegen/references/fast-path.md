@@ -11,6 +11,7 @@ Ordinary generation only -> use imagegen skill/tool, stop.
 Explicit lower-AI/refinement request -> use this fast path.
 Existing image critique/edit -> identify 1-3 visible failures, then write edit prompt.
 Ambiguous format word -> preserve format first, then style.
+Stacked fuzzy taste words -> use intent parse, then fuzzy precision library if one compact row is not enough.
 Extra/unwanted object or prompt-image mismatch -> use inconsistency cleanup.
 Malformed background/non-focus detail -> use background integrity.
 ```
@@ -98,7 +99,13 @@ natural joint range, clear weight support, grounded hand/foot contact, clothing 
 构图更好:
 
 ```text
-Choose one focal anchor, one composition architecture, one viewer path, and one safe area. Concentrate detail at the focal point, simplify secondary areas, and make the crop match the output format.
+Choose one focal anchor, one composition architecture, one viewer path, and one safe area. Concentrate attention at the focal point, control secondary detail density without lowering construction quality, and make the crop match the output format.
+```
+
+模糊词堆叠:
+
+```text
+Translate only the top 2 vague taste words into visual decisions: function, light/color, composition, material/process, subject behavior, and 2-3 avoid cues. Preserve the requested format and avoid generic quality tags.
 ```
 
 去不合理元素:
