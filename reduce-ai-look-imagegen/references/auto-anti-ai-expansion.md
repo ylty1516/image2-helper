@@ -24,6 +24,7 @@ High-priority triggers:
 - 手绘感, 真人画师, 动画感, hand-drawn, cel, genga, linework
 - 赛博, 霓虹, 蓝紫, cyber anime, neon, fake code, floating UI, crystal
 - 动漫壁纸感, 天空太AI, 新海模板, 风景壁纸, spectacular sky, rooftop, station, torii
+- 史诗奇幻, 奇幻风景, 奇幻壁纸, 冰雪王国, 熔岩城堡, 浮岛, 天空城, 极光, 月亮, 瀑布群, epic landscape, fantasy panorama, lava fortress, ice kingdom, floating islands
 - 镜面反光, 反光太满, wet pavement, mirror gloss, puddle
 - 背景假, 假招牌, unreadable signs, fake signage, props melt
 - 太满, 太碎, 细节堆满, no focal hierarchy, meaningless micro-detail
@@ -68,6 +69,12 @@ For anime scenic wallpaper:
 
 ```text
 Anti-AI support: one observed place and one weather/light event, broad hand-painted cloud masses, quiet sky areas, imperfect local reflections, functional station/shrine/rooftop objects, blank or accurate signs, and a character grounded in a concrete story beat. Avoid stacked sunset/rainbow/stars/snow/birds spectacle, mirror pavement, over-detailed clouds everywhere, and generic wistful poses.
+```
+
+For epic fantasy landscapes:
+
+```text
+Anti-AI support: one clear worldbuilding hook, one terrain/light logic, functional architecture with entrances/paths/supports/scale references, physically motivated water/lava/ice/cliffs, atmospheric distance simplification, and controlled detail density. Avoid castle/aurora/moon/lava/waterfall/floating-island spectacle all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail across the panorama.
 ```
 
 ## Fuzzy Word Repair Pattern
@@ -115,4 +122,16 @@ Internal expansion:
 
 ```text
 Create a Japanese anime scenic illustration of a rainy station after the storm. Interpret "电影感" as narrative framing, motivated practical light, value hierarchy, and lens/exposure restraint. Anti-AI support: one observed station and one weather/light event, broad hand-painted cloud masses with selective edge light, quiet sky areas, imperfect local puddle reflections broken by tile seams and wet/dry patches, functional station hardware, blank or accurate signs, and a character or prop grounded in one concrete story beat. Avoid stacked rainbow/sunset/stars/birds spectacle, mirror pavement, over-detailed clouds everywhere, fake signage, and generic wallpaper composition.
+```
+
+User phrase:
+
+```text
+史诗奇幻风景，冰雪王国和极光，超震撼，降低AI味
+```
+
+Internal expansion:
+
+```text
+Create an epic fantasy landscape concept image. Interpret "超震撼" as one strong worldbuilding hook, large readable value shapes, scale contrast, and a clear viewer path, not spectacle stacked everywhere. Anti-AI support: one ice-kingdom terrain/light logic, functional castle architecture with entrances, paths, supports, defenses, scale references, weathering, and cultural consistency; physically motivated snow and ice accumulation, glacial erosion, cliff stability, and atmospheric distance simplification. Use one dominant moon or aurora light source with limited secondary glow. Avoid castle/aurora/moon/waterfall/floating-island motifs all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail density across the panorama.
 ```

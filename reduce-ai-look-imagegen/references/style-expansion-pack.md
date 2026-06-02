@@ -264,6 +264,35 @@ Avoid:
 generic epic landscape, unreadable kitbash, random glowing runes, photobash seams
 ```
 
+### Epic Fantasy Landscape / Concept Wallpaper Tells
+
+Use when a fantasy landscape looks spectacular but AI-made: ice kingdoms, lava citadels, floating islands, endless waterfalls, ruined temples, aurora skies, impossible castles, glowing rivers, or panoramic world vistas.
+
+Likely causes:
+
+- too many spectacle motifs stacked at once: castle, ruins, mountains, aurora, moon, waterfalls, clouds, floating islands, lava, ocean, glowing crystals
+- worldbuilding has no design problem or function; architecture is decorative silhouette instead of a usable place
+- scale is inconsistent: tiny bridges, huge towers, repeated ruins, waterfalls, cliffs, and cities do not share a believable size system
+- terrain geology is ornamental: mountains, ice, lava, cliffs, and waterfalls are arranged for drama rather than physical cause and erosion
+- light sources conflict or overperform: moon, sunset, lava, aurora, god rays, glowing water, and rim lights all illuminate the scene
+- detail density is equally high across foreground, midground, and far distance, creating a generated "epic wallpaper" feel
+- repeated gothic towers, arches, bridges, spires, ruins, and floating rocks look kitbashed without cultural/material logic
+
+Human-artist comparison:
+
+- the world has one readable concept hook and a few supporting details, not every fantasy landmark at once
+- architecture implies use: entrances, paths, supports, defenses, bridges, scale references, and material wear
+- terrain follows a physical logic: gravity, erosion, water source and drainage, volcanic flow, ice formation, snow accumulation
+- atmosphere simplifies distance; far elements lose detail and value contrast instead of staying equally sharp
+- light has hierarchy: one dominant source plus controlled secondary glow where the material justifies it
+- composition contains rest areas and large value shapes so the eye can travel through the world
+
+Prompt patch:
+
+```text
+Reduce the generic epic-fantasy wallpaper feel. Build one clear worldbuilding hook and one terrain/light logic instead of stacking every spectacle motif. Give castles, ruins, bridges, roads, towers, and settlements usable construction, scale references, entrances, supports, material wear, and cultural consistency. Make terrain physically motivated: water has a source and drainage path, lava follows gravity and heat effects, ice/snow accumulates on plausible surfaces, floating land masses have an intentional rule if present. Use one dominant light source with limited material-based secondary glow; simplify far distance with atmosphere and broad value shapes. Avoid random spires, repeated ruins, impossible waterfalls, unreadable kitbash, glowing cracks everywhere, equal detail density, and castle/aurora/moon/lava/waterfall/floating-island spectacle all at once.
+```
+
 ### Key Art / Poster Art
 
 Use for promotional hero images.

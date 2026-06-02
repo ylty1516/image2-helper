@@ -152,6 +152,27 @@ Prompt cue:
 Anime scenic-background audit: build the scene as an observed place, not an anime wallpaper checklist. Use one coherent weather/light event; broad hand-painted cloud masses with selective edge light; imperfect local reflections broken by puddle edges, tile seams, surface roughness, grime, and wet/dry patches; functional station/shrine/rooftop/countryside objects with believable construction and ordinary wear; grounded character contact and scene-specific gesture. No fake signs, no mirror gloss everywhere, no over-detailed clouds across the whole sky, no stacked sunset/rainbow/stars/snow/birds spectacle, and no iconic scenery props used only as decoration.
 ```
 
+## Epic Fantasy Landscape Audit
+
+Use this when a fantasy or concept-art landscape feels like a generic AI panorama: ice kingdom, lava fortress, floating city, waterfall valley, ruined temple, aurora mountains, celestial castle, or massive world vista.
+
+Check:
+
+- there is one main worldbuilding hook, not every fantasy landmark at once
+- terrain has physical cause: erosion, water source, river drainage, lava flow, ice formation, snow accumulation, cliff stability
+- architecture has function: entrances, roads, bridges, stairs, supports, defenses, settlements, scale references
+- repeated towers, arches, spires, ruins, and bridges vary by purpose rather than copy-paste decoration
+- light hierarchy is coherent: one dominant light source and only justified secondary glow from lava, aurora, moon, crystal, or water
+- atmospheric perspective reduces far detail, contrast, and saturation
+- foreground/midground/background have different detail densities and large readable value masses
+- fantasy elements have internal rules: floating islands, glowing rivers, crystal forests, or impossible ruins must imply a consistent cause
+
+Prompt cue:
+
+```text
+Epic fantasy landscape audit: make the panorama a believable world, not a spectacle checklist. Use one clear worldbuilding hook; terrain shaped by erosion, water source/drainage, gravity, lava heat, ice/snow accumulation, and cliff stability; architecture with usable entrances, paths, bridges, supports, defenses, scale references, material wear, and cultural consistency; one dominant light source with limited material-based secondary glow; atmospheric perspective that simplifies far distance. Avoid castle/aurora/moon/lava/waterfall/floating-island motifs all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail density across the whole image.
+```
+
 ## Common AI Failures
 
 | Failure | Fix |

@@ -21,6 +21,7 @@ Use this section as a fast search map. If the user's wording or inspected image 
 | Hand-drawn anime repair | 手绘感, 真人画师, 动画感, cel, genga, douga, linework, cel shadow, flat color, hand-painted, not hand-drawn enough | `anime-handdrawn-look.md` |
 | Cyber/neon anime template | 赛博, 霓虹, 蓝紫, cyber anime, neon, floating UI, fake code, crystal, shards, butterflies, constellation, micro-detail, glow everywhere | `anime-handdrawn-look.md` then `failure-feedback-fixes.md` |
 | Anime wallpaper sky/scenery | 动漫壁纸感, 天空太AI, 新海模板, 风景壁纸, 夕阳, 彩虹, 雪景, 屋顶, 海边车站, 神社, torii, rooftop, station, spectacular sky, mirror reflections | `anime-handdrawn-look.md` then `background-integrity.md` |
+| Epic fantasy landscape wallpaper | 史诗奇幻, 奇幻风景, 奇幻壁纸, 冰雪王国, 熔岩城堡, 浮岛, 天空城, 极光, 月亮, 瀑布群, lava fortress, ice kingdom, floating islands, fantasy panorama, epic landscape, generic epic landscape | `style-expansion-pack.md` then `background-integrity.md` |
 | Background/place logic | 背景假, 场景不真实, 假招牌, unreadable signs, fake signage, props melt, architecture, perspective, station hardware, railing, roof supports | `background-integrity.md` |
 | Reflection/material over-polish | 镜面反光, 反光太满, 地面太亮, wet pavement, mirror gloss, puddle, tile seams, surface roughness, wet/dry patches, material logic | `background-integrity.md` then `failure-feedback-fixes.md` |
 | Detail/focal hierarchy | 太满, 太碎, 细节堆满, no focal hierarchy, equal detail density, cluttered, meaningless micro-detail, no quiet area, no negative space | `failure-feedback-fixes.md` then `mainstream-style-composition.md` |
@@ -77,7 +78,19 @@ Use language:
 Give every visible background object a real function, scale, construction, material, contact point, and perspective logic. Simplify distant details with paint, not with melted forms or fake text.
 ```
 
-### 5. Detail Density / Composition Discipline
+### 5. Epic Fantasy World Logic
+
+Problem:
+
+- fantasy landscapes stack castle/aurora/moon/lava/waterfall/floating-island spectacle without scale, terrain, light, or architecture logic
+
+Use language:
+
+```text
+Use one worldbuilding hook and one terrain/light logic. Give architecture entrances, paths, supports, defenses, scale references, material wear, and cultural consistency. Make water, lava, ice, cliffs, and floating land obey a clear internal rule. Use atmospheric perspective and avoid equal detail density across the entire panorama.
+```
+
+### 6. Detail Density / Composition Discipline
 
 Problem:
 
@@ -89,7 +102,7 @@ Use language:
 Reserve high detail for the focal face/hands/main prop; simplify secondary surfaces; preserve quiet areas and readable silhouettes; remove decorative effects that do not support the story.
 ```
 
-### 6. Character-Scene Integration
+### 7. Character-Scene Integration
 
 Problem:
 

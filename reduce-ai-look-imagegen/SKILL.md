@@ -81,6 +81,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | pose, hand, action, realism pass, reusable prompt recipe | `references/prompt-recipes.md` |
 | anime battle, weapon clash, magic combat, martial arts, monster fight | `references/combat-action-anime.md` |
 | anime/cel/genga/hand-painted background | `references/anime-handdrawn-look.md` |
+| epic fantasy landscape, fantasy panorama, ice/lava kingdom, floating islands, concept wallpaper | `references/style-expansion-pack.md` then `references/background-integrity.md` |
 | composition, framing, layout, mainstream style completion | `references/mainstream-style-composition.md` |
 | choose style by use case | `references/style-selection-and-use-cases.md` |
 | broad visual style classification | `references/style-taxonomy.md` |

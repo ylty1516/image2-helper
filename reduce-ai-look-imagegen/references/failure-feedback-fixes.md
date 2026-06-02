@@ -71,6 +71,28 @@ Prompt patch:
 Reduce the anime-wallpaper feel. Use one specific place and one weather/light event instead of stacking sunset, rainbow, stars, snow, birds, and mirror reflections. Paint the sky with broad cloud masses, selective edge light, and quiet negative areas. Make reflections local and broken by puddle edges, tile seams, surface roughness, grime, and wet/dry patches. Give station/shrine/rooftop props functional construction and ordinary wear; leave signs blank unless exact text is provided. Make the character belong to the scene with grounded feet, specific posture, wind/rain response, and a clear story beat. Avoid over-detailed clouds everywhere, blanket orange-pink or blue-violet grading, generic wistful poses, and iconic scenery props used only as decoration.
 ```
 
+### "Epic fantasy wallpaper" / "Fantasy landscape feels AI"
+
+Likely causes:
+
+- castle, ruins, mountains, aurora, moon, waterfalls, lava, floating islands, glowing crystals, and dramatic clouds stacked together
+- terrain and architecture are decorative rather than physically or functionally designed
+- scale system is unclear across towers, bridges, cliffs, waterfalls, cities, and mountains
+- every distance layer is equally sharp, detailed, glowing, and dramatic
+- multiple light sources compete without hierarchy
+
+Fix:
+
+```text
+Turn the fantasy panorama into a designed world: one concept hook, one terrain logic, functional architecture, scale references, coherent light hierarchy, atmospheric distance, and controlled detail density.
+```
+
+Prompt patch:
+
+```text
+Reduce the generic epic-fantasy wallpaper feel. Use one clear worldbuilding hook instead of stacking castle, aurora, moon, lava, waterfalls, floating islands, ruins, and glowing crystals. Give terrain physical cause: erosion, water source and drainage, lava following gravity, ice/snow accumulation, cliff stability. Give architecture function: entrances, paths, bridges, supports, defenses, settlements, scale references, material wear, and cultural consistency. Use one dominant light source with limited material-based secondary glow; simplify far distance with atmosphere and broad value shapes. Avoid random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail density across foreground, midground, and background.
+```
+
 ### "Too glossy / oily"
 
 Likely causes:
