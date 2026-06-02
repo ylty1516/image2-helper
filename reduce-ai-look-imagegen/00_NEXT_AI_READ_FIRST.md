@@ -12,8 +12,9 @@ Read this file first when taking over the project.
 
 There are two image-task channels:
 
-1. If the user explicitly asks for lower AI feel, prompt refinement, image diagnosis, natural pose/action correction, or says the result is too AI/oily/fake/3D/generic, use this skill.
-2. If the user only asks to generate an image without an anti-AI or refinement goal, route to the available image generation skill/tool first, such as `plus-imagegen`, `gpt-image`, or the host-native image tool.
+1. For any image generation request, use this skill as a lightweight preflight before calling imagegen.
+2. If the user explicitly asks for lower AI feel, prompt refinement, image diagnosis, natural pose/action correction, or says the result is too AI/oily/fake/3D/generic, use a deeper focused pass.
+3. If the user only asks to generate an image without an anti-AI or refinement goal, keep this skill compact: preserve format/subject/style, add perspective/contact/background integrity where relevant, then route to the available image generation skill/tool such as `plus-imagegen`, `gpt-image`, or the host-native image tool.
 
 Do not make this skill the default path for every image request.
 
@@ -47,7 +48,7 @@ Then load specialized references only when needed:
 
 - `references/INDEX.md` for a quick map of the reference folder and current anti-AI trigger/search words
 - `references/fast-path.md` for the cheapest route and compact prompts
-- `references/auto-anti-ai-expansion.md` for silently adding anti-AI constraints and repairing fuzzy taste words when the user gives a generation phrase
+- `references/auto-anti-ai-expansion.md` for the universal image-generation preflight, silently adding anti-AI constraints and repairing fuzzy taste words
 - `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/perspective-geometry.md` for the global camera/horizon/vanishing/ground-plane/scale/occlusion repair layer that every visible-space image should receive
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch

@@ -1,22 +1,28 @@
 # Auto Anti-AI Expansion
 
-Use this when the user provides an image-generation phrase that contains anti-AI trigger words, vague taste words, or style-risk words. The goal is to silently enrich the final generation prompt with concrete low-AI constraints while preserving the user's original intent.
+Use this for every image-generation phrase before calling imagegen. The goal is to silently enrich the final generation prompt with compact low-AI, perspective, physical-logic, and fuzzy-word constraints while preserving the user's original intent.
 
 ## Core Behavior
 
-When trigger words appear, automatically add a compact anti-AI support layer in the background. Do not ask the user to provide the missing craft terms. Do not merely repeat "less AI." Translate the request into visual mechanics.
+Always add a minimal preflight layer for visible-space logic, format preservation, and obvious fuzzy wording. When trigger words appear, add the matching compact anti-AI support layer in the background. Do not ask the user to provide missing craft terms. Do not merely repeat "less AI." Translate the request into visual mechanics.
 
 Default route:
 
 ```text
-user phrase -> detect trigger words -> preserve format/subject/style -> add 1-2 anti-AI category patches -> repair top 1-2 fuzzy words -> produce/generate with the enriched prompt
+user phrase -> preserve format/subject/style -> add universal preflight -> detect trigger words -> add 0-2 anti-AI category patches -> repair top 0-2 fuzzy words -> produce/generate with the enriched prompt
 ```
 
 If the user asks for the final prompt, show the enriched prompt. If the user asks only for an image, use the enriched prompt silently and keep chat explanation short.
 
 ## Trigger Detection
 
-First scan `INDEX.md` for quick trigger/search words. Then load the focused reference only if the trigger is specific.
+No trigger words are required for minimal preflight. First scan `INDEX.md` for quick trigger/search words. Then load the focused reference only if the trigger is specific.
+
+Always-on minimal preflight:
+
+```text
+Preserve the requested format, subject, style, aspect ratio, and required props. Add perspective lock when space is visible, physical contact/material logic, focal hierarchy, and scene/background integrity when relevant. Repair only the strongest vague taste words.
+```
 
 High-priority triggers:
 

@@ -1,6 +1,6 @@
 ---
 name: reduce-ai-look-imagegen
-description: Improve image generation/editing prompts to reduce AI look, generic polish, anatomy/action errors, malformed background/non-focus details, visual inconsistency, unwanted objects, weak composition, perspective/scale/ground-plane errors, style mismatch, token waste, or vague taste words. Use for de-AI, natural/hand-drawn/realistic fixes, better composition/framing, perspective repair, faster prompting without quality loss, pose/hand/body repair, background integrity, prompt-image mismatch, behavior/expression/viewpoint/environment fixes, diagnosis, scoring, or fuzzy taste translation. For ordinary image generation without refinement, composition, pose, background, inconsistency, or style needs, route to imagegen instead.
+description: Universal preflight optimizer for image generation and image editing prompts. Improve prompts to reduce AI look, generic polish, anatomy/action errors, malformed background/non-focus details, visual inconsistency, unwanted objects, weak composition, perspective/scale/ground-plane errors, style mismatch, token waste, or vague taste words. Use for any image generation request before calling imagegen, plus de-AI, natural/hand-drawn/realistic fixes, better composition/framing, perspective repair, pose/hand/body repair, background integrity, prompt-image mismatch, behavior/expression/viewpoint/environment fixes, diagnosis, scoring, or fuzzy taste translation.
 ---
 
 # Reduce AI Look Imagegen
@@ -12,7 +12,7 @@ Act as a lean router and prompt optimizer. Preserve image quality while reducing
 Default path:
 
 ```text
-route -> load the smallest useful reference -> write one compact prompt/edit instruction -> call imagegen/edit tool when available
+image request -> lightweight preflight -> load the smallest useful reference -> write one compact prompt/edit instruction -> call imagegen/edit tool when available
 ```
 
 Do not load the full reference library. Do not print long diagnostics before generation unless the user asks for analysis.
@@ -21,6 +21,7 @@ Do not load the full reference library. Do not print long diagnostics before gen
 
 Use this skill for:
 
+- any image generation or image editing request as a lightweight preflight before imagegen
 - lower-AI / less fake / less glossy / less plastic / less 3D results
 - prompt rewrite, image diagnosis, before/after scoring, or style correction
 - pose, hand, action, anatomy, object contact, or perspective repair
@@ -32,7 +33,7 @@ Use this skill for:
 - composition/framing/layout improvement
 - lower token use or faster image prompting without quality loss
 
-If the user only asks for ordinary image creation, route to the available image generation skill/tool first. Use this skill only when refinement, diagnosis, anti-AI, composition, pose, background integrity, consistency, or style translation is part of the task.
+If the user only asks for ordinary image creation, use this skill as a compact preflight layer, then route to the available image generation skill/tool. Keep the preflight minimal unless the user asks for refinement, diagnosis, anti-AI, composition, pose, background integrity, consistency, or style translation.
 
 Use host-native / Plus-style image generation or editing when available. Do not call API-key CLIs or third-party image APIs unless the user explicitly asks for that workflow.
 
@@ -57,7 +58,7 @@ Never save tokens by deleting hard format, subject identity, required style/medi
 ## Fast Workflow
 
 1. Classify the request: generation, edit, prompt rewrite, image diagnosis, style selection, consistency cleanup, composition pass, or speed/token pass.
-2. If the user provides a generation phrase with anti-AI trigger words or fuzzy taste words, load `references/auto-anti-ai-expansion.md` and silently enrich the prompt before generation.
+2. For any generation phrase, load `references/auto-anti-ai-expansion.md` and silently enrich the prompt before generation; use deeper references only when triggers or risks require them.
 3. Pick the route from the matrix below.
 4. Load only the selected reference. If still ambiguous, load one additional focused reference.
 5. Produce the shortest output that preserves the quality floor.
@@ -69,7 +70,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 
 | Task signal | Load |
 |---|---|
-| ordinary image generation only | no reference; route to imagegen |
+| ordinary image generation only | `references/auto-anti-ai-expansion.md`, then route to imagegen |
 | generation phrase contains anti-AI trigger words or fuzzy taste words | `references/auto-anti-ai-expansion.md` |
 | quick trigger/search words for current anti-AI categories | `references/INDEX.md` |
 | lower AI feel, simple rewrite | `references/fast-path.md` |

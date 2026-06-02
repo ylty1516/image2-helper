@@ -6,6 +6,7 @@ Use this file only when you need a quick map of the reference folder.
 
 | Need | File |
 |---|---|
+| Any image generation request: universal lightweight preflight before imagegen | `auto-anti-ai-expansion.md` |
 | Quick lower-AI rewrite | `fast-path.md` |
 | Auto-add anti-AI constraints and repair fuzzy words in a generation phrase | `auto-anti-ai-expansion.md` |
 | Lower token use without quality loss | `quality-preserving-speed.md` |

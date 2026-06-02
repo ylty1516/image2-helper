@@ -1,12 +1,24 @@
 # Routing And Triggering
 
-Use this reference before applying the skill when the user's request could be ordinary image generation.
+Use this reference before applying the skill when routing an image generation or image editing request.
 
-## Two Trigger Channels
+## Two Use Levels
 
-### Channel 1: Explicit Anti-AI / Refinement
+### Level 1: Universal Image Preflight
 
-Use `reduce-ai-look-imagegen` when the user says or implies:
+Use `reduce-ai-look-imagegen` for every image generation request as a lightweight preflight before calling imagegen.
+
+Minimal preflight should:
+
+- preserve the requested format, subject, aspect ratio, style, and required props
+- add perspective/ground-plane/contact/scale logic when visible space exists
+- add background/scene integrity when non-focus details are visible
+- repair only the strongest vague taste words
+- keep explanation short or silent when the user only wants an image
+
+### Level 2: Explicit Anti-AI / Refinement
+
+Use a deeper `reduce-ai-look-imagegen` pass when the user says or implies:
 
 - 降低AI感
 - 去AI味
@@ -32,7 +44,7 @@ Use `reduce-ai-look-imagegen` when the user says or implies:
 
 Also use it when the user provides an existing image and asks for critique, refinement, style correction, or a better edit prompt.
 
-### Channel 2: Ordinary Image Generation
+## Ordinary Image Generation
 
 If the user only asks for a new image, such as:
 
@@ -44,13 +56,13 @@ If the user only asks for a new image, such as:
 - 画四格漫画
 - 做游戏开始页
 
-and does not ask for anti-AI reduction, quality diagnosis, style correction, or prompt refinement, route to the available image-generation skill/tool first:
+and does not ask for anti-AI reduction, quality diagnosis, style correction, or prompt refinement, still run this skill as a minimal preflight, then route to the available image-generation skill/tool:
 
 - `plus-imagegen` for Codex/ChatGPT hosted image generation
 - `gpt-image` when the user explicitly wants that CLI/API workflow
 - host-native image tool when available
 
-Do not let this skill override the user's requested format or become the default for every image task.
+Do not let this skill override the user's requested format. It is now the default preflight for image tasks, but it should stay compact unless the user asks for deeper refinement.
 
 ## Routing Decision
 
@@ -58,9 +70,9 @@ Use this quick decision:
 
 ```text
 Does the user primarily want image creation?
-  Yes -> Did they explicitly ask for lower AI feel, repair, diagnosis, or prompt refinement?
-    Yes -> Use reduce-ai-look-imagegen, then generate/edit if needed.
-    No -> Use image generation skill/tool directly.
+  Yes -> Use reduce-ai-look-imagegen as preflight.
+    If anti-AI/repair/diagnosis/fuzzy/style risk is explicit -> load focused references.
+    If not explicit -> use auto-anti-ai-expansion only, then generate/edit.
   No -> If they ask for prompt/style/quality analysis, use reduce-ai-look-imagegen.
 ```
 
@@ -71,7 +83,7 @@ Sometimes use both:
 1. Use `reduce-ai-look-imagegen` to parse intent and build a low-AI prompt.
 2. Use `plus-imagegen` or the native image tool to generate the image.
 
-Only do this when anti-AI or style-translation is actually part of the user's request.
+Do this for all image generation requests, but keep the preflight small for ordinary requests.
 
 ## Examples
 
@@ -84,7 +96,7 @@ User:
 Route:
 
 ```text
-Ordinary image generation. Use imagegen skill/tool. Do not invoke reduce-ai-look-imagegen unless the user complains about the result.
+Ordinary image generation. Use reduce-ai-look-imagegen as a minimal preflight to preserve watercolor medium, avatar format, perspective/contact if relevant, then call imagegen.
 ```
 
 User:
@@ -108,7 +120,7 @@ User:
 Route:
 
 ```text
-Ordinary generation with a hard format constraint. Use imagegen. If prompt planning is needed, use intent parsing only to preserve four panels.
+Ordinary generation with a hard format constraint. Use reduce-ai-look-imagegen as preflight to preserve four panels and reading order, then call imagegen.
 ```
 
 User:
