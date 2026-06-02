@@ -12,6 +12,7 @@ Explicit lower-AI/refinement request -> use this fast path.
 Existing image critique/edit -> identify 1-3 visible failures, then write edit prompt.
 Ambiguous format word -> preserve format first, then style.
 Extra/unwanted object or prompt-image mismatch -> use inconsistency cleanup.
+Malformed background/non-focus detail -> use background integrity.
 ```
 
 ## Minimal Intent Parse
@@ -38,6 +39,7 @@ Style: [one medium/process with 2-3 concrete cues].
 Scene: [specific setting or use case].
 Light/color: [one motivated light or value model].
 Physical logic: [pose/contact/material/scale constraint].
+Scene integrity: [visible background and secondary details receive equal quality scrutiny when relevant].
 Avoid: [top 3 style-specific AI failure modes].
 ```
 
@@ -46,7 +48,7 @@ Avoid: [top 3 style-specific AI failure modes].
 Never compress away:
 
 ```text
-hard format, subject identity, one base medium/style, one composition or crop/safe-area plan, one light/value plan, one physical/action/material logic constraint, and the top 2-3 failure guards.
+hard format, subject identity, one base medium/style, one composition or crop/safe-area plan, one light/value plan, one physical/action/material logic constraint, background/non-focus quality when visible, and the top 2-3 failure guards.
 ```
 
 ## Common Fast Translations
@@ -105,6 +107,12 @@ Choose one focal anchor, one composition architecture, one viewer path, and one 
 Compare against the original prompt, remove unrequested extra props, preserve required identity/outfit/layout, align expression with action, align viewpoint with environment, and do not add replacement clutter.
 ```
 
+背景也要精修:
+
+```text
+Treat the background with the same quality standard as the focal subject: rich, realistic, structurally plausible objects, secondary figures, props, architecture, perspective, light direction, material texture, and contact shadows, with no warped forms, malformed people, fake text, or bizarre actions.
+```
+
 四格漫画:
 
 ```text
@@ -127,6 +135,7 @@ If user says:
 - bad hands -> natural finger grouping, thumb placement, wrist angle, object contact
 - pose weird -> body line, support point, joint range, gravity
 - bad composition -> focal anchor, viewer path, output-safe crop, controlled negative space
+- malformed background -> give background the same quality scrutiny as the focal subject: real props, architecture, secondary figures, light, contact, material, and action logic
 - extra prop -> remove unrequested object, preserve required props only
 - expression mismatch -> align face/gaze with action and mood
 - viewpoint mismatch -> unify camera height, floor plane, horizon, light direction

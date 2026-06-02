@@ -16,6 +16,7 @@ Keep:
 - one composition plan
 - one light/value plan
 - one physical/action/material constraint
+- background/non-focus quality when visible
 - top 2-3 avoid constraints tied to known failure modes
 
 Cut:
@@ -112,6 +113,7 @@ must_keep:
   - required props / forbidden props
   - composition or safe area when the output is UI, poster, cover, wallpaper, comic, icon, or product
   - one physical logic constraint for people, products, hands, contact, or perspective
+  - background/non-focus quality when visible background objects, secondary figures, crowds, props, architecture, or signage matter
 ```
 
 If any `must_keep` field is missing, ask one short question only when guessing would likely break the output. Otherwise infer conservatively.
@@ -134,6 +136,7 @@ Do not remove:
 - the style medium
 - the composition plan
 - the main light/value logic
+- background/non-focus quality when visible
 - the top failure guard
 
 ## Fast Decision Matrix

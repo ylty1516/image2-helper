@@ -23,6 +23,7 @@ It has grown into a visual style reasoning system. It can:
 - rewrite prompts with stronger medium/process language
 - remove unreasonable extra objects and fix prompt-image inconsistency
 - correct implausible poses and action logic
+- enforce background and non-focus quality with the same scrutiny as the focal subject
 - reduce glossy/3D/anime-plastic finish
 - classify many visual styles
 - improve mainstream style selection through composition-first framing
@@ -46,6 +47,7 @@ Then load specialized references only when needed:
 - `references/fast-path.md` for the cheapest route and compact prompts
 - `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
+- `references/background-integrity.md` for rich, realistic background/non-focus quality, secondary figures, props, architecture, and scene logic
 - `references/anime-handdrawn-look.md` for anime, cel, genga/layout, hand-painted background looks
 - `references/routing-and-triggering.md` for deciding whether this skill should run or whether ordinary image generation should be used
 - `references/intent-and-fuzzy-language.md` for user purpose parsing, fuzzy taste words, and hard format locks

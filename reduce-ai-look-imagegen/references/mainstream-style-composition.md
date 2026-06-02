@@ -300,6 +300,7 @@ Before returning a prompt, check:
 - Is detail density controlled instead of spread everywhere?
 - Is negative space intentional, not empty by accident?
 - Do foreground, midground, and background share perspective and lighting?
+- Do background/secondary figures, props, architecture, and non-focus details receive the same quality scrutiny as the focal subject?
 - Does the crop preserve hands, feet, props, logo/title safe areas, and action direction?
 - Are effects behind or around the silhouette instead of hiding anatomy?
 - If the image is for UI, are buttons/text/logo areas readable?

@@ -29,6 +29,7 @@ reduce-ai-look-imagegen/
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
 | 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
 | 表情、行为、视角、环境不匹配 | 对齐表情和动作、视线和目标、镜头和环境透视 |
+| 主角好看但背景糊弄、扭曲或假 | 背景与主角享有同等质量标准，检查次要人物、物品、建筑、透视、光影和动作逻辑 |
 | 构图弱、画面散、不像专业图 | 先确定画幅、焦点、视觉路径、留白、安全区和前中后景 |
 | 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
 | 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
@@ -216,6 +217,7 @@ Avoid: single-poster composition, fake dialogue text, changing character design,
 - 构图或安全区
 - 光线/色彩逻辑
 - 动作、接触、材质或透视逻辑
+- 可见背景、次要人物、物品、建筑和非焦点细节的同等质量约束
 - 2-3 条最关键的失败规避项
 
 相关文件：
@@ -249,6 +251,8 @@ reduce-ai-look-imagegen/
   examples/
     composition-style-case.md
     composition-style-map.png
+    background-integrity-case.md
+    background-integrity-map.svg
     inconsistency-cleanup-case.md
     inconsistency-cleanup-flow.png
   references/
@@ -257,6 +261,7 @@ reduce-ai-look-imagegen/
     routing-and-triggering.md
     intent-and-fuzzy-language.md
     failure-feedback-fixes.md
+    background-integrity.md
     inconsistency-cleanup.md
     quality-preserving-speed.md
     mainstream-style-composition.md
@@ -303,6 +308,7 @@ reduce-ai-look-imagegen/examples/lean-routing-case.md
 - `routing-and-triggering.md`：判断什么时候该用这个 skill
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
+- `background-integrity.md`：让背景、次要人物、物品、建筑和非焦点细节按主角同等质量标准处理
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致
 - `quality-preserving-speed.md`：在质量不变或更好的前提下降低 token 和思考时间
 - `mainstream-style-composition.md`：补全主流风格和构图决策，处理海报、壁纸、游戏 UI、封面、头像、产品图等画面结构
@@ -375,6 +381,28 @@ reduce-ai-look-imagegen/examples/inconsistency-cleanup-case.md
 ```
 
 ![去除不合理元素示例](reduce-ai-look-imagegen/examples/inconsistency-cleanup-flow.png)
+
+## 示例：背景与非焦点细节同等质量
+
+用户说：
+
+```text
+主角已经很好，但背景人物、道具、建筑不能糊弄，必须和主角一样真实可信。
+```
+
+Skill 会加入底层质量约束：
+
+```text
+Scene integrity: the focal subject remains compositionally primary, but the background is generated with equal quality support: rich, realistic, structurally plausible objects and secondary figures, aligned to the same perspective and light, with no melted props, malformed crowd figures, fake text, or bizarre unrelated actions.
+```
+
+可视化案例见：
+
+```text
+reduce-ai-look-imagegen/examples/background-integrity-case.md
+```
+
+![背景完整性示例](reduce-ai-look-imagegen/examples/background-integrity-map.svg)
 
 ## 示例：补全主流风格和构图
 

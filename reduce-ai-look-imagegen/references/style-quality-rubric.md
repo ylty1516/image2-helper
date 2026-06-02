@@ -53,7 +53,7 @@ Common failures:
 
 Is detail placed where it matters?
 
-5 means focal detail is rich enough and secondary areas are simplified.
+5 means detail density supports the composition without reducing construction quality in secondary areas. The focal point can be sharper or more detailed, but visible background and non-focus elements still remain believable.
 
 Common failures:
 
@@ -61,6 +61,20 @@ Common failures:
 - cluttered background
 - overdesigned costume
 - detail hiding anatomy or silhouette
+
+### Background / Non-Focus Quality
+
+Do secondary figures, props, architecture, environmental objects, and other non-focus areas remain plausible?
+
+5 means the background receives the same quality scrutiny as the focal subject: background people have natural posture and scene-appropriate action, objects keep recognizable function and material logic, architecture follows perspective, signage/text does not become fake symbols, and realistic scenes contain rich lived-in environmental detail.
+
+Common failures:
+
+- main subject is polished but background people have malformed limbs
+- chairs, cups, vehicles, buildings, or stairs melt into impossible shapes
+- background perspective contradicts the floor plane or horizon
+- fake text/logos appear in signs or posters
+- secondary characters perform bizarre actions unrelated to the scene
 
 ### Light / Value Logic
 
@@ -103,10 +117,10 @@ Common failures:
 
 ## Score Interpretation
 
-- **30-35**: strong. Generate or keep.
-- **23-29**: usable. Fix the lowest two axes.
-- **16-22**: generic or unstable. Rewrite with a clearer base medium.
-- **7-15**: likely AI soup. Reclassify style from scratch.
+- **35-40**: strong. Generate or keep.
+- **27-34**: usable. Fix the lowest two axes.
+- **19-26**: generic or unstable. Rewrite with a clearer base medium.
+- **8-18**: likely AI soup. Reclassify style from scratch.
 
 ## Medium-Specific Checks
 
@@ -297,6 +311,7 @@ style_validation:
     style_hierarchy: 0
     production_plausibility: 0
     detail_control: 0
+    background_non_focus_quality: 0
     light_value_logic: 0
     composition_use_fit: 0
     anti_ai_specificity: 0
@@ -306,6 +321,7 @@ style_validation:
     style_hierarchy: 0
     production_plausibility: 0
     detail_control: 0
+    background_non_focus_quality: 0
     light_value_logic: 0
     composition_use_fit: 0
     anti_ai_specificity: 0
