@@ -53,6 +53,7 @@ light_color: "one motivated light/value/color model"
 perspective_geometry: "one camera height, horizon line, perspective system, ground/floor plane, scale anchors, contact/occlusion logic when visible"
 physical_logic: "pose/contact/material/perspective constraint"
 scene_integrity: "background receives the same quality scrutiny as the focal subject; secondary figures, props, architecture, and non-focus actions remain rich and plausible"
+source_background_lock: "for edits/composites using an existing real photo or background plate, preserve the background exactly: crop, objects, positions, perspective, exposure, color, shadows, highlights, reflections, clutter, noise, and existing light must not change"
 guards: "top 2-3 task-specific failure modes"
 ```
 
@@ -120,6 +121,12 @@ For image edits, add:
 Preserve: [identity, layout, pose intent, required style].
 Change only: [requested fixes].
 Do not alter: [important unchanged areas].
+```
+
+For real-photo/anime-real composites, make background preservation a hard edit constraint:
+
+```text
+Background plate lock: preserve the existing background exactly, including every object, object position, crop, perspective, exposure, color temperature, original shadows, highlights, reflections, clutter, grain, and compression. Do not clean, relight, repaint, stylize, replace, blur, sharpen, denoise, rearrange, add, remove, or move anything in the background. The character must adapt to the background; the background must not adapt to the character.
 ```
 
 ## Output Rules

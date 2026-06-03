@@ -92,7 +92,7 @@ Anime quality support: clean animation contours, flat local color fields, select
 For anime character real-scene / screen integration:
 
 ```text
-Anime-real integration support: match the real scene camera plate, scale anchors, horizon/ground plane, light direction, color temperature, exposure, shadow softness, contact shadow, ambient occlusion, reflected color, edge softness, lens grain/compression, and foreground occlusion. Give the anime character a clear physical anchor such as feet on floor, hand on desk, body behind monitor bezel, reflection on glass, or screen glow on nearby surfaces. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the room, and clean pasted edges.
+Anime-real integration support: lock the existing real background plate first. Preserve every background object, object position, crop, camera perspective, exposure, color temperature, original light, original shadows, highlights, reflections, clutter, grain, and compression. Do not clean, relight, repaint, stylize, replace, blur, sharpen, denoise, rearrange, add, remove, or move anything in the background. Then match the anime character layer to the real scene camera plate, scale anchors, horizon/ground plane, light direction, exposure, shadow softness, reflected color, edge softness, lens grain/compression, and foreground occlusion. Give the character a clear physical anchor such as feet on floor, hand on desk, body behind monitor bezel, or reflection on glass. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the room, changed background objects, changed room lighting, and clean pasted edges.
 ```
 
 For cyber/neon anime:

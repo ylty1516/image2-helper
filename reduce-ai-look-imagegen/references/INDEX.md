@@ -66,7 +66,7 @@ Problem:
 Use language:
 
 ```text
-Match the real scene camera plate: one camera height, lens perspective, scale anchors, shared light direction/color temperature, cast/contact shadows, ambient occlusion, reflected color, foreground occlusion, edge softness, grain/compression, and a clear physical anchor such as feet on floor, hand on desk, body behind bezel, or reflection on glass.
+Lock the existing real background plate first: preserve all objects, positions, crop, perspective, exposure, color temperature, original light, original shadows, highlights, reflections, clutter, texture, grain, and compression. Do not clean, relight, repaint, stylize, replace, add, remove, or move anything in the background. Then match the anime character layer to the real scene camera, scale, light response, contact/occlusion, edge softness, and grain.
 ```
 
 ### 4. Over-Decorated Cyber Anime

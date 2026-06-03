@@ -167,13 +167,13 @@ Likely causes:
 Fix:
 
 ```text
-Integrate the character into the real camera plate: shared perspective, scale anchors, physical contact/occlusion, matching light and shadow, edge softness, lens grain, reflected color, and display-surface physics when a screen is involved.
+First lock the existing background plate exactly, including objects, object positions, crop, exposure, color temperature, original light, original shadows, highlights, reflections, clutter, grain, and compression. Then integrate the character into the real camera plate by changing the character layer only: shared perspective, scale anchors, physical contact/occlusion, matching light response, edge softness, lens grain, reflected color, and display-surface physics when a screen is involved.
 ```
 
 Prompt patch:
 
 ```text
-Anime-real integration repair: match the real scene camera height, lens perspective, horizon/ground plane, scale anchors, crop, light direction, color temperature, exposure, shadow softness, and material response. Add a clear physical anchor: feet/hand/body contacting or being occluded by a real surface, monitor bezel, phone glass, desk object, wall, or foreground prop. Add contact shadow, ambient occlusion, reflected color, slight edge softness, grain/compression, and local color spill. For screen scenes, align to the screen plane, bezel, glass reflection, pixel grid, brightness falloff, and screen glow. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the environment, and impossible depth through the screen.
+Anime-real integration repair: preserve the existing real background exactly: all objects, positions, crop, camera perspective, exposure, color temperature, original light/shadows/highlights/reflections, clutter, texture, grain, and compression. Do not clean, relight, repaint, stylize, replace, blur, sharpen, denoise, rearrange, add, remove, or move anything in the background. Match the character layer to the real scene camera height, lens perspective, horizon/ground plane, scale anchors, crop, light direction, exposure, shadow softness, and material response. Add a clear physical anchor: feet/hand/body contacting or being occluded by a real surface, monitor bezel, phone glass, desk object, wall, or foreground prop. Add only localized character contact/occlusion effects where necessary; do not alter the room's original global lighting or existing object shadows. For screen scenes, align the character to the screen plane, bezel, glass reflection, pixel grid, brightness falloff, and screen glow without changing existing screen/glass/background details. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the environment, impossible depth through the screen, moved objects, changed room lighting, and any background repainting.
 ```
 
 ### "Perspective is wrong" / "Space feels warped"
