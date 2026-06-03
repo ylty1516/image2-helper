@@ -1,13 +1,13 @@
 ---
 name: reduce-ai-look-imagegen
-description: Universal preflight optimizer for image generation and image editing prompts. Improve prompts to reduce AI look, generic polish, anatomy/action errors, malformed background/non-focus details, visual inconsistency, unwanted objects, weak composition, perspective/scale/ground-plane errors, style mismatch, token waste, or vague taste words. Use for any image generation request before calling imagegen, plus de-AI, natural/hand-drawn/realistic fixes, better composition/framing, perspective repair, pose/hand/body repair, background integrity, prompt-image mismatch, behavior/expression/viewpoint/environment fixes, diagnosis, scoring, or fuzzy taste translation.
+description: Universal image-generation preflight and prompt quality controller. Improve prompts before imagegen for intent completion, fuzzy-word repair, style choice, composition/framing, perspective/scale/ground-plane logic, pose/hand/action clarity, anatomy, object contact, background/prop integrity, prompt-image consistency, unwanted object prevention, anime-character real-scene/screen integration, token efficiency, and lower-AI/less generic results. Use for any image generation or image editing request before calling imagegen.
 ---
 
-# Reduce AI Look Imagegen
+# Imagegen Preflight Quality Controller
 
 ## Prime Directive
 
-Act as a lean router and prompt optimizer. Preserve image quality while reducing AI-looking artifacts, prompt ambiguity, and unnecessary context loading.
+Act as a lean image-generation router and prompt quality controller. Preserve the user's intent while improving every important generation layer: format, subject, style, composition, perspective, physical logic, scene integrity, consistency, token efficiency, and anti-AI polish control.
 
 Default path:
 
@@ -22,18 +22,21 @@ Do not load the full reference library. Do not print long diagnostics before gen
 Use this skill for:
 
 - any image generation or image editing request as a lightweight preflight before imagegen
+- intent completion, prompt enrichment, fuzzy-word repair, and hard format preservation
+- style selection, style translation, style mixing, and visual taste clarification
+- composition/framing/layout improvement
 - lower-AI / less fake / less glossy / less plastic / less 3D results
 - prompt rewrite, image diagnosis, before/after scoring, or style correction
 - pose, hand, action, anatomy, object contact, or perspective repair
 - horizon, vanishing point, floor/ground plane, scale, occlusion, or spatial geometry repair
-- anime battle/action clarity, weapon clash, spell combat, martial arts, or monster-fight anti-AI repair
+- anime battle/action clarity, weapon clash, spell combat, martial arts, or monster-fight repair
 - extra/unwanted props, prompt-image mismatch, expression/action mismatch, viewpoint/environment mismatch
 - malformed background objects, secondary figures, crowds, architecture, props, or non-focus details
+- anime character integrated into a real photo, room, desktop, phone, monitor, screen, AR, or display scene
 - fuzzy taste words such as premium, atmospheric, story-rich, cinematic, cute, clean, realistic, hand-drawn
-- composition/framing/layout improvement
 - lower token use or faster image prompting without quality loss
 
-If the user only asks for ordinary image creation, use this skill as a compact preflight layer, then route to the available image generation skill/tool. Keep the preflight minimal unless the user asks for refinement, diagnosis, anti-AI, composition, pose, background integrity, consistency, or style translation.
+If the user only asks for ordinary image creation, use this skill as a compact preflight layer, then route to the available image generation skill/tool. Keep the preflight minimal unless the user asks for refinement, diagnosis, anti-AI, composition, pose, perspective, background integrity, consistency, style translation, or a special integration case.
 
 Use host-native / Plus-style image generation or editing when available. Do not call API-key CLIs or third-party image APIs unless the user explicitly asks for that workflow.
 
@@ -71,8 +74,8 @@ Pick the first matching row unless the task clearly has two separate risks:
 | Task signal | Load |
 |---|---|
 | ordinary image generation only | `references/auto-anti-ai-expansion.md`, then route to imagegen |
-| generation phrase contains anti-AI trigger words or fuzzy taste words | `references/auto-anti-ai-expansion.md` |
-| quick trigger/search words for current anti-AI categories | `references/INDEX.md` |
+| generation phrase contains fuzzy taste words, spatial risks, style risks, consistency risks, or anti-AI trigger words | `references/auto-anti-ai-expansion.md` |
+| quick trigger/search words for current quality-control categories | `references/INDEX.md` |
 | lower AI feel, simple rewrite | `references/fast-path.md` |
 | lower token use / faster thinking without quality loss | `references/quality-preserving-speed.md` |
 | should this skill run? | `references/routing-and-triggering.md` |
@@ -85,6 +88,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | pose, hand, action, realism pass, reusable prompt recipe | `references/prompt-recipes.md` |
 | anime battle, weapon clash, magic combat, martial arts, monster fight | `references/combat-action-anime.md` |
 | anime/cel/genga/hand-painted background | `references/anime-handdrawn-look.md` |
+| anime character in real scene, phone, monitor, display, AR, desktop, room, photo composite | `references/anime-character-real-scene-integration.md` |
 | epic fantasy landscape, fantasy panorama, ice/lava kingdom, floating islands, concept wallpaper | `references/style-expansion-pack.md` then `references/background-integrity.md` |
 | composition, framing, layout, mainstream style completion | `references/mainstream-style-composition.md` |
 | choose style by use case | `references/style-selection-and-use-cases.md` |
@@ -125,3 +129,4 @@ Do not alter: [important unchanged areas].
 - If the source image cannot be passed to an editor, provide a prompt-only deliverable or clearly label any local proof as post-processing only.
 - Keep ordinary prompts around 70-120 words when the quality floor survives; allow 120-170 words for one focused risk; go longer only for deep diagnosis or reusable workflows.
 - Put long reusable notes in `F:\Codex_Save_Library\06_Prompt_Archive`, not in chat.
+

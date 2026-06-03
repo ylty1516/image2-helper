@@ -8,11 +8,11 @@ Use this file only when you need a quick map of the reference folder.
 |---|---|
 | Any image generation request: universal lightweight preflight before imagegen | `auto-anti-ai-expansion.md` |
 | Quick lower-AI rewrite | `fast-path.md` |
-| Auto-add anti-AI constraints and repair fuzzy words in a generation phrase | `auto-anti-ai-expansion.md` |
+| Auto-add image quality constraints and repair fuzzy words in a generation phrase | `auto-anti-ai-expansion.md` |
 | Lower token use without quality loss | `quality-preserving-speed.md` |
 | Decide whether this skill should run | `routing-and-triggering.md` |
 
-## Quick Anti-AI Trigger Words
+## Quick Quality-Control Trigger Words
 
 Use this section as a fast search map. If the user's wording or inspected image matches one row, load the listed file first.
 
@@ -20,6 +20,7 @@ Use this section as a fast search map. If the user's wording or inspected image 
 |---|---|---|
 | General AI feel | AI味, ai味, 太AI, 一眼AI, fake, generic, template, default beauty, plastic, glossy, oily, 3D感, 赛博糖水 | `failure-feedback-fixes.md` |
 | Perspective/spatial geometry | 透视, 透视错误, 空间歪, 地平线, 消失点, 地面漂浮, 比例不对, 尺度混乱, horizon, vanishing point, perspective, ground plane, floor plane, floating feet, scale mismatch, occlusion | `perspective-geometry.md` |
+| Anime character real-scene/screen integration | 二次元人物融入现实, 动漫人物进现实, 纸片人现实, 角色进屏幕, 屏幕里的人物, 显示器, 手机屏幕, 桌面场景, AR角色, hologram, anime character in real photo, anime in real scene, monitor, phone display, screen integration | `anime-character-real-scene-integration.md` |
 | Hand-drawn anime repair | 手绘感, 真人画师, 动画感, cel, genga, douga, linework, cel shadow, flat color, hand-painted, not hand-drawn enough | `anime-handdrawn-look.md` |
 | Cyber/neon anime template | 赛博, 霓虹, 蓝紫, cyber anime, neon, floating UI, fake code, crystal, shards, butterflies, constellation, micro-detail, glow everywhere | `anime-handdrawn-look.md` then `failure-feedback-fixes.md` |
 | Anime wallpaper sky/scenery | 动漫壁纸感, 天空太AI, 新海模板, 风景壁纸, 夕阳, 彩虹, 雪景, 屋顶, 海边车站, 神社, torii, rooftop, station, spectacular sky, mirror reflections | `anime-handdrawn-look.md` then `background-integrity.md` |
@@ -30,7 +31,7 @@ Use this section as a fast search map. If the user's wording or inspected image 
 | Character belongs to scene | 人物像贴上去, 姿势空, generic wistful pose, grounded feet, weight, contact, wind response, rain response, story beat | `prompt-recipes.md` then `background-integrity.md` |
 | Auto fuzzy-word repair | 自动补全, 后台补充, 模糊词修缮, fuzzy taste words, prompt enrichment, compact expansion | `auto-anti-ai-expansion.md` then `fuzzy-word-precision-library.md` |
 
-## Current Anti-AI Categories
+## Current Quality-Control Categories
 
 ### 1. Generic Polish / Plastic Finish
 
@@ -56,7 +57,19 @@ Use language:
 Lock one camera height, one horizon line, and one coherent perspective system. Align floor/ground/water/table planes, architecture, props, figures, contact shadows, scale anchors, overlap order, foreshortening, and depth falloff.
 ```
 
-### 3. Over-Decorated Cyber Anime
+### 3. Anime Character Real-Scene / Screen Integration
+
+Problem:
+
+- anime character looks pasted onto a real photo, room, desktop, phone, monitor, or AR scene because scale, light, shadow, edge softness, reflection, and occlusion do not match
+
+Use language:
+
+```text
+Match the real scene camera plate: one camera height, lens perspective, scale anchors, shared light direction/color temperature, cast/contact shadows, ambient occlusion, reflected color, foreground occlusion, edge softness, grain/compression, and a clear physical anchor such as feet on floor, hand on desk, body behind bezel, or reflection on glass.
+```
+
+### 4. Over-Decorated Cyber Anime
 
 Problem:
 
@@ -68,7 +81,7 @@ Use language:
 Keep one focal hierarchy and limit glow to 2-3 motivated sources. Remove decorative floating UI, fake code, random crystals, petals, constellations, and meaningless micro-detail. Use readable anime linework, designed hair masses, neutral dark anchors, and selective cyan/violet accents.
 ```
 
-### 4. Anime Wallpaper Sky / Scenic Poster
+### 5. Anime Wallpaper Sky / Scenic Poster
 
 Problem:
 
@@ -80,7 +93,7 @@ Use language:
 Use one observed place and one weather/light event. Paint broad hand-made cloud masses with selective edge light and quiet negative areas. Make reflections local and broken by puddle edges, tile seams, grime, roughness, and wet/dry patches. Keep props functional, signs blank or accurate, and characters grounded in a specific story beat.
 ```
 
-### 5. Background And Prop Integrity
+### 6. Background And Prop Integrity
 
 Problem:
 
@@ -92,7 +105,7 @@ Use language:
 Give every visible background object a real function, scale, construction, material, contact point, and perspective logic. Simplify distant details with paint, not with melted forms or fake text.
 ```
 
-### 6. Epic Fantasy World Logic
+### 7. Epic Fantasy World Logic
 
 Problem:
 
@@ -104,7 +117,7 @@ Use language:
 Use one worldbuilding hook and one terrain/light logic. Give architecture entrances, paths, supports, defenses, scale references, material wear, and cultural consistency. Make water, lava, ice, cliffs, and floating land obey a clear internal rule. Use atmospheric perspective and avoid equal detail density across the entire panorama.
 ```
 
-### 7. Detail Density / Composition Discipline
+### 8. Detail Density / Composition Discipline
 
 Problem:
 
@@ -116,7 +129,7 @@ Use language:
 Reserve high detail for the focal face/hands/main prop; simplify secondary surfaces; preserve quiet areas and readable silhouettes; remove decorative effects that do not support the story.
 ```
 
-### 8. Character-Scene Integration
+### 9. Character-Scene Integration
 
 Problem:
 
@@ -137,6 +150,7 @@ Make the character belong to the scene: grounded feet, believable weight, contac
 | User says too AI, too glossy, bad hands, fake, busy, not premium | `failure-feedback-fixes.md` |
 | Pose/action correction, realism pass, reusable recipes | `prompt-recipes.md` |
 | Anime battle, weapon clash, magic combat, martial arts, monster fight | `combat-action-anime.md` |
+| Anime character inside real photo, monitor, phone, desktop, AR, display, or room scene | `anime-character-real-scene-integration.md` |
 
 ## Style And Intent Modules
 
@@ -163,6 +177,7 @@ Examples:
 - "anime battle looks flashy but action is unclear" -> `combat-action-anime.md`
 - "maid skin has an unwanted staff" -> `inconsistency-cleanup.md`
 - "main character is good but the background people/props/buildings look fake" -> `background-integrity.md`
+- "anime girl coming out of my monitor" -> `anime-character-real-scene-integration.md`
 - "faster image2 with same quality" -> `quality-preserving-speed.md`
 - "game menu more story-rich but buttons clear" -> `mainstream-style-composition.md`
 - "make it more premium, relaxed, story-rich, lived-in, or transparent" -> `intent-and-fuzzy-language.md` then `fuzzy-word-precision-library.md` if needed

@@ -2,51 +2,25 @@
 
 Use this reference before applying the skill when routing an image generation or image editing request.
 
+## Core Rule
+
+Use `reduce-ai-look-imagegen` for every image generation request as a lightweight preflight before calling imagegen. The skill is not only an anti-AI filter; it is the default image prompt quality controller.
+
+It should preserve and improve:
+
+- user intent, hard format, subject, aspect ratio, required props, and requested style
+- composition, framing, focal hierarchy, and output safe areas
+- perspective, horizon, vanishing system, scale anchors, ground/floor plane, contact, and occlusion
+- pose, hands, anatomy, action clarity, object interaction, and material behavior
+- background, secondary figures, props, architecture, signage, and non-focus details
+- style choice, style translation, fuzzy wording, and token efficiency
+- lower-AI polish control when relevant
+
 ## Two Use Levels
 
-### Level 1: Universal Image Preflight
+### Level 1: Universal Lightweight Preflight
 
-Use `reduce-ai-look-imagegen` for every image generation request as a lightweight preflight before calling imagegen.
-
-Minimal preflight should:
-
-- preserve the requested format, subject, aspect ratio, style, and required props
-- add perspective/ground-plane/contact/scale logic when visible space exists
-- add background/scene integrity when non-focus details are visible
-- repair only the strongest vague taste words
-- keep explanation short or silent when the user only wants an image
-
-### Level 2: Explicit Anti-AI / Refinement
-
-Use a deeper `reduce-ai-look-imagegen` pass when the user says or implies:
-
-- 降低AI感
-- 去AI味
-- 不要像AI
-- 更自然
-- 更像真实拍摄
-- 更像手绘
-- 修动作
-- 修手
-- 姿势怪
-- 人体不合理
-- 太油
-- 太假
-- 太塑料
-- 太3D
-- 不高级
-- 风格不对
-- 这个图哪里怪
-- 帮我优化提示词
-- 帮我诊断这张图
-- 按某个风格但不要AI味
-- 把模糊词转换成真正提示词
-
-Also use it when the user provides an existing image and asks for critique, refinement, style correction, or a better edit prompt.
-
-## Ordinary Image Generation
-
-If the user only asks for a new image, such as:
+Use this for ordinary image generation when the user simply says things like:
 
 - 帮我生成一张图
 - 画一个角色
@@ -56,34 +30,50 @@ If the user only asks for a new image, such as:
 - 画四格漫画
 - 做游戏开始页
 
-and does not ask for anti-AI reduction, quality diagnosis, style correction, or prompt refinement, still run this skill as a minimal preflight, then route to the available image-generation skill/tool:
+Minimal preflight should:
 
-- `plus-imagegen` for Codex/ChatGPT hosted image generation
-- `gpt-image` when the user explicitly wants that CLI/API workflow
-- host-native image tool when available
+- preserve the requested format, subject, aspect ratio, style, and required props
+- add perspective/ground-plane/contact/scale logic when visible space exists
+- add background/scene integrity when non-focus details are visible
+- repair only the strongest vague taste words
+- avoid adding unrelated story symbols, props, logos, or text
+- keep explanation short or silent when the user only wants an image
 
-Do not let this skill override the user's requested format. It is now the default preflight for image tasks, but it should stay compact unless the user asks for deeper refinement.
+### Level 2: Focused Quality Pass
+
+Use a deeper focused pass when the user says or implies:
+
+- 降低AI感, 去AI味, 不要像AI
+- 更自然, 更像真实拍摄, 更像手绘
+- 修动作, 修手, 修人体, 姿势怪
+- 透视错误, 空间歪, 比例不对, 地面漂浮
+- 背景假, 道具假, 招牌假, 人物像贴上去
+- 风格不对, 不高级, 太油, 太假, 太塑料, 太3D
+- 二次元人物融入现实, 动漫人物进现实, 角色进屏幕, 手机屏幕, 显示器, AR角色
+- 帮我优化提示词, 帮我诊断这张图, 把模糊词转换成真正提示词
+
+Also use it when the user provides an existing image and asks for critique, refinement, style correction, edit instructions, or a better prompt.
 
 ## Routing Decision
 
 Use this quick decision:
 
 ```text
-Does the user primarily want image creation?
+Does the user primarily want image creation or image editing?
   Yes -> Use reduce-ai-look-imagegen as preflight.
-    If anti-AI/repair/diagnosis/fuzzy/style risk is explicit -> load focused references.
-    If not explicit -> use auto-anti-ai-expansion only, then generate/edit.
+    If the request is ordinary -> load auto-anti-ai-expansion only, then generate/edit.
+    If quality risk is explicit -> load the focused reference selected by SKILL.md or INDEX.md.
   No -> If they ask for prompt/style/quality analysis, use reduce-ai-look-imagegen.
 ```
 
 ## Combined Use
 
-Sometimes use both:
+For image generation:
 
-1. Use `reduce-ai-look-imagegen` to parse intent and build a low-AI prompt.
-2. Use `plus-imagegen` or the native image tool to generate the image.
+1. Use `reduce-ai-look-imagegen` to parse intent and build a stronger compact prompt.
+2. Use `plus-imagegen`, `imagegen`, or the host-native image tool to generate the image.
 
-Do this for all image generation requests, but keep the preflight small for ordinary requests.
+This applies to all image generation requests, but the preflight should stay compact for ordinary requests.
 
 ## Examples
 
@@ -96,7 +86,7 @@ User:
 Route:
 
 ```text
-Ordinary image generation. Use reduce-ai-look-imagegen as a minimal preflight to preserve watercolor medium, avatar format, perspective/contact if relevant, then call imagegen.
+Ordinary image generation. Use reduce-ai-look-imagegen as a minimal preflight to preserve watercolor medium and avatar format, add contact/material logic if relevant, then call imagegen.
 ```
 
 User:
@@ -138,11 +128,23 @@ Use reduce-ai-look-imagegen because the user explicitly asks for format preserva
 User:
 
 ```text
-这张图太像AI了，帮我改一下
+生成一个动漫少女从电脑屏幕里伸出来，现实桌面照片感
 ```
 
 Route:
 
 ```text
-Use reduce-ai-look-imagegen directly.
+Use reduce-ai-look-imagegen plus anime-character-real-scene-integration.md before imagegen. Lock screen plane, bezel occlusion, glass reflection, scale anchors, light direction, screen glow, contact shadow, edge softness, and camera grain.
+```
+
+User:
+
+```text
+这张图太像AI了，帮我改一个
+```
+
+Route:
+
+```text
+Use reduce-ai-look-imagegen directly with failure-feedback-fixes.md.
 ```

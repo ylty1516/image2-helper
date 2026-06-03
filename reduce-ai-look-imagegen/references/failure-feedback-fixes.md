@@ -154,6 +154,28 @@ Prompt patch:
 Unify the scene with one motivated light source, clear floor/wall/object contact, believable scale references, and background details that share the same perspective and material logic.
 ```
 
+### "Anime character looks pasted into reality" / "Screen character feels fake"
+
+Likely causes:
+
+- anime layer uses different camera perspective, scale, or crop than the real scene
+- no clear contact point, cast shadow, ambient occlusion, reflection, or foreground occlusion
+- light direction, color temperature, exposure, and shadow softness do not match the room or screen
+- character edges are too clean/sharp/glowing compared with photo grain, lens softness, or compression
+- screen/display physics are missing: bezel occlusion, glass reflection, pixel grid, brightness falloff, and screen glow
+
+Fix:
+
+```text
+Integrate the character into the real camera plate: shared perspective, scale anchors, physical contact/occlusion, matching light and shadow, edge softness, lens grain, reflected color, and display-surface physics when a screen is involved.
+```
+
+Prompt patch:
+
+```text
+Anime-real integration repair: match the real scene camera height, lens perspective, horizon/ground plane, scale anchors, crop, light direction, color temperature, exposure, shadow softness, and material response. Add a clear physical anchor: feet/hand/body contacting or being occluded by a real surface, monitor bezel, phone glass, desk object, wall, or foreground prop. Add contact shadow, ambient occlusion, reflected color, slight edge softness, grain/compression, and local color spill. For screen scenes, align to the screen plane, bezel, glass reflection, pixel grid, brightness falloff, and screen glow. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the environment, and impossible depth through the screen.
+```
+
 ### "Perspective is wrong" / "Space feels warped"
 
 Likely causes:

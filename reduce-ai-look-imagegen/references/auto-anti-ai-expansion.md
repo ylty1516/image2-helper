@@ -1,15 +1,15 @@
-# Auto Anti-AI Expansion
+# Auto Image Quality Expansion
 
-Use this for every image-generation phrase before calling imagegen. The goal is to silently enrich the final generation prompt with compact low-AI, perspective, physical-logic, and fuzzy-word constraints while preserving the user's original intent.
+Use this for every image-generation phrase before calling imagegen. The goal is to silently enrich the final generation prompt with compact quality-control constraints while preserving the user's original intent. Lowering AI look is one important module, but this file is equally responsible for format preservation, intent completion, fuzzy-word repair, composition, perspective, physical logic, style clarity, consistency, and background integrity.
 
 ## Core Behavior
 
-Always add a minimal preflight layer for visible-space logic, format preservation, and obvious fuzzy wording. When trigger words appear, add the matching compact anti-AI support layer in the background. Do not ask the user to provide missing craft terms. Do not merely repeat "less AI." Translate the request into visual mechanics.
+Always add a minimal preflight layer for visible-space logic, format preservation, style clarity, and obvious fuzzy wording. When trigger words appear, add the matching compact support layer in the background. Do not ask the user to provide missing craft terms. Translate vague requests into visual mechanics.
 
 Default route:
 
 ```text
-user phrase -> preserve format/subject/style -> add universal preflight -> detect trigger words -> add 0-2 anti-AI category patches -> repair top 0-2 fuzzy words -> produce/generate with the enriched prompt
+user phrase -> preserve format/subject/style -> add universal quality preflight -> detect trigger words -> add 0-2 focused category patches -> repair top 0-2 fuzzy words -> produce/generate with the enriched prompt
 ```
 
 If the user asks for the final prompt, show the enriched prompt. If the user asks only for an image, use the enriched prompt silently and keep chat explanation short.
@@ -24,9 +24,12 @@ Always-on minimal preflight:
 Preserve the requested format, subject, style, aspect ratio, and required props. Add perspective lock when space is visible, physical contact/material logic, focal hierarchy, and scene/background integrity when relevant. Repair only the strongest vague taste words.
 ```
 
-High-priority triggers:
+High-priority quality triggers:
 
 - AI味, ai味, 一眼AI, 降AI, 去AI感, less AI, de-AI, too AI
+- 自动补全, 后台补充, 模糊词修缮, prompt enrichment, fuzzy taste words
+- 透视, 透视错误, 地平线, 消失点, 比例不对, 尺度混乱, horizon, vanishing point, perspective, ground plane, scale mismatch, occlusion
+- 二次元人物融入现实, 动漫人物进现实, 角色进屏幕, 显示器, 手机屏幕, 桌面场景, AR角色, hologram, anime character in real photo, monitor, phone display, screen integration
 - 手绘感, 真人画师, 动画感, hand-drawn, cel, genga, linework
 - 赛博, 霓虹, 蓝紫, cyber anime, neon, fake code, floating UI, crystal
 - 动漫壁纸感, 天空太AI, 新海模板, 风景壁纸, spectacular sky, rooftop, station, torii
@@ -44,7 +47,7 @@ Fuzzy taste triggers:
 ## Expansion Rules
 
 1. Preserve the user's format, subject, required style, and required props.
-2. Add no more than two anti-AI category patches unless the user requests deep refinement.
+2. Add no more than two focused category patches unless the user requests deep refinement.
 3. Repair no more than two fuzzy words by converting them into concrete light/color, composition, material/process, and subject-behavior cues.
 4. Add the global perspective layer whenever the image has visible space, objects, architecture, landscape, products, people in a scene, or props on a surface.
 5. Prefer positive construction cues before negative avoid cues.
@@ -71,31 +74,43 @@ Perspective lock: one camera height, coherent horizon/vanishing system, grounded
 Append a compact support layer like this:
 
 ```text
-Anti-AI support: [medium/process evidence], [focal hierarchy], [motivated light/material logic], [grounded pose/contact/scene integrity]. Avoid [top 2-3 matched AI tells].
+Quality support: [medium/process evidence], [focal hierarchy], [motivated light/material logic], [grounded pose/contact/scene integrity]. Avoid [top 2-3 matched failure modes].
+```
+
+For general anti-AI polish:
+
+```text
+Anti-AI support: real medium/process evidence, controlled highlight shapes, grounded contact shadows, plausible anatomy/material response, and no meaningless micro-detail. Avoid generic AI gloss, over-symmetry, fake luxury polish, and impossible contact points.
 ```
 
 For anime:
 
 ```text
-Anti-AI support: clean animation contours, flat local color fields, selective hard-edged cel shadows, hand-painted background masses, restrained compositing, grounded character contact, and scene details with real function. Avoid glossy 3D hair/skin, random rim light, fake text, mirror gloss everywhere, and meaningless micro-detail.
+Anime quality support: clean animation contours, flat local color fields, selective hard-edged cel shadows, hand-painted background masses, restrained compositing, grounded character contact, and scene details with real function. Avoid glossy 3D hair/skin, random rim light, fake text, mirror gloss everywhere, and meaningless micro-detail.
+```
+
+For anime character real-scene / screen integration:
+
+```text
+Anime-real integration support: match the real scene camera plate, scale anchors, horizon/ground plane, light direction, color temperature, exposure, shadow softness, contact shadow, ambient occlusion, reflected color, edge softness, lens grain/compression, and foreground occlusion. Give the anime character a clear physical anchor such as feet on floor, hand on desk, body behind monitor bezel, reflection on glass, or screen glow on nearby surfaces. Avoid floating sticker cutout, mismatched lighting, wrong scale, pure cel colors unaffected by the room, and clean pasted edges.
 ```
 
 For cyber/neon anime:
 
 ```text
-Anti-AI support: one focal hierarchy, 2-3 motivated neon sources, neutral dark anchors, designed hair masses, functional UI/tech props only, readable cel shadow shapes. Avoid fake code, random floating panels, crystals/shards/petals without purpose, uniform blue-purple gloss, and sparkle detail everywhere.
+Quality support: one focal hierarchy, 2-3 motivated neon sources, neutral dark anchors, designed hair masses, functional UI/tech props only, readable cel shadow shapes. Avoid fake code, random floating panels, crystals/shards/petals without purpose, uniform blue-purple gloss, and sparkle detail everywhere.
 ```
 
 For anime scenic wallpaper:
 
 ```text
-Anti-AI support: one observed place and one weather/light event, broad hand-painted cloud masses, quiet sky areas, imperfect local reflections, functional station/shrine/rooftop objects, blank or accurate signs, and a character grounded in a concrete story beat. Avoid stacked sunset/rainbow/stars/snow/birds spectacle, mirror pavement, over-detailed clouds everywhere, and generic wistful poses.
+Quality support: one observed place and one weather/light event, broad hand-painted cloud masses, quiet sky areas, imperfect local reflections, functional station/shrine/rooftop objects, blank or accurate signs, and a character grounded in a concrete story beat. Avoid stacked sunset/rainbow/stars/snow/birds spectacle, mirror pavement, over-detailed clouds everywhere, and generic wistful poses.
 ```
 
 For epic fantasy landscapes:
 
 ```text
-Anti-AI support: one clear worldbuilding hook, one terrain/light logic, functional architecture with entrances/paths/supports/scale references, physically motivated water/lava/ice/cliffs, atmospheric distance simplification, and controlled detail density. Avoid castle/aurora/moon/lava/waterfall/floating-island spectacle all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail across the panorama.
+Quality support: one clear worldbuilding hook, one terrain/light logic, functional architecture with entrances/paths/supports/scale references, physically motivated water/lava/ice/cliffs, atmospheric distance simplification, and controlled detail density. Avoid castle/aurora/moon/lava/waterfall/floating-island spectacle all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail across the panorama.
 ```
 
 ## Fuzzy Word Repair Pattern
@@ -130,7 +145,19 @@ User phrase:
 Internal expansion:
 
 ```text
-Create an anime illustration. Subject: a cyber-neon anime girl in a specific urban night setting. Interpret "氛围感" as motivated neon light, air depth, layered foreground/midground/background, and shadowed negative space. Anti-AI support: clean animation contours, flat local color fields, one focal hierarchy around face and hands, 2-3 motivated neon sources, neutral dark anchors, designed hair masses, functional tech props only. Avoid fake code, random floating UI, crystals/shards without purpose, uniform blue-purple gloss, and sparkle detail everywhere.
+Create an anime illustration. Subject: a cyber-neon anime girl in a specific urban night setting. Interpret "氛围感" as motivated neon light, air depth, layered foreground/midground/background, and shadowed negative space. Quality support: clean animation contours, flat local color fields, one focal hierarchy around face and hands, 2-3 motivated neon sources, neutral dark anchors, designed hair masses, functional tech props only. Anti-AI support: avoid fake code, random floating UI, crystals/shards without purpose, uniform blue-purple gloss, and sparkle detail everywhere.
+```
+
+User phrase:
+
+```text
+生成一张动漫女孩从电脑屏幕里探出身体，现实桌面场景
+```
+
+Internal expansion:
+
+```text
+Create an anime-real mixed scene of an anime girl emerging from a computer monitor into a real desktop setup. Preserve the screen-emergence concept. Anime-real integration support: match the real camera height, screen plane, monitor bezel, viewing angle, desk scale anchors, room light direction, screen glow, contact shadow, ambient occlusion, glass reflection, pixel texture, edge softness, and foreground occlusion. Define the crossing point at the bezel and avoid a flat pasted wallpaper, floating sticker cutout, mismatched scale, and pure cel colors unaffected by the room.
 ```
 
 User phrase:
@@ -142,17 +169,5 @@ User phrase:
 Internal expansion:
 
 ```text
-Create a Japanese anime scenic illustration of a rainy station after the storm. Interpret "电影感" as narrative framing, motivated practical light, value hierarchy, and lens/exposure restraint. Anti-AI support: one observed station and one weather/light event, broad hand-painted cloud masses with selective edge light, quiet sky areas, imperfect local puddle reflections broken by tile seams and wet/dry patches, functional station hardware, blank or accurate signs, and a character or prop grounded in one concrete story beat. Avoid stacked rainbow/sunset/stars/birds spectacle, mirror pavement, over-detailed clouds everywhere, fake signage, and generic wallpaper composition.
-```
-
-User phrase:
-
-```text
-史诗奇幻风景，冰雪王国和极光，超震撼，降低AI味
-```
-
-Internal expansion:
-
-```text
-Create an epic fantasy landscape concept image. Interpret "超震撼" as one strong worldbuilding hook, large readable value shapes, scale contrast, and a clear viewer path, not spectacle stacked everywhere. Anti-AI support: one ice-kingdom terrain/light logic, functional castle architecture with entrances, paths, supports, defenses, scale references, weathering, and cultural consistency; physically motivated snow and ice accumulation, glacial erosion, cliff stability, and atmospheric distance simplification. Use one dominant moon or aurora light source with limited secondary glow. Avoid castle/aurora/moon/waterfall/floating-island motifs all at once, random spires, repeated ruins, impossible waterfalls, glowing cracks everywhere, unreadable kitbash, and equal detail density across the panorama.
+Create a Japanese anime scenic illustration of a rainy station after the storm. Interpret "电影感" as narrative framing, motivated practical light, value hierarchy, and lens/exposure restraint. Quality support: one observed station and one weather/light event, broad hand-painted cloud masses with selective edge light, quiet sky areas, imperfect local puddle reflections broken by tile seams and wet/dry patches, functional station hardware, blank or accurate signs, and a character or prop grounded in one concrete story beat. Avoid stacked rainbow/sunset/stars/birds spectacle, mirror pavement, over-detailed clouds everywhere, fake signage, and generic wallpaper composition.
 ```

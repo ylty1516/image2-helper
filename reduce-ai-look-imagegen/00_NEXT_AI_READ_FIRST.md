@@ -6,20 +6,25 @@ Read this file first when taking over the project.
 
 ## What This Skill Does
 
-`reduce-ai-look-imagegen` helps Codex improve AI image prompts and image-editing instructions so outputs feel less synthetic, generic, over-polished, anatomically implausible, or "AI-looking."
+`reduce-ai-look-imagegen` is the universal image-generation preflight and prompt quality controller. It helps Codex improve AI image prompts and image-editing instructions before generation by preserving user intent, repairing vague wording, strengthening style/composition/perspective/physical logic, checking background and consistency, reducing unwanted objects, and lowering generic AI-looking artifacts.
 
 ## Trigger Routing
 
 There are two image-task channels:
 
 1. For any image generation request, use this skill as a lightweight preflight before calling imagegen.
-2. If the user explicitly asks for lower AI feel, prompt refinement, image diagnosis, natural pose/action correction, or says the result is too AI/oily/fake/3D/generic, use a deeper focused pass.
-3. If the user only asks to generate an image without an anti-AI or refinement goal, keep this skill compact: preserve format/subject/style, add perspective/contact/background integrity where relevant, then route to the available image generation skill/tool such as `plus-imagegen`, `gpt-image`, or the host-native image tool.
+2. If the user explicitly asks for lower AI feel, prompt refinement, image diagnosis, natural pose/action correction, style choice, perspective repair, background integrity, screen/real-scene integration, or says the result is too AI/oily/fake/3D/generic, use a deeper focused pass.
+3. If the user only asks to generate an image without a refinement goal, keep this skill compact: preserve format/subject/style, add perspective/contact/background integrity where relevant, repair the strongest fuzzy wording, then route to the available image generation skill/tool such as `plus-imagegen`, `gpt-image`, or the host-native image tool.
 
-Do not make this skill the default path for every image request.
+Make this skill the default preflight path for every image generation request. Do not let it become verbose unless the task is high-risk or the user asks for diagnosis/refinement.
 
-It has grown into a visual style reasoning system. It can:
+It has grown into a visual prompt quality-control system. It can:
 
+- preserve hard format, subject, aspect ratio, and required props
+- complete underspecified intent without changing the user's core idea
+- improve composition, framing, focal hierarchy, and safe areas
+- lock perspective, ground planes, scale anchors, contact, and occlusion
+- integrate anime characters into real photos, monitors, phones, desktops, AR, and display scenes
 - diagnose why an image feels AI-generated
 - rewrite prompts with stronger medium/process language
 - remove unreasonable extra objects and fix prompt-image inconsistency
@@ -46,9 +51,10 @@ Start here:
 
 Then load specialized references only when needed:
 
-- `references/INDEX.md` for a quick map of the reference folder and current anti-AI trigger/search words
+- `references/INDEX.md` for a quick map of the reference folder and current quality-control trigger/search words
 - `references/fast-path.md` for the cheapest route and compact prompts
-- `references/auto-anti-ai-expansion.md` for the universal image-generation preflight, silently adding anti-AI constraints and repairing fuzzy taste words
+- `references/auto-anti-ai-expansion.md` for the universal image-generation preflight, silently adding quality constraints and repairing fuzzy taste words
+- `references/anime-character-real-scene-integration.md` for anime characters inside real photos, monitors, phones, desktops, AR, display surfaces, or mixed 2D/real scenes
 - `references/quality-preserving-speed.md` for lower token use and faster prompting while preserving quality-critical visual constraints
 - `references/perspective-geometry.md` for the global camera/horizon/vanishing/ground-plane/scale/occlusion repair layer that every visible-space image should receive
 - `references/inconsistency-cleanup.md` for extra props, prompt-image mismatch, expression/action mismatch, and viewpoint/environment mismatch
