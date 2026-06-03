@@ -1,6 +1,6 @@
 # image2-helper
 
-一个可部署的 Codex 生图辅助 Skill 项目，用来降低 AI 生图的“AI 感”，并帮助 AI 更准确地理解用户真正想要的画风、格式和用途。
+一个可部署的 Codex 生图质量增强 Skill 项目。它的主目标是让每一次生图在生成前先完成提示词质量预检：补全意图、锁定格式、强化构图、透视、光影、动作、背景、物品、风格和一致性。降低“AI 感”只是其中一个质量模块，而不是项目唯一目的。
 
 本仓库包含可直接安装的 skill：
 
@@ -8,8 +8,15 @@
 reduce-ai-look-imagegen/
 ```
 
+文件夹名保留 `reduce-ai-look-imagegen` 是为了兼容已经安装和调用的旧版本；当前项目定位已经升级为 **Imagegen Preflight Quality Controller / 生图前置质量控制器**。
+
 它适合处理这类需求：
 
+- “帮我生成一张图，但先把提示词质量补完整”
+- “提高这张图的构图、透视、光影、背景和动作质量”
+- “保持格式/画幅/角色/背景不变，只优化生图质量”
+- “把模糊的审美词转成真正可执行的生图语言”
+- “二次元人物融入现实照片，背景不能有任何变化”
 - “降低 AI 感”
 - “不要这么假 / 油 / 塑料 / 像 3D”
 - “动作、手、姿势不自然，帮我修”
@@ -17,22 +24,25 @@ reduce-ai-look-imagegen/
 - “我要四格漫画，不要被生成成单张海报”
 - “帮我判断这张图为什么像 AI”
 
-如果用户只是普通地说“帮我生成一张图”，这个 skill 不会强行接管，而是建议先走普通生图工具。
+如果用户只是普通地说“帮我生成一张图”，这个 skill 也会作为轻量前置质量控制层先运行，再把增强后的提示词交给普通生图工具。
 
 ## 它能解决什么
 
 | 用户问题 | Skill 会做什么 |
 |---|---|
-| 图片太像 AI | 把空泛词改成具体的媒介、材质、光影、构图语言 |
+| 普通生图描述太短 | 自动补齐格式、主体、构图、光影、透视、物理接触、背景质量和失败规避 |
 | 只说“高级感 / 氛围感 / 故事感” | 转换成颜色、光线、材质、空间、叙事线索 |
 | 模糊词堆叠导致 AI 乱猜 | 用模糊词准确化库把词拆成视觉功能、光色、构图、材质、行为和避错项 |
 | 输出格式很重要 | 锁定四格漫画、LOGO、图标、海报、游戏菜单、角色设定、包装等格式 |
+| 画面透视、比例、接触关系容易崩 | 锁定相机高度、地平线、消失点、地面/桌面平面、尺度参照、遮挡和接触阴影 |
 | 手、动作、人体不合理 | 检查关节范围、重心、接触点、衣服和头发是否符合重力 |
 | 打斗图华丽但像 AI | 先锁定攻击/防守关系、接触点、力的方向、身体支撑和动作可读性，再加特效 |
 | 第一版图多了不该有的物品 | 去除多余法杖、武器、翅膀、光环、宠物、假文字等设定外元素 |
 | 表情、行为、视角、环境不匹配 | 对齐表情和动作、视线和目标、镜头和环境透视 |
 | 主角好看但背景糊弄、扭曲或假 | 背景与主角享有同等质量标准，检查次要人物、物品、建筑、透视、光影和动作逻辑 |
 | 构图弱、画面散、不像专业图 | 先确定画幅、焦点、视觉路径、留白、安全区和前中后景 |
+| 二次元角色融入现实照片 | 锁定原背景底板不变，只让角色适配背景的透视、光影、噪点、边缘、接触和遮挡 |
+| 图片太像 AI | 把空泛词改成具体的媒介、材质、光影、构图语言 |
 | 动漫图太油、太 3D | 转换成手绘动画、赛璐璐、线稿、色块、背景绘制语言 |
 | 多种画风混在一起 | 避免“风格汤”，先确定主媒介，再加一个修饰风格 |
 | token 消耗太高 / 想让 AI 思考更快 | 保质提速：删掉废话和重复标签，保留决定画面质量的关键约束 |
@@ -127,18 +137,30 @@ macOS / Linux:
 然后重启 Codex，或新开一个线程，输入：
 
 ```text
-Use $reduce-ai-look-imagegen to rewrite this prompt so it feels less AI-generated: a glossy anime character poster, cinematic, high quality
+Use $reduce-ai-look-imagegen to preflight this image prompt before generation: a glossy anime character poster, cinematic, high quality
 ```
 
 如果 Codex 能识别 `$reduce-ai-look-imagegen`，说明安装成功。
 
 ## 快速使用
 
-当你想降低 AI 感时，可以这样说：
+当你想提升生图质量时，可以这样说：
 
 ```text
-Use $reduce-ai-look-imagegen 帮我改写这个生图提示词，让它更少 AI 感：
+Use $reduce-ai-look-imagegen 帮我做生图前置质量增强：
 一个白发动漫少女站在城市街道上，cinematic，高质量
+```
+
+它会优先补齐真正影响画面的质量约束：
+
+```text
+Format: portrait illustration, vertical crop.
+Subject: white-haired anime girl standing on a city street.
+Composition: clear focal anchor, readable silhouette, layered foreground/midground/background.
+Light/color: one motivated street light and ambient city fill, controlled highlights.
+Perspective: one camera height, aligned street plane, believable scale anchors, contact shadows.
+Scene integrity: background people, signs, storefronts, road markings, props, and architecture remain plausible.
+Avoid: generic quality tags, glossy plastic finish, warped background objects, fake unreadable text.
 ```
 
 如果你要保持格式，比如四格漫画：
@@ -159,28 +181,35 @@ Avoid: single-poster composition, fake dialogue text, changing character design,
 
 ## 触发逻辑
 
-这个 skill 有两条通道。
+这个 skill 有两条通道，但第一通道是默认主通道。
 
-### 1. 降 AI 化 / 优化通道
+### 1. 生图前置质量增强通道
 
-当用户明确说这些内容时，使用 `reduce-ai-look-imagegen`：
+任何生图或修图请求都先使用 `reduce-ai-look-imagegen` 做轻量预检：
 
-- 降低 AI 感
-- 去 AI 味
-- 更自然
-- 更像手绘
-- 更像真实拍摄
+- 保留用户原始意图、画幅、格式、主体和必要道具
+- 补齐构图、焦点、视觉路径、安全区
+- 补齐光影、色彩、材质、环境逻辑
+- 补齐透视、地平线、消失点、地面/桌面平面、比例和遮挡
+- 检查动作、手、人体、接触、重心
+- 检查背景、物品、建筑、次要人物和非焦点细节
+- 修缮高级感、氛围感、故事感、电影感、真实感等模糊词
+- 对二次元融入现实照片类任务锁定背景底板，禁止改变背景物品和原有光影
+
+### 2. 深度质量修复通道
+
+当用户明确说这些内容时，加载更深的专项参考：
+
+- 降低 AI 感 / 去 AI 味（作为质量问题之一）
+- 更自然 / 更像手绘 / 更像真实拍摄
 - 修手 / 修动作 / 修姿势 / 修人体
-- 太油
-- 太假
-- 太塑料
-- 像 3D
-- 不高级
-- 风格不对
-- 帮我优化提示词
-- 帮我诊断这张图
+- 透视错误 / 比例不对 / 地面漂浮
+- 背景假 / 道具假 / 人物像贴上去
+- 太油 / 太假 / 太塑料 / 像 3D
+- 不高级 / 风格不对
+- 帮我优化提示词 / 帮我诊断这张图
 
-### 2. 普通生图通道
+### 3. 普通生图执行通道
 
 如果用户只是说：
 
@@ -191,7 +220,7 @@ Avoid: single-poster composition, fake dialogue text, changing character design,
 生成一张海报
 ```
 
-那就先走普通生图工具。这个 skill 不应该强行接管每一次生图请求。
+那也会先走本 skill 的轻量质量预检，再交给普通生图工具。这个 skill 不负责替代生图模型，它负责在生图前把质量约束补齐。
 
 ## 保质提速设计
 
@@ -231,12 +260,13 @@ reduce-ai-look-imagegen/references/quality-preserving-speed.md
 
 它会让 AI：
 
-- 普通生图不走本 skill
-- 简单降 AI 化只读 `fast-path.md`
+- 普通生图先走本 skill 的轻量质量预检
+- 简单质量增强只读 `auto-anti-ai-expansion.md`
+- 明确质量风险、降 AI 化或专项修复才读取对应深度 reference
 - 提速/降 token 需求读取 `quality-preserving-speed.md`
 - 单一问题只读一个相关 reference
 - 普通生图提示词在质量底线不丢失时尽量控制在 120 词以内
-- 默认只写 2-3 条真正相关的反 AI 约束
+- 默认只写 2-3 条真正相关的质量约束或失败规避项
 - 不在生成前输出长篇分析
 - 复杂任务自动升级，不为了短而牺牲质量
 
@@ -326,7 +356,7 @@ reduce-ai-look-imagegen/examples/lean-routing-case.md
 - `combat-action-anime.md`：打斗动漫插画反 AI 模块，检查攻击/防守关系、接触点、力向量、身体支撑、特效遮挡和动作可读性
 - `anime-handdrawn-look.md`：动漫、赛璐璐、手绘背景、线稿、色块相关规则
 - `style-blending-rules.md`：处理混合画风，避免风格冲突
-- `style-quality-rubric.md`：判断是否真的降低了 AI 感
+- `style-quality-rubric.md`：判断风格、构图、透视、背景、细节和整体画面质量是否真的提升
 
 ## 校验 Skill
 
@@ -351,13 +381,13 @@ Skill is valid!
 用户说：
 
 ```text
-让它更高级一点，少一点 AI 感。
+让它更高级一点，画面质量更稳定。
 ```
 
 Skill 会转换成类似：
 
 ```text
-Use precise negative space, restrained palette, credible material texture, quiet lighting, fewer objects, controlled reflections, no fake luxury logo, no glossy AI finish.
+Use precise negative space, restrained palette, credible material texture, quiet lighting, fewer objects, controlled reflections, no fake luxury logo, and no generic glossy finish.
 ```
 
 用户说：
@@ -416,9 +446,9 @@ reduce-ai-look-imagegen/examples/inconsistency-cleanup-case.md
 
 ![去除不合理元素示例](reduce-ai-look-imagegen/examples/inconsistency-cleanup-flow.png)
 
-## 示例：打斗动漫插画去 AI 味
+## 示例：提升打斗动漫插画动作质量
 
-用户给了几张华丽打斗图，希望总结为什么像 AI，并转成可复用话术。
+用户给了几张华丽打斗图，希望总结为什么动作不清、物理不稳，并转成可复用话术。
 
 Skill 会先检查动作骨架，而不是继续堆特效：
 
@@ -432,7 +462,7 @@ Combat action clarity: one readable attack/defense beat, exact contact or near-c
 reduce-ai-look-imagegen/examples/combat-action-ai-flavor-case.md
 ```
 
-![打斗图去 AI 味示例](reduce-ai-look-imagegen/examples/combat-action-ai-flavor-map.svg)
+![打斗图动作质量示例](reduce-ai-look-imagegen/examples/combat-action-ai-flavor-map.svg)
 
 ## 示例：背景与非焦点细节同等质量
 
@@ -458,7 +488,7 @@ reduce-ai-look-imagegen/examples/background-integrity-case.md
 
 ## 示例：真实街拍背景审查
 
-用户给了一张街拍人像参考图，希望研究背景里哪些地方最容易暴露 AI 感。
+用户给了一张街拍人像参考图，希望研究背景里哪些地方最容易降低整张图的可信度。
 
 Skill 会把它总结成街拍背景分区审查，而不是只检查人物脸：
 
@@ -517,7 +547,7 @@ reduce-ai-look-imagegen/examples/composition-style-case.md
 错误理解是只把提示词砍短：
 
 ```text
-anime girl, beautiful, cinematic, high quality, less AI
+anime girl, beautiful, cinematic, high quality
 ```
 
 Skill 现在会保留质量底线：

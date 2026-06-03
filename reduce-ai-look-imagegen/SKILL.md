@@ -1,13 +1,13 @@
 ---
 name: reduce-ai-look-imagegen
-description: Universal image-generation preflight and prompt quality controller. Improve prompts before imagegen for intent completion, fuzzy-word repair, style choice, composition/framing, perspective/scale/ground-plane logic, pose/hand/action clarity, anatomy, object contact, background/prop integrity, prompt-image consistency, unwanted object prevention, anime-character real-scene/screen integration, token efficiency, and lower-AI/less generic results. Use for any image generation or image editing request before calling imagegen.
+description: "Universal image-generation preflight and prompt quality controller. Improve prompts before imagegen for higher output quality: intent completion, fuzzy-word repair, style choice, composition/framing, perspective/scale/ground-plane logic, pose/hand/action clarity, anatomy, object contact, background/prop integrity, prompt-image consistency, unwanted object prevention, anime-character real-scene/screen integration, token efficiency, and quality-specific artifact cleanup including lower-AI/less generic results when relevant. Use for any image generation or image editing request before calling imagegen."
 ---
 
 # Imagegen Preflight Quality Controller
 
 ## Prime Directive
 
-Act as a lean image-generation router and prompt quality controller. Preserve the user's intent while improving every important generation layer: format, subject, style, composition, perspective, physical logic, scene integrity, consistency, token efficiency, and anti-AI polish control.
+Act as a lean image-generation router and prompt quality controller. Preserve the user's intent while improving every important generation layer: format, subject, style, composition, perspective, physical logic, scene integrity, consistency, token efficiency, and task-specific artifact control. Treat lower-AI polish as one quality module, not the main purpose.
 
 Default path:
 
@@ -75,7 +75,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | Task signal | Load |
 |---|---|
 | ordinary image generation only | `references/auto-anti-ai-expansion.md`, then route to imagegen |
-| generation phrase contains fuzzy taste words, spatial risks, style risks, consistency risks, or anti-AI trigger words | `references/auto-anti-ai-expansion.md` |
+| generation phrase contains fuzzy taste words, spatial risks, style risks, consistency risks, artifact risks, or anti-AI trigger words | `references/auto-anti-ai-expansion.md` |
 | quick trigger/search words for current quality-control categories | `references/INDEX.md` |
 | lower AI feel, simple rewrite | `references/fast-path.md` |
 | lower token use / faster thinking without quality loss | `references/quality-preserving-speed.md` |

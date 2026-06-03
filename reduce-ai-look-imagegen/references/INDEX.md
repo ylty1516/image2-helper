@@ -7,7 +7,7 @@ Use this file only when you need a quick map of the reference folder.
 | Need | File |
 |---|---|
 | Any image generation request: universal lightweight preflight before imagegen | `auto-anti-ai-expansion.md` |
-| Quick lower-AI rewrite | `fast-path.md` |
+| Quick quality repair or compact rewrite | `fast-path.md` |
 | Auto-add image quality constraints and repair fuzzy words in a generation phrase | `auto-anti-ai-expansion.md` |
 | Lower token use without quality loss | `quality-preserving-speed.md` |
 | Decide whether this skill should run | `routing-and-triggering.md` |
@@ -173,7 +173,7 @@ Load one file first. Add a second file only when the task has a separate risk.
 
 Examples:
 
-- "less AI anime, too glossy" -> `fast-path.md` + `anime-handdrawn-look.md`
+- "anime quality repair, too glossy or too generic" -> `fast-path.md` + `anime-handdrawn-look.md`
 - "anime battle looks flashy but action is unclear" -> `combat-action-anime.md`
 - "maid skin has an unwanted staff" -> `inconsistency-cleanup.md`
 - "main character is good but the background people/props/buildings look fake" -> `background-integrity.md`

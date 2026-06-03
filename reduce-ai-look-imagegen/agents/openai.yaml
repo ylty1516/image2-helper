@@ -1,6 +1,6 @@
 interface:
   display_name: "Imagegen Preflight Controller"
-  short_description: "Preflight image prompts for intent, style, composition, perspective, consistency, and lower-AI polish."
-  default_prompt: "Use $reduce-ai-look-imagegen to preflight this image request before generation: preserve intent, repair vague wording, and add style, composition, perspective, physical-logic, consistency, and anti-AI quality constraints."
+  short_description: "Preflight image prompts for stronger intent, style, composition, perspective, consistency, background, and physical quality."
+  default_prompt: "Use $reduce-ai-look-imagegen to preflight this image request before generation: preserve intent, repair vague wording, and add style, composition, perspective, physical-logic, background, consistency, and task-specific quality constraints."
 policy:
   allow_implicit_invocation: true

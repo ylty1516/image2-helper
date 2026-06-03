@@ -6,14 +6,14 @@ Read this file first when taking over the project.
 
 ## What This Skill Does
 
-`reduce-ai-look-imagegen` is the universal image-generation preflight and prompt quality controller. It helps Codex improve AI image prompts and image-editing instructions before generation by preserving user intent, repairing vague wording, strengthening style/composition/perspective/physical logic, checking background and consistency, reducing unwanted objects, and lowering generic AI-looking artifacts.
+`reduce-ai-look-imagegen` is the universal image-generation preflight and prompt quality controller. Its primary job is to improve generation quality before imagegen runs: preserve user intent, repair vague wording, strengthen style/composition/perspective/physical logic, check background and consistency, prevent unwanted objects, and add task-specific quality constraints. Lowering generic AI-looking artifacts is one quality module, not the project center.
 
 ## Trigger Routing
 
 There are two image-task channels:
 
 1. For any image generation request, use this skill as a lightweight preflight before calling imagegen.
-2. If the user explicitly asks for lower AI feel, prompt refinement, image diagnosis, natural pose/action correction, style choice, perspective repair, background integrity, screen/real-scene integration, or says the result is too AI/oily/fake/3D/generic, use a deeper focused pass.
+2. If the user explicitly asks for quality improvement, prompt refinement, image diagnosis, natural pose/action correction, style choice, perspective repair, background integrity, screen/real-scene integration, or says the result is too AI/oily/fake/3D/generic, use a deeper focused pass.
 3. If the user only asks to generate an image without a refinement goal, keep this skill compact: preserve format/subject/style, add perspective/contact/background integrity where relevant, repair the strongest fuzzy wording, then route to the available image generation skill/tool such as `plus-imagegen`, `gpt-image`, or the host-native image tool.
 
 Make this skill the default preflight path for every image generation request. Do not let it become verbose unless the task is high-risk or the user asks for diagnosis/refinement.
@@ -25,11 +25,11 @@ It has grown into a visual prompt quality-control system. It can:
 - improve composition, framing, focal hierarchy, and safe areas
 - lock perspective, ground planes, scale anchors, contact, and occlusion
 - integrate anime characters into real photos, monitors, phones, desktops, AR, and display scenes
-- diagnose why an image feels AI-generated
+- diagnose why an image quality breaks down, including AI-looking artifacts when relevant
 - rewrite prompts with stronger medium/process language
 - remove unreasonable extra objects and fix prompt-image inconsistency
 - correct implausible poses and action logic
-- reduce AI flavor in anime battle illustrations by checking action skeleton, force vector, contact point, and effect discipline
+- improve anime battle illustrations by checking action skeleton, force vector, contact point, and effect discipline
 - enforce background and non-focus quality with the same scrutiny as the focal subject
 - reduce glossy/3D/anime-plastic finish
 - classify many visual styles
