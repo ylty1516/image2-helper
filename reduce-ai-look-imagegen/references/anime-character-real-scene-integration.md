@@ -100,6 +100,41 @@ Lighting map: match the locked background's real light. Identify the main light 
 - nearby real objects affect the character through occlusion, bounce light, reflection, and contact shadow
 - if the character is on a screen, the image is visibly emitted by the display surface rather than existing as a flat pasted poster
 
+## Cramped Room / Dorm Desk Composite Case
+
+Use this diagnosis when an anime character is inserted into a real dorm room, bunk-bed desk area, small bedroom, messy workstation, or other cramped interior with many scale anchors and foreground bars/furniture.
+
+Image summary pattern:
+
+- real plate is a wide-angle, slightly high camera view of a narrow dorm/workstation area, often with a loft bed, desk, chair, ladder rails, wardrobe panels, monitor/laptop, keyboard, cups, wires, shelves, and clutter
+- the character may be seated at the desk, using a keyboard, looking back at camera, leaning on a chair, or occupying a tight gap between furniture
+- the real scene usually has uneven practical light: desk lamp/screen light near the subject, dimmer ambient room light, warm wood, gray walls, mixed color temperature, lens noise, compression, and imperfect phone-camera sharpness
+
+Common failures:
+
+- character is drawn from a cleaner or lower camera angle than the high wide-angle room photo
+- scale is guessed from the whole room instead of nearby anchors such as chair seat width, keyboard size, desk height, laptop, shelf depth, cup, or bed ladder spacing
+- body appears pasted onto the chair because thighs, hips, shoes, and hands do not make believable contact with the seat, desk edge, keyboard, or floor/footrest
+- chair back, desk lip, ladder rails, table legs, screen edge, and foreground furniture fail to occlude the character in the correct layer order
+- character edges stay crisp and luminous while the photo has phone-camera softness, slight motion blur, noise, glare, and compression
+- cel shadows ignore local light from the desk lamp or screen and do not inherit the room's muted exposure, warm wood bounce, and shadow softness
+- hair and clothes float through narrow furniture gaps without being cropped, hidden, compressed by perspective, or shadowed by nearby objects
+
+Good composite checks:
+
+- establish an anchor stack before editing: seat contact, desk/hand contact, keyboard scale, chair back occlusion, foot/floor or footrest contact, and foreground rail occlusion
+- measure character scale from the closest functional objects, not from assumed human height; chair seat, keyboard, desk height, and laptop are stronger anchors than the far wall
+- preserve the real plate completely; only add tiny localized contact shadows or occlusion masks where the character touches or passes behind objects
+- match the camera's high viewpoint and wide-angle compression: visible top planes of desk/seat/keyboard should agree with the character's shoulders, lap, knees, and shoes
+- let real furniture cut into the character silhouette where appropriate: desk edge over hands/forearms, chair back over skirt/body, ladder rail over hair/body, shelf shadow over head/hair
+- degrade the anime layer slightly into the photo: soften edge contrast, reduce pure cel saturation, add local warm/cool color spill, match noise/compression, and avoid perfect sticker outlines
+
+Prompt patch:
+
+```text
+Cramped dorm desk integration: preserve the real room/background plate exactly. Insert the anime character using the room photo's high wide-angle camera perspective, not a separate anime camera. Scale the character from the closest anchors: chair seat width, desk height, keyboard size, laptop, cup, shelf depth, and bed ladder spacing. Define an anchor stack: seated weight on the chair, hands contacting desk/keyboard, feet touching floor/footrest or chair support, chair back and desk edge occluding the body where they cross, and foreground rails/furniture correctly covering the character. Match the desk lamp/screen light, warm wood bounce, muted ambient exposure, soft shadows, phone-camera softness, grain, and compression by changing only the character layer. Add only tiny local contact shadows at seat, hands, shoes, and furniture crossings. Avoid floating thighs/feet/hands, wrong camera angle, pasted sticker edges, pure cel colors, missing chair/desk/rail occlusion, background cleanup, furniture movement, or relighting the room.
+```
+
 ## Prompt Patch
 
 ```text
