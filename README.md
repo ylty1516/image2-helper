@@ -348,6 +348,7 @@ reduce-ai-look-imagegen/examples/lean-routing-case.md
 - `routing-and-triggering.md`：判断什么时候该用这个 skill
 - `intent-and-fuzzy-language.md`：把“高级感、氛围感、故事感”等模糊词转成生图语言
 - `fuzzy-word-precision-library.md`：模糊词准确化库，把主观词拆成视觉功能、光色、构图、材质、行为和避错项
+- `fuzzy-to-precision-map.md`：模糊词到精准词的直接映射表，列出每个已收录模糊词对应的可执行提示词 cue
 - `failure-feedback-fixes.md`：把“太油、手怪、像 3D”等反馈转成修正提示词
 - `background-integrity.md`：让背景、次要人物、物品、建筑和非焦点细节按主角同等质量标准处理
 - `inconsistency-cleanup.md`：去除多余物品和修正提示词/图片不一致

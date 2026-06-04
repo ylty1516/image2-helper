@@ -81,6 +81,7 @@ Pick the first matching row unless the task clearly has two separate risks:
 | lower token use / faster thinking without quality loss | `references/quality-preserving-speed.md` |
 | should this skill run? | `references/routing-and-triggering.md` |
 | fuzzy wording or hard format lock | `references/intent-and-fuzzy-language.md` |
+| direct fuzzy-word to precision-word lookup, list every stored fuzzy mapping | `references/fuzzy-to-precision-map.md` |
 | deep fuzzy taste-word translation or personal preference wording | `references/fuzzy-word-precision-library.md` |
 | perspective, horizon, vanishing points, floor/ground plane, scale, occlusion, spatial geometry | `references/perspective-geometry.md` |
 | malformed background, secondary figures, props, architecture, non-focus detail | `references/background-integrity.md` |

@@ -30,6 +30,7 @@ Use this section as a fast search map. If the user's wording or inspected image 
 | Detail/focal hierarchy | 太满, 太碎, 细节堆满, no focal hierarchy, equal detail density, cluttered, meaningless micro-detail, no quiet area, no negative space | `failure-feedback-fixes.md` then `mainstream-style-composition.md` |
 | Character belongs to scene | 人物像贴上去, 姿势空, generic wistful pose, grounded feet, weight, contact, wind response, rain response, story beat | `prompt-recipes.md` then `background-integrity.md` |
 | Auto fuzzy-word repair | 自动补全, 后台补充, 模糊词修缮, fuzzy taste words, prompt enrichment, compact expansion | `auto-anti-ai-expansion.md` then `fuzzy-word-precision-library.md` |
+| Direct fuzzy-to-precision lookup | 模糊词匹配精准词, 每个模糊词对应的精准词, fuzzy-to-precision map, precision lookup | `fuzzy-to-precision-map.md` |
 
 ## Current Quality-Control Categories
 
@@ -157,6 +158,7 @@ Make the character belong to the scene: grounded feet, believable weight, contac
 | Need | File |
 |---|---|
 | Fuzzy words, hard format lock, user purpose parsing | `intent-and-fuzzy-language.md` |
+| Direct fuzzy-word to precision-word mapping table | `fuzzy-to-precision-map.md` |
 | Deep fuzzy taste-word translation and personal preference wording | `fuzzy-word-precision-library.md` |
 | Anime, cel, genga/layout, hand-painted backgrounds | `anime-handdrawn-look.md` |
 | Better composition, framing, mainstream style defaults | `mainstream-style-composition.md` |
