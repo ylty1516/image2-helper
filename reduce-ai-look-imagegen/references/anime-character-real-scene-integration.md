@@ -24,6 +24,60 @@ Prompt lock:
 Background plate lock: preserve the existing real background exactly, including all objects, object positions, crop, camera perspective, exposure, white balance, color temperature, original light, original shadows, highlights, reflections, clutter, texture, grain, and compression. Do not clean, relight, repaint, stylize, replace, blur, sharpen, denoise, rearrange, add, remove, or move anything in the background. The anime character must adapt to the background; the background must not adapt to the character.
 ```
 
+## Tool / Workflow Rule
+
+If exact background preservation matters, a prompt-only whole-image edit is not reliable enough. It can still re-render the room, change lighting, move small objects, alter clutter, or smooth photo noise.
+
+Preferred workflow:
+
+1. Keep the original background photo as the final base layer.
+2. Mark the physical anchors before generation: seat plane, desk/keyboard plane, floor plane, chair back/legs, hand target, pelvis/thigh support, foot target, and foreground occluders.
+3. Mark the background lighting map before generation: main light source, fill light, bright side, shadow side, occluders, contact-shadow zones, exposure range, color temperature, bounce color, and screen/desk/window glow.
+4. Generate or extract only the anime character as a transparent/cutout layer that already matches the physical anchors and lighting map.
+5. Locally composite the character layer onto the original photo.
+6. Adjust only the character layer: scale, position, edge softness, color response, internal light/shadow, and local contact/occlusion.
+7. Do not add global cast shadows, relight the room, clean the desk, move props, or rewrite the background.
+8. When practical, compare the final output against the original photo and confirm pixels outside the character/overlay bounding box remain unchanged.
+
+Only use whole-image generative edit as an exploratory preview, not as the final delivery, when the user says the real background must not change at all.
+
+## Physical Anchor Rule
+
+Background locking does not make a composite believable by itself. Before generating the character layer, identify the exact contact and occlusion anchors in the photo.
+
+For a seated-at-desk scene, decide:
+
+- seat plane: where the pelvis/thighs actually rest, and what part of the chair back remains visible
+- desk/keyboard plane: where the hands should land, and whether wrists/forearms should be hidden by the desk edge or keyboard
+- leg/foot path: where knees bend, how legs pass under the desk, and where shoes contact the floor or chair foot area
+- occlusion order: which chair rails, desk edges, ladder bars, monitor, keyboard, or foreground objects should cover parts of the character
+- support logic: the body weight must be carried by chair/floor/desk contacts, not floating in the blank space between them
+
+Prompt patch:
+
+```text
+Physical anchors: generate the character layer only after matching the real chair seat plane, desk/keyboard plane, floor plane, and occlusion order. The pelvis and thighs must visibly rest on the chair; hands must align to the real keyboard/laptop plane; legs must pass naturally under the desk; shoes must have a believable floor/chair-foot target; existing chair rails, desk edge, ladder, keyboard, or monitor may occlude the character. Avoid floating pelvis, hands hovering above the keyboard, knees clipping the desk, feet with no target, and body scale that ignores the chair.
+```
+
+## Background Lighting Map Rule
+
+Before generating the character layer, read the photo's actual lighting instead of asking for generic indoor light.
+
+Decide:
+
+- main source: lamp, monitor, window, ceiling light, desk light, or phone flash direction
+- lit side: which side of the character should receive stronger light
+- shadow side: which side must stay muted or occluded
+- contact-shadow zones: under thighs/skirt, between back and chair, under forearms/hands, under shoes, behind hair/shoulder where close to objects
+- bounce color: wood desk warmth, wall gray, monitor blue, curtain color, floor color, or nearby fabric color
+- exposure range: whether highlights are clipped, soft, dim, noisy, warm, cool, or mixed
+
+Prompt patch:
+
+```text
+Lighting map: match the locked background's real light. Identify the main light source, fill light, lit side, shadow side, occluders, contact-shadow zones, bounce color, color temperature, and exposure range before generating the character layer. Put brighter values only on the side facing the room/desk light; keep the opposite side muted and lower contrast. Add local bounce from the wood desk and nearby wall/fabric only on the character layer. Avoid independent anime rim light, uniform cel lighting, face lit from the wrong side, highlights brighter than the room, and shadows that contradict the locked photo.
+```
+
 ## AI-Looking Failure Modes
 
 - character has no physical contact point with the desk, floor, chair, screen edge, hand, or prop
@@ -49,7 +103,7 @@ Background plate lock: preserve the existing real background exactly, including 
 ## Prompt Patch
 
 ```text
-Anime-real integration: make the anime character share the real scene's camera plate while preserving the background plate exactly. Match one camera height, lens perspective, horizon/ground plane, scale anchors, and crop. Give the character a clear physical anchor: feet/hand/body contacting or being occluded by a real surface or object. Match the room's existing light direction, color temperature, exposure, shadow softness, reflected color, and material response by changing the character only, not the background. Integrate character edges with slight camera softness, grain/compression, local color spill, and foreground occlusion. Avoid sticker-like cutout edges, floating character, mismatched scale, separate lighting, pure cel colors unaffected by the room, background relighting, moved objects, cleaned clutter, changed shadows, or any background repainting.
+Anime-real integration: make the anime character share the real scene's camera plate while preserving the background plate exactly. Match one camera height, lens perspective, horizon/ground plane, scale anchors, and crop. Define physical anchors before generation: seat/floor/desk/screen plane, hand/foot/body contact, support logic, and occlusion order. Define the background lighting map before generation: main light, fill light, lit side, shadow side, contact-shadow zones, bounce color, color temperature, and exposure range. Match the room's existing light and physical contacts by changing the character layer only, not the background. Integrate character edges with slight camera softness, grain/compression, local color spill, and foreground occlusion. Avoid sticker-like cutout edges, floating character, hands hovering above target objects, mismatched scale, separate lighting, pure cel colors unaffected by the room, background relighting, moved objects, cleaned clutter, changed shadows, or any background repainting.
 ```
 
 ## Screen / Display Prompt Patch
@@ -68,6 +122,8 @@ Before generating, silently decide:
 - locked background elements: crop, objects, positions, exposure, color temperature, original light/shadows/reflections, clutter, texture, grain, compression
 - character state: printed image, screen image, AR/hologram, miniature figure, life-size person, or stylized overlay
 - anchor: floor, desk, chair, hand, screen bezel, phone glass, wall, shadow, reflection, or foreground occlusion
+- physical anchor map: seat/desk/floor/screen planes, hand targets, foot targets, support points, occlusion order, and scale anchors
+- lighting map: main light, fill light, lit side, shadow side, contact-shadow zones, bounce color, exposure range, color temperature
 - camera: height, lens softness, perspective, crop, depth of field, noise/compression
 - light: main direction, color temperature, screen glow, bounce light, rim only if motivated
 - material interaction: cast shadow, contact shadow, reflection, glass glare, pixel grid, fabric/object occlusion

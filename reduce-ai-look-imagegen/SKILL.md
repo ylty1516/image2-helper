@@ -129,6 +129,18 @@ For real-photo/anime-real composites, make background preservation a hard edit c
 Background plate lock: preserve the existing background exactly, including every object, object position, crop, perspective, exposure, color temperature, original shadows, highlights, reflections, clutter, grain, and compression. Do not clean, relight, repaint, stylize, replace, blur, sharpen, denoise, rearrange, add, remove, or move anything in the background. The character must adapt to the background; the background must not adapt to the character.
 ```
 
+Tool routing guard:
+
+```text
+If the user requires an existing real background/photo to remain unchanged, do not use whole-image generative editing as the final method. Whole-image edits may re-sample the canvas even when prompted not to. Prefer generating or extracting the subject as a separate transparent/cutout layer, then composite it locally over the original background plate. Verify that pixels outside the subject/overlay mask are unchanged when practical.
+```
+
+Before generating a separate subject layer for a real-photo composite, derive a small lighting map from the locked background:
+
+```text
+Background lighting map: identify the main light source, fill light, bright side, shadow side, occluders, contact-shadow zones, color temperature, exposure range, bounce color from nearby surfaces, and any screen/desk/window glow. Generate the subject layer with this exact lit-side/backlit-side pattern; do not give the subject an independent beauty rim light or uniform cel lighting.
+```
+
 ## Output Rules
 
 - If the user wants an image, keep explanation to one short sentence and generate/edit.
