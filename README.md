@@ -577,6 +577,10 @@ reduce-ai-look-imagegen/00_NEXT_AI_READ_FIRST.md
 
 从 `2026-06-02 11:00 Asia/Shanghai` 起，旧的 F 盘项目副本不再维护。后续只修改本仓库里的主 skill，并同步到本机 Codex 可调用目录和 GitHub；不要再同步、校验、打包或改动 `F:\Codex_Save_Library\05_Project_Folders\reduce-ai-look-imagegen`。
 
+## 更新记录
+
+- `2026-06-05`：同步模糊词到精准词直接映射表，确认 `fuzzy-to-precision-map.md` 已接入 skill 路由、索引和 README。
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
